@@ -184,7 +184,9 @@ window.CONFIG = {
     mundavalya: "Mundavalya: strings of pearls tied across the foreheads of the bride and groom at a Marathi wedding.",
     mirrorwork: "Ajrak and mirror work: small mirrors stitched into Sindhi embroidery, said to ward off the evil eye.",
     pagdi: "The Puneri pagdi: the pre-stitched turban of Pune.",
-    topi: "The Sindhi topi: an embroidered cap, often set with tiny mirrors."
+    topi: "The Sindhi topi: an embroidered cap with an arched front, often set with tiny mirrors.",
+    nath: "The nath: a pearl-set, paisley-shaped nose ring worn by Marathi brides.",
+    mangh: "Manghs: the rooftop wind-catchers of old Hyderabad, Sindh, all turned to catch the same breeze."
   },
 
   /* ---- Interface text  ⚑ needs family review (every translation) ---- */
@@ -439,6 +441,12 @@ section{position:relative;scroll-margin-top:0}
 .hint-btn{background:none;border:0;padding:0;margin:0;cursor:pointer;color:inherit}
 .names-wrap{position:relative;display:inline-block}
 .names-wrap h1{position:relative;z-index:1}
+.card h1{padding-top:.34em!important}
+.topi-on,.nath-on{position:absolute;z-index:2;line-height:0}
+.topi-on{transform:rotate(-14deg)}
+.nath-on{transform:rotate(-8deg)}
+.topi-on svg,.nath-on svg{width:100%;height:auto;filter:drop-shadow(0 2px 3px rgba(60,20,10,.25))}
+.skyline{cursor:pointer}
 .feather{position:absolute;right:-38px;top:-36px;width:34px;height:118px;transform:rotate(24deg);z-index:0}
 .feather svg{width:100%;height:100%}
 .pearl-hit{position:absolute;top:0;left:50%;transform:translateX(-50%);width:26%;height:clamp(30px,8vw,64px);z-index:2}
@@ -1026,6 +1034,8 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
         <p class="blessing" data-i18n="blessing">With the blessings of our elders and the love of our families</p>
         <div class="rule" aria-hidden="true"><svg viewBox="-12 -8 24 16"><use href="#rosette" x="-8" y="-8" width="16" height="16"/></svg></div>
         <div class="names-wrap"><h1 id="inviteNames" tabindex="-1"></h1>
+          <button type="button" class="hint-btn topi-on" data-hint="topi"><svg viewBox="0 0 64 46" aria-hidden="true" id="topiSvg"></svg></button>
+          <button type="button" class="hint-btn nath-on" data-hint="nath"><svg viewBox="0 0 64 64" aria-hidden="true" id="nathSvg"></svg></button>
           <button type="button" class="hint-btn feather" data-hint="feather"><svg viewBox="0 0 40 140" aria-hidden="true" id="featherSvg"></svg></button></div>
         <div class="rule" aria-hidden="true"><svg viewBox="-12 -8 24 16"><use href="#rosette" x="-8" y="-8" width="16" height="16"/></svg></div>
         <div class="families" id="families"></div>
@@ -1131,7 +1141,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
         <button type="button" class="pill-btn" id="calApple"><svg aria-hidden="true"><use href="#i-cal"/></svg><span data-i18n="cal_apple">Add to Apple Calendar</span></button>
       </div>
     </div>
-    <div class="skyline" aria-hidden="true"><svg viewBox="0 0 1200 300" preserveAspectRatio="xMidYMax slice" id="skyline"></svg></div>
+    <div class="skyline" aria-hidden="true" data-hint="mangh"><svg viewBox="0 0 1200 300" preserveAspectRatio="xMidYMax slice" id="skyline"></svg></div>
   </section>
 
   <!-- ======================= 9. CLOSING ======================= -->
@@ -1281,18 +1291,17 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
       var x = b[0], w = b[1], top = b[2];
       s += '<rect x="' + x + '" y="' + top + '" width="' + w + '" height="' + (300 - top) + '" fill="#141836"/>';
       s += '<path d="M' + x + " " + top + "h" + w + 'v-8h-' + w + 'z" fill="#1C2148"/>';
-      var domes = Math.max(1, Math.round(w / 110));
-      for (var d = 0; d < domes; d++) {
-        var cx = x + w * (d + .5) / domes, r = Math.min(46, w / domes / 2.6);
-        s += '<path d="M' + (cx - r) + " " + (top - 8) + "C" + (cx - r - 6) + " " + (top - 8 - r * 1.3) + " " + (cx - 4) + " " + (top - 8 - r * 1.8) + " " + cx + " " + (top - 8 - r * 2.1) + "C" + (cx + 4) + " " + (top - 8 - r * 1.8) + " " + (cx + r + 6) + " " + (top - 8 - r * 1.3) + " " + (cx + r) + " " + (top - 8) + 'Z" fill="#1A1E42"/>';
-        s += '<path d="M' + cx + " " + (top - 8 - r * 2.1) + "v-12" + '" stroke="#C9A54A" stroke-width="2"/>';
+      for (var mx = x + 10; mx < x + w - 22; mx += rnd(30, 46)) {
+        var mw = rnd(16, 24), back = rnd(30, 52), front = back - rnd(12, 18), base = top - 8;
+        s += '<path d="M' + mx.toFixed(0) + " " + base + "V" + (base - front).toFixed(0) + "L" + (mx + mw).toFixed(0) + " " + (base - back).toFixed(0) + "V" + base + 'Z" fill="#1A1E42"/>';
+        s += '<path d="M' + (mx + 3).toFixed(0) + " " + (base - 4) + "V" + (base - front + 3).toFixed(0) + "L" + (mx + mw - 3).toFixed(0) + " " + (base - back + 6).toFixed(0) + "V" + (base - 4) + 'Z" fill="#232955"/>';
+        s += '<path d="M' + mx.toFixed(0) + " " + (base - front).toFixed(0) + "L" + (mx + mw).toFixed(0) + " " + (base - back).toFixed(0) + '" stroke="#C9A54A" stroke-width="1.2" opacity=".55"/>';
       }
       for (var wx = x + 16; wx < x + w - 14; wx += 26) for (var wy = top + 20; wy < 290; wy += 34) {
         if ((wx + wy) % 3 === 0) continue;
         s += '<path d="M' + wx + " " + (wy + 18) + "v-10q0-8 6-10q6 2 6 10v10z" + '" fill="#F5C66A" opacity="' + rnd(.45, .95).toFixed(2) + '"/>';
       }
     });
-    s += '<g opacity=".9"><use href="#lantern" transform="translate(420 0) scale(.42)"/><use href="#lantern" transform="translate(780 0) scale(.42)"/></g>';
     svg.innerHTML = s;
   }
   var ICONS = {
@@ -1377,6 +1386,48 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
     });
   }
 
+  // Kapil's Sindhi topi: arched front opening, embroidery and little mirrors
+  function buildTopi() {
+    var t = '<path d="M5 40V17Q5 8 32 6Q59 8 59 17V40Q32 45 5 40Z" fill="#A8283A" stroke="#6E1626" stroke-width="1"/>' +
+      '<path d="M5 17Q32 25 59 17Q59 8 32 6Q5 8 5 17Z" fill="#C2416B" stroke="#6E1626" stroke-width="1"/>' +
+      '<ellipse cx="32" cy="14" rx="18" ry="4.2" fill="none" stroke="#E9C46A" stroke-width="1"/>' +
+      '<ellipse cx="32" cy="14" rx="9" ry="2.2" fill="#0F6B5C" stroke="#E9C46A" stroke-width=".8"/>' +
+      '<path d="M5 25L9 21L13 25L17 21L21 25L25 21L29 25L33 21L37 25L41 21L45 25L49 21L53 25L57 21L59 23" fill="none" stroke="#E9C46A" stroke-width="1.1"/>' +
+      '<path d="M5 33L59 33" stroke="#1F2A5C" stroke-width="2.2"/>' +
+      '<path d="M23 43V33Q32 21 41 33V43.6Q32 45 23 43Z" fill="#FBF3E2" stroke="#E9C46A" stroke-width="1.2"/>';
+    [[11, 30], [17, 37], [47, 37], [53, 30], [32, 18.5]].forEach(function (m, i) {
+      t += '<circle cx="' + m[0] + '" cy="' + m[1] + '" r="2.4" fill="url(#mirrorGrad)" stroke="#E9C46A" stroke-width=".6"/>' +
+        '<use href="#spark" class="spark" fill="#fff" transform="translate(' + (m[0] + 1) + " " + (m[1] - 1) + ') scale(.45)" style="animation-delay:' + (i * 1.3).toFixed(1) + 's"/>';
+    });
+    [[13, 37], [51, 37], [9, 21.5], [55, 21.5]].forEach(function (d) { t += '<circle cx="' + d[0] + '" cy="' + d[1] + '" r="1.1" fill="#E2A91B"/>'; });
+    $("topiSvg").innerHTML = t;
+  }
+  // Rucha's Marathi nath: a paisley ring edged with pearls, a ruby and a pearl chain
+  function buildNath() {
+    var svg = $("nathSvg");
+    svg.innerHTML = '<path id="nathPath" d="M30 54C14 54 6 40 12 28C18 16 36 12 42 24C46 32 40 38 33 34" fill="none" stroke="#D4A63A" stroke-width="3.2" stroke-linecap="round"/>';
+    var path = $("nathPath"), len = path.getTotalLength(), out = "";
+    for (var i = 0; i <= 15; i++) {
+      var q = path.getPointAtLength(len * (0.04 + i * 0.058));
+      out += '<circle cx="' + q.x.toFixed(1) + '" cy="' + q.y.toFixed(1) + '" r="3.1" fill="url(#pearl)" stroke="#A8987F" stroke-width=".5"/>';
+    }
+    out += '<circle cx="33" cy="34" r="4.2" fill="#C2416B" stroke="#E9C46A" stroke-width="1.2"/><circle cx="37.5" cy="39" r="2" fill="#0F6B5C"/>';
+    for (var k = 1; k <= 6; k++) out += '<circle cx="' + (42 + k * 3.2).toFixed(1) + '" cy="' + (24 - k * 3.4).toFixed(1) + '" r="1.7" fill="url(#pearl)" stroke="#BFAF97" stroke-width=".3"/>';
+    svg.insertAdjacentHTML("beforeend", out);
+  }
+  // sit the topi on the first letter of Kapil and the nath on the first letter of Rucha
+  function placeOrnaments() {
+    var h1 = $("inviteNames"), a = $("nm1"), b = $("nm2"), fs = parseFloat(getComputedStyle(h1).fontSize);
+    var topi = doc.querySelector(".topi-on"), nath = doc.querySelector(".nath-on");
+    if (!a || !b || !topi) return;
+    topi.style.width = (fs * .72).toFixed(0) + "px";
+    topi.style.left = (h1.offsetLeft + a.offsetLeft - fs * .2).toFixed(0) + "px";
+    topi.style.top = (h1.offsetTop + a.offsetTop - fs * .1).toFixed(0) + "px";
+    nath.style.width = (fs * .64).toFixed(0) + "px";
+    nath.style.left = (h1.offsetLeft + b.offsetLeft - fs * .3).toFixed(0) + "px";
+    nath.style.top = (h1.offsetTop + b.offsetTop - fs * .08).toFixed(0) + "px";
+  }
+
   /* ---------------- tap a motif: one-line meaning ---------------- */
   var tip = doc.createElement("div");
   tip.className = "hint-tip"; tip.setAttribute("role", "status"); tip.setAttribute("aria-live", "polite");
@@ -1400,7 +1451,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
   var amp = '<span class="amp">&amp;</span>';
   $("icNames").innerHTML = "<span>" + esc(N.partner1) + " " + amp + "</span><span>" + esc(N.partner2) + "</span>";
   $("icDate").textContent = C.HERO_DATE_TEXT;
-  $("inviteNames").innerHTML = esc(N.partner1) + " &amp; " + esc(N.partner2);
+  $("inviteNames").innerHTML = '<span class="nm" id="nm1">' + esc(N.partner1) + '</span> &amp; <span class="nm" id="nm2">' + esc(N.partner2) + "</span>";
   $("cardDate").textContent = C.DATE_TEXT;
   $("cardVenue").textContent = (isPh(C.VENUE.name) && isPh(C.CITY)) ? C.VENUE.name + ", " + C.CITY : [C.VENUE.name, C.CITY].join(", ");
   $("closingNames").innerHTML = "<span>" + esc(N.partner1) + "</span><span>&amp;</span><span>" + esc(N.partner2) + "</span>";
@@ -1427,6 +1478,9 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
   skylineSVG($("skyline"));
   buildScene();
   buildMotifs();
+  buildTopi(); buildNath(); placeOrnaments();
+  addEventListener("resize", placeOrnaments);
+  if (doc.fonts && doc.fonts.ready) doc.fonts.ready.then(placeOrnaments);
 
   /* ---------------- dynamic, translatable renders ---------------- */
   var mapsLink = function (link, label) {
