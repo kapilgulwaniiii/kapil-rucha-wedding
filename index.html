@@ -124,8 +124,8 @@ window.CONFIG = {
 
   /* ---- Things to know ---- */
   WEAR: [                                       // ⚑ needs family review
-    { title: "Marathi ceremonies", text: "[Paithani, nauvari or a kurta in jewel tones; yellow for the Halad Chadavane]" },
     { title: "Sindhi ceremonies",  text: "[Bright, festive colours; an ajrak stole or dupatta as an accent]" },
+    { title: "Marathi ceremonies", text: "[Paithani, nauvari or a kurta in jewel tones; yellow for the Halad Chadavane]" },
     { title: "Wedding & reception", text: "[Your finest festive attire in rich, warm colours]" }
   ],
   VENUE: {
@@ -168,15 +168,29 @@ window.CONFIG = {
   RSVP_BY: "[RSVP date]",
 
   /* ---- Contacts ---- */
+  /* icon: "pagdi" (Puneri pagdi, for the Marathi family) or "topi" (Sindhi topi, for the
+     Sindhi family). Leave "" for no icon. */
   CONTACTS: [
-    { label: "[Kapil's family contact]", name: "[name]", phone: "[phone number]" },
-    { label: "[Rucha's family contact]", name: "[name]", phone: "[phone number]" }
+    { label: "[Kapil's family contact]", name: "[name]", phone: "[phone number]", icon: "topi" },
+    { label: "[Rucha's family contact]", name: "[name]", phone: "[phone number]", icon: "pagdi" }
   ],
+
+  /* ---- Cultural motifs: the one-line note shown when a guest taps one  ⚑ needs family review ---- */
+  HINTS: {
+    peacock: "The peacock: woven into Paithani silk and stitched into Sindhi embroidery, a motif both families share.",
+    feather: "A peacock feather: found in Paithani weaves and Sindhi embroidery alike.",
+    paithani: "Paithani: Maharashtra's handwoven silk, with gold zari, peacocks and lotuses.",
+    ajrak: "Ajrak: block-printed Sindhi cloth in indigo and madder red, offered as a mark of respect.",
+    mundavalya: "Mundavalya: strings of pearls tied across the foreheads of the bride and groom at a Marathi wedding.",
+    mirrorwork: "Ajrak and mirror work: small mirrors stitched into Sindhi embroidery, said to ward off the evil eye.",
+    pagdi: "The Puneri pagdi: the pre-stitched turban of Pune.",
+    topi: "The Sindhi topi: an embroidered cap, often set with tiny mirrors."
+  },
 
   /* ---- Interface text  ⚑ needs family review (every translation) ---- */
   STRINGS: {
     en: {
-      skip_intro: "Skip intro", pull: "Pull to light us up", pull_label: "Pull the rope to light up the invitation",
+      skip_intro: "Skip intro", pull: "Lower the antarpat", pull_label: "Lower the antarpat to reveal the couple",
       open_invite: "Open the invitation", tap_lotus: "Tap the lotus",
       save_the_date: "Save the Date", tagline: "Two families. Two traditions. One celebration.",
       blessing: "With the blessings of our elders and the love of our families",
@@ -217,7 +231,7 @@ window.CONFIG = {
       nav_story: "Our Story", nav_gallery: "Gallery", nav_know: "Things to Know", nav_rsvp: "RSVP"
     },
     mr: {
-      skip_intro: "वगळा", pull: "दोरी ओढा, उजळू द्या", pull_label: "निमंत्रण उजळण्यासाठी दोरी ओढा",
+      skip_intro: "वगळा", pull: "अंतरपाट दूर करा", pull_label: "वधू-वरांचे दर्शन घेण्यासाठी अंतरपाट दूर करा",
       open_invite: "निमंत्रण उघडा", tap_lotus: "कमळावर टॅप करा",
       save_the_date: "तारीख लक्षात ठेवा", tagline: "दोन कुटुंबे. दोन परंपरा. एक उत्सव.",
       blessing: "वडीलधाऱ्यांच्या आशीर्वादाने आणि कुटुंबियांच्या प्रेमाने",
@@ -291,7 +305,7 @@ window.CONFIG = {
 <meta name="twitter:title" content="Kapil &amp; Rucha — Save the Date">
 <meta name="twitter:description" content="Two families. Two traditions. One celebration. 6th December 2026.">
 <meta name="twitter:image" content="[preview image URL]">
-<meta name="theme-color" content="#2A0B2A">
+<meta name="theme-color" content="#141A3E">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -365,18 +379,32 @@ section{position:relative;scroll-margin-top:0}
 .vignette{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 45%,transparent 35%,rgba(8,4,12,.55) 100%);transition:opacity 2s}
 .lit .vignette{opacity:.55}
 .intro-top{position:absolute;top:calc(12px + env(safe-area-inset-top));left:14px;right:14px;display:flex;justify-content:space-between;align-items:center;z-index:5}
-.skip-intro{color:var(--gold-soft);font:400 .72rem/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;text-decoration:none;padding:12px 6px;opacity:.85}
-.rope-wrap{position:absolute;left:50%;top:0;transform:translateX(-50%);z-index:4;display:flex;flex-direction:column;align-items:center;transition:transform 1.2s cubic-bezier(.6,0,.3,1) .4s}
-.lit .rope-wrap{transform:translate(-50%,-110%)}
-.rope{width:9px;height:var(--rope,200px);border-radius:0 0 4px 4px;
-  background:repeating-linear-gradient(135deg,#F1DDA6 0 4px,#C39A48 4px 7px,#8C6A2C 7px 8px);box-shadow:0 0 12px rgba(255,214,140,.15);
-  transform:translateY(var(--pull,0px));transition:transform .5s cubic-bezier(.3,1.6,.5,1)}
-.pulling .rope,.pulling .tassel{transition:none}
-.tassel{width:46px;height:92px;margin-top:-4px;border:0;background:none;padding:0;cursor:grab;touch-action:none;transform:translateY(var(--pull,0px));transition:transform .5s cubic-bezier(.3,1.6,.5,1)}
-.tassel:active{cursor:grabbing}
-.tassel svg{width:100%;height:100%;filter:drop-shadow(0 0 10px rgba(255,200,110,.45))}
-@media (prefers-reduced-motion:no-preference){.tassel:not(:active) svg{animation:sway 3.4s ease-in-out infinite;transform-origin:50% 0}}
+.skip-intro{color:var(--gold-soft);font:400 .72rem/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;text-decoration:none;padding:10px 14px;border-radius:999px;background:rgba(14,20,51,.6)}
 @keyframes sway{50%{transform:rotate(3deg)}}
+.antarpat-wrap{position:absolute;left:0;top:0;width:100%;height:100%;z-index:4;
+  transition:transform 1.5s cubic-bezier(.55,0,.75,.35),opacity .9s ease .7s}
+.antarpat-wrap.dragging{transition:none}
+.lit .antarpat-wrap{transform:translateY(118vh) rotate(4deg)!important;opacity:0;pointer-events:none}
+.antarpat{display:block;position:relative;width:108%;margin-left:-4%;height:100%;padding:0;border:0;background:#1F2A5C;cursor:grab;touch-action:none;overflow:hidden;
+  border-radius:2px 2px 4px 4px;box-shadow:0 34px 60px -18px rgba(0,0,0,.75),0 0 40px rgba(255,190,110,.12);transform-origin:50% 0}
+.antarpat:active{cursor:grabbing}
+@media (prefers-reduced-motion:no-preference){.antarpat{animation:apSway 5s ease-in-out infinite}}
+@keyframes apSway{0%,100%{transform:skewX(0)}50%{transform:skewX(.8deg)}}
+.ap-cloth{position:absolute;inset:0;width:100%;height:100%}
+.ap-folds{position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(0,0,0,.32) 0,rgba(255,255,255,.07) 28px,rgba(0,0,0,.06) 50px,rgba(0,0,0,.32) 80px),linear-gradient(180deg,rgba(255,220,160,.14),transparent 40%)}
+.ap-hem-top{position:absolute;left:0;right:0;top:0;height:12px;background:linear-gradient(#F0D07A,#B8862A);box-shadow:inset 0 -2px 0 #8A6418}
+.ap-hem{position:absolute;left:0;right:0;bottom:10px;height:30px;border-top:2px solid #E9C46A}
+.ap-hem svg{width:100%;height:100%}
+.antarpat::after{content:"";position:absolute;left:0;right:0;bottom:0;height:10px;background:repeating-linear-gradient(90deg,#E9C46A 0 2px,transparent 2px 6px)}
+.ap-knot{position:absolute;top:8px;width:20px;height:20px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#FBE3A0,#C9A54A 70%);box-shadow:0 0 0 2px #8A6418;z-index:2}
+.ap-knot::after{content:"";position:absolute;left:8px;top:18px;width:4px;height:38px;background:repeating-linear-gradient(180deg,#E9C46A 0 3px,#B8862A 3px 5px);border-radius:2px}
+.ap-knot.l{left:12px}.ap-knot.r{right:12px}
+.ap-knot{display:none}
+.pull-hint svg{width:22px;height:22px;margin:4px auto 0}
+.pull-hint{z-index:5!important}
+.pull-hint span{display:inline-block;padding:8px 22px;border-radius:999px;background:rgba(14,20,51,.72);border:1px solid rgba(233,196,106,.55)}
+@media (prefers-reduced-motion:no-preference){.pull-hint svg{animation:bob 2s ease-in-out infinite}}
+@keyframes bob{50%{transform:translateY(5px)}}
 .pull-hint{position:absolute;left:0;right:0;top:var(--hint-top,62%);text-align:center;z-index:3;font:italic 500 clamp(1.5rem,6vw,2.2rem)/1.2 var(--serif);color:#F6E3B8;text-shadow:0 0 18px rgba(255,200,120,.6);transition:opacity .8s;pointer-events:none;padding:0 20px}
 .lit .pull-hint{opacity:0}
 .intro-copy{position:absolute;left:0;right:0;top:var(--copy-top,30%);z-index:3;text-align:center;pointer-events:none;padding:0 16px}
@@ -402,6 +430,34 @@ section{position:relative;scroll-margin-top:0}
 .petals i{position:absolute;top:-30px;width:12px;height:8px;border-radius:70% 0 70% 0;opacity:.9;animation:fall linear infinite}
 @keyframes fall{0%{transform:translate(0,0) rotate(0)}50%{transform:translate(var(--dx),55vh) rotate(200deg)}100%{transform:translate(calc(var(--dx) * -.5),112vh) rotate(420deg)}}
 
+/* ================= CULTURAL MOTIFS ================= */
+.scene [data-hint]{cursor:pointer}
+.scene .fan{transform:rotate(-115deg) scale(.2);opacity:0;transition:transform 1.9s cubic-bezier(.2,.9,.25,1.05) 1.6s,opacity .7s ease 1.6s}
+.lit .scene .fan{transform:none;opacity:1}
+.scene .train{transition:opacity .9s ease 1.7s}
+.lit .scene .train{opacity:0}
+.hint-btn{background:none;border:0;padding:0;margin:0;cursor:pointer;color:inherit}
+.names-wrap{position:relative;display:inline-block}
+.names-wrap h1{position:relative;z-index:1}
+.feather{position:absolute;right:-38px;top:-36px;width:34px;height:118px;transform:rotate(24deg);z-index:0}
+.feather svg{width:100%;height:100%}
+.pearl-hit{position:absolute;top:0;left:50%;transform:translateX(-50%);width:26%;height:clamp(30px,8vw,64px);z-index:2}
+.know-ele{display:block;margin:46px auto 0;width:min(170px,44vw);position:relative;z-index:1}
+.know-ele svg{width:100%;height:auto}
+.ctype{width:36px;height:24px;margin:0 auto 6px}
+@media (prefers-reduced-motion:no-preference){
+  .feather svg{animation:shimmer 5s ease-in-out infinite alternate}
+  .pearl-swag{transform-box:fill-box;transform-origin:50% 0;animation:sway 4.5s ease-in-out infinite}
+  .spark{transform-box:fill-box;transform-origin:center;opacity:0;animation:spark 5.5s ease-in-out infinite}
+}
+@media (prefers-reduced-motion:reduce){.spark{display:none}}
+@keyframes shimmer{to{filter:hue-rotate(28deg) brightness(1.12)}}
+@keyframes spark{0%,80%,100%{opacity:0;transform:scale(.3)}88%{opacity:1;transform:scale(1)}}
+.hint-tip{position:fixed;z-index:130;max-width:280px;padding:12px 14px;border-radius:10px;background:#FBF3E2;color:#2A2233;
+  font:italic 400 1.02rem/1.4 var(--serif);box-shadow:0 14px 34px -10px rgba(0,0,0,.55);border:1px solid #D9BE7E;
+  opacity:0;transform:translateY(6px);transition:opacity .25s,transform .25s;pointer-events:none}
+.hint-tip.show{opacity:1;transform:none}
+
 /* ================= FLOATING CONTROLS ================= */
 .fab-stack{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:80;display:flex;flex-direction:column;gap:12px}
 .intro-on .fab-stack{display:none}
@@ -422,17 +478,18 @@ section{position:relative;scroll-margin-top:0}
 .langs button[lang="sd-Arab"]{font-family:var(--naskh)}
 .langs button[aria-pressed="true"]{background:var(--indigo);color:var(--ivory)}
 .intro .langs{gap:4px}
-.intro .langs button{flex:none;min-height:32px;padding:0 10px;color:var(--gold-soft);border-color:rgba(243,221,160,.4);font-size:.78rem}
+.intro .langs button{flex:none;min-height:32px;padding:0 10px;color:var(--gold-soft);border-color:rgba(243,221,160,.4);font-size:.78rem;background:rgba(14,20,51,.6)}
 .intro .langs button[aria-pressed="true"]{background:rgba(243,221,160,.18)}
 
 /* ================= INVITATION ================= */
 .invite{
   padding:60px 14px 70px;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;
   background:
-    radial-gradient(ellipse 60% 40% at 50% 40%,rgba(255,236,226,.7),transparent 70%),
-    radial-gradient(ellipse at 0% 100%,rgba(194,65,107,.35),transparent 50%),
-    radial-gradient(ellipse at 100% 0%,rgba(194,65,107,.3),transparent 45%),
-    linear-gradient(180deg,#B9476A 0%,#D9879A 35%,#E9B7B9 70%,#C9667E 100%);
+    radial-gradient(ellipse 60% 40% at 50% 42%,rgba(233,196,106,.22),transparent 70%),
+    radial-gradient(ellipse at 0% 100%,rgba(163,23,91,.45),transparent 50%),
+    radial-gradient(ellipse at 100% 0%,rgba(163,23,91,.4),transparent 45%),
+    repeating-linear-gradient(115deg,rgba(255,255,255,.025) 0 2px,transparent 2px 7px),
+    linear-gradient(180deg,#0B4A40 0%,#0F6B5C 45%,#0C5547 100%);
 }
 .invite .sprays{position:absolute;inset:0;pointer-events:none;overflow:hidden}
 .invite .sprays svg{position:absolute;width:clamp(150px,30vw,320px);height:auto;opacity:.9}
@@ -455,8 +512,8 @@ section{position:relative;scroll-margin-top:0}
 .families p:last-child{border:0}
 .card-date{font:500 clamp(1.4rem,5.4vw,2rem)/1.2 var(--serif);letter-spacing:.12em;color:#7A1F3A;margin:16px 0 4px}
 .card-venue{font:italic 400 1.15rem/1.4 var(--serif);color:var(--text-soft);margin:0 0 24px}
-.card .btn{color:#FFF5E6;background:#5E2A3D;border-color:#5E2A3D;position:relative;z-index:1}
-.card .btn:hover{background:#7A1F3A}
+.card .btn{color:#FFF5E6;background:#8E1F31;border-color:#8E1F31;position:relative;z-index:1}
+.card .btn:hover{background:#A8283A}
 .cd{display:flex;justify-content:center;gap:10px;margin-top:30px;position:relative;z-index:1;flex-wrap:wrap}
 .cd .tile{min-width:74px;padding:12px 8px 10px;text-align:center;border-radius:10px;background:rgba(255,248,236,.82);border:1px solid rgba(201,165,74,.7);box-shadow:0 10px 24px -14px rgba(80,10,30,.6)}
 .cd b{display:block;font:500 2rem/1 var(--serif);color:var(--madder);font-variant-numeric:tabular-nums}
@@ -466,7 +523,7 @@ section{position:relative;scroll-margin-top:0}
 /* ================= CEREMONIES (night) ================= */
 .night{
   color:var(--ivory);padding:0 16px 90px;text-align:center;overflow:hidden;
-  background:radial-gradient(ellipse 80% 50% at 50% 0%,#3B1335,transparent 70%),linear-gradient(180deg,#1C0B22,#2A0E2C 50%,#1A0C24);
+  background:radial-gradient(ellipse 80% 50% at 50% 0%,#28306E,transparent 70%),linear-gradient(180deg,#0D1230,#151B45 50%,#0E1230);
 }
 .stars{position:absolute;inset:0;pointer-events:none;background-image:
   radial-gradient(1.2px 1.2px at 12% 18%,#fff8,transparent),radial-gradient(1px 1px at 72% 12%,#fff9,transparent),
@@ -513,7 +570,7 @@ section{position:relative;scroll-margin-top:0}
 .traditions .title{color:#5E2A3D}
 .trad-grid{display:grid;gap:26px;max-width:1060px;margin:44px auto 0;text-align:left}
 @media (min-width:900px){.trad-grid{grid-template-columns:1fr 240px 1fr;align-items:center}}
-.patch{position:relative;background:#FFFAF1;border-radius:8px;padding:0 22px 22px;overflow:hidden;box-shadow:0 0 0 5px var(--under,#E9D3B6),0 18px 34px -18px rgba(60,20,30,.45)}
+.patch{position:relative;background:#FFFAF1;border-radius:8px;padding:26px 22px 22px;overflow:hidden;box-shadow:0 0 0 5px var(--under,#E9D3B6),0 18px 34px -18px rgba(60,20,30,.45)}
 .patch::after{content:"";position:absolute;inset:7px;border:1.5px dashed rgba(156,122,35,.6);border-radius:5px;pointer-events:none}
 .patch .strip{height:30px;margin:0 -22px 18px;border-bottom:2px solid var(--zari)}
 .patch .strip svg{width:100%;height:100%}
@@ -550,7 +607,7 @@ section{position:relative;scroll-margin-top:0}
   background:
     linear-gradient(180deg,rgba(255,255,255,.08),transparent 30%),
     repeating-linear-gradient(90deg,transparent 0 180px,rgba(255,255,255,.05) 180px 182px),
-    linear-gradient(180deg,#C25A78,#B4486A 50%,#9C3A5B)}
+    linear-gradient(180deg,#A3175B,#8E1450 50%,#6E103F)}
 .gallery .arch-bg{position:absolute;left:50%;top:40px;transform:translateX(-50%);width:min(1100px,140vw);height:auto;opacity:.55;pointer-events:none}
 .gallery .eyebrow{color:#FBE3C8}
 .gallery .title{color:#FFF6EA;text-shadow:0 2px 20px rgba(80,10,30,.4)}
@@ -581,7 +638,7 @@ section{position:relative;scroll-margin-top:0}
 
 /* ================= THINGS TO KNOW ================= */
 .know{padding:90px 16px 100px;text-align:center;color:#FFF3E6;overflow:hidden;
-  background:radial-gradient(ellipse at 50% 30%,#B83A5C,transparent 70%),linear-gradient(180deg,#A42D4E,#8A2140 60%,#6E1833)}
+  background:radial-gradient(ellipse at 50% 30%,#B5323F,transparent 70%),linear-gradient(180deg,#A8283A,#8A1F2E 60%,#6B1622)}
 .know .eyebrow{color:#F3C98A}
 .know .title{font-family:var(--script);font-style:normal;font-weight:400;font-size:clamp(3rem,11vw,4.8rem);color:#FFF3E6}
 .know .lead{font:italic 400 1.1rem/1.5 var(--serif);color:#F8D9D2;margin:10px auto 0;max-width:40ch}
@@ -727,15 +784,15 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
       <g fill="#E9C46A"><circle cx="-22" cy="158" r="1.6"/><circle cx="22" cy="158" r="1.6"/><circle cx="-12" cy="172" r="1.4"/><circle cx="12" cy="172" r="1.4"/></g>
     </g>
     <g id="chhatri">
-      <rect x="-54" y="-30" width="108" height="30" fill="#F2DCD4" stroke="#B98078"/>
-      <rect x="-48" y="-36" width="96" height="7" fill="#E7B7B0" stroke="#B98078" stroke-width=".8"/>
-      <rect x="-40" y="-100" width="80" height="64" fill="#F4E2DA" stroke="#B98078"/>
-      <g fill="#4A1A35"><path d="M-34 -36V-70Q-34 -86 -24 -90Q-14 -86 -14 -70V-36Z"/><path d="M-10 -36V-72Q-10 -88 0 -92Q10 -88 10 -72V-36Z"/><path d="M14 -36V-70Q14 -86 24 -90Q34 -86 34 -70V-36Z"/></g>
+      <rect x="-54" y="-30" width="108" height="30" fill="#EFE0C4" stroke="#A88A5C"/>
+      <rect x="-48" y="-36" width="96" height="7" fill="#E2C9A0" stroke="#A88A5C" stroke-width=".8"/>
+      <rect x="-40" y="-100" width="80" height="64" fill="#F5E9D2" stroke="#A88A5C"/>
+      <g fill="#2A2350"><path d="M-34 -36V-70Q-34 -86 -24 -90Q-14 -86 -14 -70V-36Z"/><path d="M-10 -36V-72Q-10 -88 0 -92Q10 -88 10 -72V-36Z"/><path d="M14 -36V-70Q14 -86 24 -90Q34 -86 34 -70V-36Z"/></g>
       <g class="glow" fill="#FFD27A"><circle cx="-24" cy="-58" r="4"/><circle cy="-60" r="4.5"/><circle cx="24" cy="-58" r="4"/></g>
-      <path d="M-52 -100H52L44 -110H-44Z" fill="#E7B7B0" stroke="#B98078"/>
-      <rect x="-30" y="-120" width="60" height="10" fill="#F4E2DA" stroke="#B98078"/>
-      <path d="M-30 -120C-36 -152 -10 -170 0 -180C10 -170 36 -152 30 -120Z" fill="#F4E2DA" stroke="#B98078"/>
-      <path d="M-18 -122C-20 -146 -6 -160 0 -170M18 -122C20 -146 6 -160 0 -170" fill="none" stroke="#D9A6A0"/>
+      <path d="M-52 -100H52L44 -110H-44Z" fill="#E2C9A0" stroke="#A88A5C"/>
+      <rect x="-30" y="-120" width="60" height="10" fill="#F5E9D2" stroke="#A88A5C"/>
+      <path d="M-30 -120C-36 -152 -10 -170 0 -180C10 -170 36 -152 30 -120Z" fill="#F5E9D2" stroke="#A88A5C"/>
+      <path d="M-18 -122C-20 -146 -6 -160 0 -170M18 -122C20 -146 6 -160 0 -170" fill="none" stroke="#CDB48A"/>
       <path d="M0 -180V-198" stroke="#C9A54A" stroke-width="2"/><circle cy="-188" r="3" fill="#C9A54A"/>
     </g>
     <g id="sprig">
@@ -774,6 +831,39 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
       <use href="#m-star" x="16" y="16" fill="#A8283A" stroke="#1F2A5C" stroke-width=".7"/>
       <g fill="#1F2A5C"><circle r="3"/><circle cx="32" r="3"/><circle cy="32" r="3"/><circle cx="32" cy="32" r="3"/></g>
     </pattern>
+    <!-- motif cloths & finishes -->
+    <pattern id="ajrak-cloth" width="16" height="16" patternUnits="userSpaceOnUse">
+      <rect width="16" height="16" fill="#1F2A5C"/>
+      <path d="M0 8L8 0L16 8L8 16Z" fill="none" stroke="#A8283A" stroke-width="1.4"/>
+      <use href="#m-star" transform="translate(8 8) scale(.5)" fill="#F6EFE0"/>
+      <g fill="#A8283A"><circle r="1.7"/><circle cx="16" r="1.7"/><circle cy="16" r="1.7"/><circle cx="16" cy="16" r="1.7"/></g>
+    </pattern>
+    <pattern id="ajrak-cloth-lg" width="16" height="16" patternUnits="userSpaceOnUse" patternTransform="scale(2.3)">
+      <rect width="16" height="16" fill="#1F2A5C"/>
+      <path d="M0 8L8 0L16 8L8 16Z" fill="none" stroke="#A8283A" stroke-width="1.4"/>
+      <path d="M3 8L8 3L13 8L8 13Z" fill="none" stroke="#0E1433" stroke-width=".5"/>
+      <use href="#m-star" transform="translate(8 8) scale(.5)" fill="#F6EFE0"/>
+      <g fill="#A8283A"><circle r="1.7"/><circle cx="16" r="1.7"/><circle cy="16" r="1.7"/><circle cx="16" cy="16" r="1.7"/></g>
+      <g fill="#F6EFE0"><circle cx="8" r=".6"/><circle cy="8" r=".6"/><circle cx="16" cy="8" r=".6"/><circle cx="8" cy="16" r=".6"/></g>
+    </pattern>
+    <pattern id="paithani-cloth" width="14" height="14" patternUnits="userSpaceOnUse">
+      <rect width="14" height="14" fill="#A3175B"/>
+      <path d="M7 3.6L8.5 7L7 10.4L5.5 7Z" fill="#E2A91B"/>
+      <g fill="#E9C46A"><circle r=".9"/><circle cx="14" r=".9"/><circle cy="14" r=".9"/><circle cx="14" cy="14" r=".9"/></g>
+    </pattern>
+    <radialGradient id="pearl" cx=".35" cy=".35" r=".7"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#F3EBDD"/><stop offset="1" stop-color="#BFAF97"/></radialGradient>
+    <radialGradient id="mirrorGrad" cx=".35" cy=".35" r=".75"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".5" stop-color="#D6E0E6"/><stop offset="1" stop-color="#8E9BA6"/></radialGradient>
+    <path id="spark" d="M0 -6L1.2 -1.2L6 0L1.2 1.2L0 6L-1.2 1.2L-6 0L-1.2 -1.2Z"/>
+    <!-- one lotus, two families: ajrak colours on Kapil's side (left), Paithani on Rucha's (right) -->
+    <g id="lotus2">
+      <path d="M-34 6C-26 14 -10 16 0 16C10 16 26 14 34 6C24 10 10 10 0 10C-10 10 -24 10 -34 6Z" fill="#6E9B5E"/>
+      <path d="M0 10C-14 8 -30 0 -32 -12C-20 -12 -8 -4 0 10Z" fill="#1F2A5C" stroke="#E9C46A" stroke-width=".9"/>
+      <path d="M0 10C14 8 30 0 32 -12C20 -12 8 -4 0 10Z" fill="#A3175B" stroke="#E9C46A" stroke-width=".9"/>
+      <path d="M0 10C-10 4 -20 -10 -16 -24C-6 -18 -1 -4 0 10Z" fill="#A8283A" stroke="#E9C46A" stroke-width=".9"/>
+      <path d="M0 10C10 4 20 -10 16 -24C6 -18 1 -4 0 10Z" fill="#0F6B5C" stroke="#E9C46A" stroke-width=".9"/>
+      <path d="M0 10C-7 0 -8 -18 0 -32C8 -18 7 0 0 10Z" fill="#F6E3B0" stroke="#C9A54A" stroke-width=".9"/>
+      <path d="M0 6V-24" stroke="#C9A54A" stroke-width=".6"/>
+    </g>
     <!-- small icons -->
     <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 22s7-7.2 7-12.5A7 7 0 0 0 5 9.5C5 14.8 12 22 12 22z" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="9.5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
     <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M3 10h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.7" fill="none"/></symbol>
@@ -783,20 +873,20 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
   </defs>
 </svg>
 
-<!-- ======================= 1. INTRO: pull to light ======================= -->
+<!-- ======================= 1. INTRO: lower the antarpat ======================= -->
 <div class="intro" id="intro" role="region" aria-label="Invitation intro">
   <svg class="scene" id="scene" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
     <defs>
       <linearGradient id="sky" gradientUnits="userSpaceOnUse" x1="0" y1="-600" x2="0" y2="720">
-        <stop offset="0" stop-color="#2A0B2A"/><stop offset=".42" stop-color="#6E1640"/><stop offset=".68" stop-color="#B83A62"/>
-        <stop offset=".88" stop-color="#EE8C9A"/><stop offset="1" stop-color="#F8C7B6"/>
+        <stop offset="0" stop-color="#0E1433"/><stop offset=".42" stop-color="#28306A"/><stop offset=".66" stop-color="#7E2A52"/>
+        <stop offset=".86" stop-color="#D9693A"/><stop offset="1" stop-color="#F2B45E"/>
       </linearGradient>
       <linearGradient id="opening" gradientUnits="userSpaceOnUse" x1="0" y1="190" x2="0" y2="720">
-        <stop offset="0" stop-color="#4A0F33"/><stop offset=".6" stop-color="#8E2A50"/><stop offset="1" stop-color="#D47A86"/>
+        <stop offset="0" stop-color="#121838"/><stop offset=".6" stop-color="#3B2556"/><stop offset="1" stop-color="#9A4A4A"/>
       </linearGradient>
-      <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#EFCFC4"/><stop offset="1" stop-color="#C98A88"/></linearGradient>
+      <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#EAD9BC"/><stop offset="1" stop-color="#B9976A"/></linearGradient>
       <pattern id="stoneFloral" width="34" height="34" patternUnits="userSpaceOnUse">
-        <rect width="34" height="34" fill="#F4DED6"/>
+        <rect width="34" height="34" fill="#F3E6CC"/>
         <use href="#rosette" x="10" y="10" width="14" height="14"/>
         <g fill="#8FA97A"><ellipse cx="2" cy="2" rx="3" ry="1.4" transform="rotate(40 2 2)"/><ellipse cx="32" cy="32" rx="3" ry="1.4" transform="rotate(40 32 32)"/></g>
       </pattern>
@@ -807,23 +897,22 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
     <rect x="-800" y="-900" width="2800" height="1700" fill="url(#sky)"/>
     <g id="stars"></g>
     <g filter="url(#soft)" opacity=".75">
-      <ellipse cx="160" cy="110" rx="170" ry="48" fill="#F592B3"/><ellipse cx="430" cy="40" rx="210" ry="56" fill="#F3A0BC"/>
-      <ellipse cx="900" cy="80" rx="230" ry="62" fill="#F592B3"/><ellipse cx="1090" cy="210" rx="180" ry="50" fill="#F7AFC4"/>
-      <ellipse cx="240" cy="300" rx="170" ry="44" fill="#F7AFC4"/><ellipse cx="980" cy="340" rx="160" ry="40" fill="#F3A0BC"/>
-      <ellipse cx="300" cy="-220" rx="200" ry="50" fill="#C9507E"/><ellipse cx="880" cy="-160" rx="220" ry="56" fill="#C9507E"/><ellipse cx="600" cy="-420" rx="240" ry="60" fill="#9C2F62"/>
+      <ellipse cx="160" cy="110" rx="170" ry="48" fill="#F0A15C"/><ellipse cx="430" cy="40" rx="210" ry="56" fill="#E98A5A"/>
+      <ellipse cx="900" cy="80" rx="230" ry="62" fill="#F0A15C"/><ellipse cx="1090" cy="210" rx="180" ry="50" fill="#F6C27A"/>
+      <ellipse cx="240" cy="300" rx="170" ry="44" fill="#F6C27A"/><ellipse cx="980" cy="340" rx="160" ry="40" fill="#E98A5A"/>
+      <ellipse cx="300" cy="-220" rx="200" ry="50" fill="#5A2E6E"/><ellipse cx="880" cy="-160" rx="220" ry="56" fill="#5A2E6E"/><ellipse cx="600" cy="-420" rx="240" ry="60" fill="#2E2C68"/>
     </g>
     <g id="bushes"></g>
     <g id="wall"></g>
     <use href="#chhatri" x="0" y="0" transform="translate(70 548) scale(.8)"/>
     <use href="#chhatri" transform="translate(240 548) scale(1)"/>
-    <use href="#chhatri" transform="translate(352 548) scale(.62)"/>
-    <use href="#chhatri" transform="translate(848 548) scale(.62)"/>
     <use href="#chhatri" transform="translate(960 548) scale(1)"/>
     <use href="#chhatri" transform="translate(1130 548) scale(.8)"/>
     <use href="#diya" class="flame-lit" transform="translate(150 520) scale(.9)"/>
     <use href="#diya" class="flame-lit" transform="translate(1050 520) scale(.9)"/>
+    <g id="perch"></g>
     <rect x="-800" y="720" width="2800" height="400" fill="url(#ground)"/>
-    <g stroke="#C98A88" stroke-width="1.2" fill="none" opacity=".7">
+    <g stroke="#A88A5C" stroke-width="1.2" fill="none" opacity=".7">
       <ellipse cx="600" cy="790" rx="170" ry="34"/><ellipse cx="600" cy="790" rx="120" ry="24"/><ellipse cx="600" cy="790" rx="70" ry="14"/>
       <path d="M430 790H770M600 756V824"/>
     </g>
@@ -836,20 +925,20 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
       <path d="M520 720V520Q520 470 560 450Q600 420 640 450Q680 470 680 520V720Z" fill="#F0C7C8" opacity=".35"/>
       <use href="#chhatri" transform="translate(520 690) scale(.42)" opacity=".55"/>
       <use href="#chhatri" transform="translate(680 690) scale(.42)" opacity=".55"/>
-      <rect x="440" y="690" width="320" height="10" fill="#E7B7B0" opacity=".6"/><rect x="460" y="700" width="280" height="10" fill="#E7B7B0" opacity=".5"/>
+      <rect x="440" y="690" width="320" height="10" fill="#E2C9A0" opacity=".6"/><rect x="460" y="700" width="280" height="10" fill="#E2C9A0" opacity=".5"/>
       <use href="#lantern" class="lantern" transform="translate(600 186) scale(.58)"/>
       <use href="#diya" class="always" transform="translate(600 712) scale(1.1)"/>
     </g>
     <!-- the great arch -->
     <path d="M405 720V360C405 270 470 225 530 185C565 162 590 135 600 100C610 135 635 162 670 185C730 225 795 270 795 360V720Z
              M468 720V370A26 26 0 0 1 474 330A26 26 0 0 1 489 293A26 26 0 0 1 512 262A26 26 0 0 1 540 236A26 26 0 0 1 570 212A26 26 0 0 1 600 190A26 26 0 0 1 630 212A26 26 0 0 1 660 236A26 26 0 0 1 688 262A26 26 0 0 1 711 293A26 26 0 0 1 726 330A26 26 0 0 1 732 370V720Z"
-          fill="url(#stoneFloral)" fill-rule="evenodd" stroke="#B98078" stroke-width="2"/>
-    <use href="#innerArch" fill="none" stroke="#E9B8B3" stroke-width="12"/>
+          fill="url(#stoneFloral)" fill-rule="evenodd" stroke="#A88A5C" stroke-width="2"/>
+    <use href="#innerArch" fill="none" stroke="#E2C9A0" stroke-width="12"/>
     <use href="#innerArch" fill="none" stroke="#C9A54A" stroke-width="3"/>
-    <g fill="#F7E7DF" stroke="#C99089">
+    <g fill="#F7EEDC" stroke="#BFA273">
       <rect x="414" y="392" width="44" height="280" rx="3"/><rect x="742" y="392" width="44" height="280" rx="3"/>
     </g>
-    <g fill="#E7B7B0" stroke="#B98078">
+    <g fill="#E2C9A0" stroke="#A88A5C">
       <rect x="398" y="356" width="76" height="14"/><rect x="726" y="356" width="76" height="14"/>
       <rect x="398" y="680" width="76" height="40"/><rect x="726" y="680" width="76" height="40"/>
     </g>
@@ -874,21 +963,18 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
     <a href="#invite" class="skip-intro" id="skipIntro" data-i18n="skip_intro">Skip intro</a>
   </div>
 
-  <div class="rope-wrap" id="ropeWrap">
-    <div class="rope"></div>
-    <button type="button" class="tassel" id="tassel" data-i18n-aria="pull_label" aria-label="Pull the rope to light up the invitation">
-      <svg viewBox="0 0 46 92" aria-hidden="true">
-        <circle cx="23" cy="6" r="6" fill="#E9C46A" stroke="#8A6418"/>
-        <path d="M14 12H32L30 30H16Z" fill="#C9A54A" stroke="#8A6418"/>
-        <rect x="15" y="28" width="16" height="5" fill="#C2416B"/>
-        <g stroke="#E9C46A" stroke-width="1.6" stroke-linecap="round">
-          <path d="M17 34L13 86M20 34L18 88M23 34V90M26 34L28 88M29 34L33 86"/>
-        </g>
-        <g stroke="#B8862A" stroke-width="1"><path d="M18.5 34L15.5 87M21.5 34L20.5 89M24.5 34L25.5 89M27.5 34L30.5 87"/></g>
-      </svg>
+  <!-- the antarpat: ajrak cloth (Kapil's Sindhi side) with a Paithani hem (Rucha's Marathi side) -->
+  <div class="antarpat-wrap" id="antarpat">
+    <span class="ap-knot l" aria-hidden="true"></span><span class="ap-knot r" aria-hidden="true"></span>
+    <button type="button" class="antarpat" id="antarpatBtn" data-i18n-aria="pull_label" aria-label="Lower the antarpat to reveal the couple">
+      <svg class="ap-cloth" aria-hidden="true"><rect width="100%" height="100%" fill="url(#ajrak-cloth-lg)"/></svg>
+      <span class="ap-folds" aria-hidden="true"></span>
+      <span class="ap-hem-top" aria-hidden="true"></span>
+      <span class="ap-hem" aria-hidden="true"><svg><rect width="100%" height="100%" fill="url(#paithani-h)"/></svg></span>
     </button>
   </div>
-  <p class="pull-hint" data-i18n="pull">Pull to light us up</p>
+  <p class="pull-hint"><span data-i18n="pull">Lower the antarpat</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></p>
 
   <div class="intro-copy" id="introCopy">
     <p class="ic-std" data-i18n="save_the_date">Save the Date</p>
@@ -898,7 +984,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
       <p class="ic-tag" data-i18n="tagline">Two families. Two traditions. One celebration.</p>
     </div>
     <button type="button" class="ic-lotus" id="openInvite">
-      <svg viewBox="-40 -36 80 56" aria-hidden="true"><use href="#lotus"/></svg>
+      <svg viewBox="-40 -36 80 56" aria-hidden="true"><use href="#lotus2"/></svg>
       <span data-i18n="tap_lotus">Tap the lotus</span>
       <span class="visually-hidden" data-i18n="open_invite">Open the invitation</span>
     </button>
@@ -933,11 +1019,14 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
         <path d="M0 170V118C30 118 52 104 62 86C80 90 100 84 110 70C128 72 146 62 152 46C170 46 190 38 198 24C222 28 246 22 262 8C290 14 320 10 340 0Q380 -6 420 0C440 10 470 14 498 8C514 22 538 28 562 24C570 38 590 46 608 46C614 62 632 72 650 70C660 84 680 90 698 86C708 104 730 118 760 118V170Z" fill="#FBF3E2" stroke="#D7B26A" stroke-width="3"/>
         <path d="M14 170V128C44 126 62 112 72 96C88 99 108 92 118 80C134 82 152 72 160 58C176 58 194 50 204 38C226 40 250 34 266 22C292 27 320 22 340 14Q380 8 420 14C440 22 468 27 494 22C510 34 534 40 556 38C566 50 584 58 600 58C608 72 626 82 642 80C652 92 672 99 688 96C698 112 716 126 746 128V170" fill="none" stroke="#E7B9B9" stroke-width="5" stroke-dasharray="1 9" stroke-linecap="round"/>
         <g id="crownRosettes"></g>
+        <g id="pearls" class="pearl-swag"></g>
       </svg>
+      <button type="button" class="hint-btn pearl-hit" data-hint="mundavalya"></button>
       <div class="card">
         <p class="blessing" data-i18n="blessing">With the blessings of our elders and the love of our families</p>
         <div class="rule" aria-hidden="true"><svg viewBox="-12 -8 24 16"><use href="#rosette" x="-8" y="-8" width="16" height="16"/></svg></div>
-        <h1 id="inviteNames" tabindex="-1"></h1>
+        <div class="names-wrap"><h1 id="inviteNames" tabindex="-1"></h1>
+          <button type="button" class="hint-btn feather" data-hint="feather"><svg viewBox="0 0 40 140" aria-hidden="true" id="featherSvg"></svg></button></div>
         <div class="rule" aria-hidden="true"><svg viewBox="-12 -8 24 16"><use href="#rosette" x="-8" y="-8" width="16" height="16"/></svg></div>
         <div class="families" id="families"></div>
         <p class="families" style="margin-top:4px" data-i18n="invite_line">invite you to celebrate their wedding</p>
@@ -995,13 +1084,11 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
 
   <!-- ======================= 7. THINGS TO KNOW ======================= -->
   <section class="know" id="know" aria-labelledby="knowTitle">
-    <svg class="watermark" viewBox="0 0 200 260" aria-hidden="true" id="peacockMark"></svg>
-    <svg class="ele l" viewBox="0 0 200 150" aria-hidden="true" data-elephant></svg>
-    <svg class="ele r" viewBox="0 0 200 150" aria-hidden="true" data-elephant></svg>
     <span class="eyebrow reveal" data-i18n="know_eyebrow">Guest essentials</span>
     <h2 class="title reveal" id="knowTitle" data-i18n="know_title">Things to Know</h2>
     <p class="lead reveal" data-i18n="know_lead">A few thoughtful details to help you celebrate with ease.</p>
     <div class="know-grid" id="knowGrid"></div>
+    <button type="button" class="hint-btn know-ele" data-hint="mirrorwork"><svg viewBox="0 0 200 150" aria-hidden="true" data-elephant></svg></button>
   </section>
 
   <!-- ======================= 8. RSVP ======================= -->
@@ -1110,11 +1197,11 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
       for (var k = 0; k < 5; k++) el("circle", { cx: (x + rnd(-24, 24)).toFixed(0), cy: (y + rnd(-24, 10)).toFixed(0), r: rnd(2.2, 4.2).toFixed(1), fill: ["#F07AA0", "#FFB3C7", "#E85C8A"][k % 3] }, b);
     }
     var w = $("wall");
-    el("rect", { x: -800, y: 540, width: 2800, height: 190, fill: "#F3DAD3" }, w);
-    el("rect", { x: -800, y: 528, width: 2800, height: 16, fill: "#E9C2BC", stroke: "#B98078" }, w);
-    for (var m = -800; m < 2000; m += 30) el("path", { d: "M" + m + " 528v-10q0-6 6-6h8q6 0 6 6v10z", fill: "#EBC5BE", stroke: "#C99089", "stroke-width": ".8" }, w);
+    el("rect", { x: -800, y: 540, width: 2800, height: 190, fill: "#EEDFC4" }, w);
+    el("rect", { x: -800, y: 528, width: 2800, height: 16, fill: "#E2CDA6", stroke: "#A88A5C" }, w);
+    for (var m = -800; m < 2000; m += 30) el("path", { d: "M" + m + " 528v-10q0-6 6-6h8q6 0 6 6v10z", fill: "#E6D2AE", stroke: "#BFA273", "stroke-width": ".8" }, w);
     for (var p = -790; p < 2000; p += 130) {
-      el("rect", { x: p + 14, y: 558, width: 100, height: 146, rx: 4, fill: "none", stroke: "#D9A6A0", "stroke-width": "1.4" }, w);
+      el("rect", { x: p + 14, y: 558, width: 100, height: 146, rx: 4, fill: "none", stroke: "#CDB48A", "stroke-width": "1.4" }, w);
       el("use", { href: "#sprig", transform: "translate(" + (p + 64) + " 690) scale(2.4)" }, w);
     }
     var v = $("vines");
@@ -1138,9 +1225,12 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
       '<path d="M42 82C34 92 28 96 20 95C28 90 34 86 39 79Z" fill="#FFF6E2"/>' +
       '<ellipse cx="76" cy="58" rx="18" ry="26" fill="#9893A0"/>' +
       '<circle cx="48" cy="52" r="2.6" fill="#2A2233"/>' +
-      '<path d="M80 36H160L166 104H86Z" fill="#A3175B" stroke="#E9C46A" stroke-width="2.5"/>' +
+      '<path d="M80 36H160L166 104H86Z" fill="url(#ajrak-cloth)" stroke="#E9C46A" stroke-width="2.5"/>' +
       '<path d="M88 44H154L158 96H92Z" fill="none" stroke="#E9C46A" stroke-width="1.2" stroke-dasharray="3 3"/>' +
-      '<use href="#lotus" transform="translate(124 74) scale(.55)"/>' +
+      [[100, 56], [146, 56], [123, 72], [104, 90], [144, 90]].map(function (m, i) {
+        return '<circle cx="' + m[0] + '" cy="' + m[1] + '" r="5" fill="url(#mirrorGrad)" stroke="#E9C46A"/>' +
+          '<use href="#spark" class="spark" fill="#fff" transform="translate(' + (m[0] + 2) + " " + (m[1] - 2) + ')" style="animation-delay:' + (i * 1.1).toFixed(1) + 's"/>';
+      }).join("") +
       '<g fill="#E9C46A"><circle cx="90" cy="108" r="3"/><circle cx="104" cy="109" r="3"/><circle cx="118" cy="110" r="3"/><circle cx="132" cy="110" r="3"/><circle cx="146" cy="109" r="3"/><circle cx="160" cy="108" r="3"/></g>' +
       '<path d="M38 30L64 24L58 52Z" fill="#E2A91B" stroke="#A4741C"/>';
   }
@@ -1219,6 +1309,93 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
   };
   var vineSVG = '<svg viewBox="0 0 18 300" preserveAspectRatio="none"><path d="M9 0C2 40 16 60 9 100C2 140 16 160 9 200C2 240 16 260 9 300" stroke="#9DB383" stroke-width="1.2" fill="none"/><g fill="#EFB0C0"><circle cx="5" cy="50" r="2.4"/><circle cx="13" cy="150" r="2.4"/><circle cx="5" cy="250" r="2.4"/></g></svg>';
 
+  /* ---------------- cultural motifs ---------------- */
+  function drape(parent, x, kind) {
+    var g = el("g", { transform: "translate(" + x + " 510)", "data-hint": kind }, parent);
+    var fill = kind === "ajrak" ? "url(#ajrak-cloth)" : "url(#paithani-cloth)", edge = kind === "ajrak" ? "#141B3E" : "#6E0F3B";
+    el("path", { d: "M0 12H70C68 34 72 56 66 84L56 76L46 88L36 78L26 90L16 80L6 88C2 60 4 34 0 12Z", fill: fill, stroke: edge, "stroke-width": ".8" }, g);
+    el("path", { d: "M18 14C16 40 20 62 16 82M46 14C48 40 44 62 47 84", stroke: "rgba(0,0,0,.25)", "stroke-width": "3", fill: "none" }, g);
+    el("path", { d: "M6 88L16 80L26 90L36 78L46 88L56 76L66 84", fill: "none", stroke: kind === "ajrak" ? "#A8283A" : "#E2A91B", "stroke-width": kind === "ajrak" ? 3 : 4 }, g);
+    el("rect", { x: -4, y: 0, width: 78, height: 13, rx: 3, fill: fill, stroke: edge, "stroke-width": ".8" }, g);
+  }
+  function perchedPeacock(parent, x, flip) {
+    var g = el("g", { transform: "translate(" + x + " 512) scale(" + (flip ? -1 : 1) + " 1)", "data-hint": "peacock" }, parent);
+    var pivot = el("g", { transform: "translate(-8 -30)" }, g), fan = el("g", { "class": "fan" }, pivot);
+    var pt = function (a, r) { var t = a * Math.PI / 180; return [r * Math.sin(t), -r * Math.cos(t)]; };
+    var a1 = pt(-88, 96), a2 = pt(88, 96);
+    el("path", { d: "M0 0L" + a1[0].toFixed(1) + " " + a1[1].toFixed(1) + "A96 96 0 0 1 " + a2[0].toFixed(1) + " " + a2[1].toFixed(1) + "Z", fill: "#0F5446" }, fan);
+    [[92, 17, 7.5, 0], [62, 12, 6, 6.5]].forEach(function (row) {
+      for (var i = 0; i < row[1]; i++) {
+        var a = -80 + row[3] + i * (160 - 2 * row[3]) / (row[1] - 1), tip = pt(a, row[0]), r = row[2];
+        el("path", { d: "M0 0L" + tip[0].toFixed(1) + " " + tip[1].toFixed(1), stroke: "#3FA184", "stroke-width": ".8" }, fan);
+        var eye = el("g", { transform: "translate(" + tip[0].toFixed(1) + " " + tip[1].toFixed(1) + ") rotate(" + a.toFixed(1) + ")" }, fan);
+        el("ellipse", { rx: r, ry: r * 1.3, fill: "#1B7A62" }, eye);
+        el("ellipse", { rx: r * .7, ry: r * .95, fill: "#C9A54A" }, eye);
+        el("ellipse", { rx: r * .48, ry: r * .66, fill: "#2BB3A3" }, eye);
+        el("ellipse", { rx: r * .28, ry: r * .42, fill: "#1F2A5C" }, eye);
+      }
+    });
+    var train = el("g", { "class": "train" }, g);
+    el("path", { d: "M-6 -26C-34 -22 -56 0 -70 30L-58 36C-44 10 -28 -8 -2 -16Z", fill: "#1B6E58" }, train);
+    [[-30, -14], [-46, 2], [-58, 22]].forEach(function (d) { el("circle", { cx: d[0], cy: d[1], r: 3.2, fill: "#C9A54A" }, train); el("circle", { cx: d[0], cy: d[1], r: 1.5, fill: "#1F2A5C" }, train); });
+    el("path", { d: "M-1 -14L-3 0M6 -14L7 0", stroke: "#8A6418", "stroke-width": "2.2" }, g);
+    el("path", { d: "M-16 -22C-18 -40 -2 -50 10 -42C18 -36 17 -24 7 -17C-1 -12 -12 -13 -16 -22Z", fill: "#2459A8" }, g);
+    el("path", { d: "M-12 -26C-6 -38 4 -38 8 -30C1 -25 -5 -22 -12 -26Z", fill: "#7A6A44" }, g);
+    el("path", { d: "M8 -38C11 -52 8 -62 14 -72", stroke: "#2A68BE", "stroke-width": "6", fill: "none", "stroke-linecap": "round" }, g);
+    el("circle", { cx: 15, cy: -74, r: 5, fill: "#2A68BE" }, g);
+    el("circle", { cx: 17, cy: -75, r: 1.3, fill: "#fff" }, g);
+    el("path", { d: "M19 -75L25 -73L19 -71Z", fill: "#E2A91B" }, g);
+    el("path", { d: "M13 -79L11 -88M15 -79L15.5 -89M17 -78.5L20 -87", stroke: "#2A68BE", "stroke-width": "1" }, g);
+    [[11, -88], [15.5, -89], [20, -87]].forEach(function (d) { el("circle", { cx: d[0], cy: d[1], r: 1.5, fill: "#2A68BE" }, g); });
+  }
+  function buildMotifs() {
+    var perch = $("perch");
+    drape(perch, 322, "ajrak"); drape(perch, 808, "paithani");
+    perchedPeacock(perch, 362, false); perchedPeacock(perch, 838, true);
+    // peacock feather beside the names
+    var f = '<path d="M21 8C37 28 36 66 22 104C8 66 6 28 21 8Z" fill="#2E8B6E" opacity=".3"/>';
+    for (var y = 12; y < 104; y += 3.5) {
+      var w = 15 * Math.sin(Math.PI * (y - 8) / 96);
+      f += '<path d="M21 ' + y.toFixed(1) + "L" + (21 - w).toFixed(1) + " " + (y + 7).toFixed(1) + "M21 " + y.toFixed(1) + "L" + (21 + w).toFixed(1) + " " + (y + 7).toFixed(1) + '" stroke="#3FA184" stroke-width=".6" opacity=".85"/>';
+    }
+    f += '<path d="M21 138C22 100 21 50 21 8" stroke="#C9A54A" stroke-width="1.4" fill="none"/>' +
+      '<ellipse cx="21" cy="34" rx="12" ry="15" fill="#1B7A62"/><ellipse cx="21" cy="35" rx="9" ry="11.5" fill="#C9A54A"/>' +
+      '<ellipse cx="21" cy="36" rx="6.5" ry="8.5" fill="#2BB3A3"/><ellipse cx="21" cy="37" rx="4" ry="5.6" fill="#1F2A5C"/>';
+    $("featherSvg").innerHTML = f;
+    // mundavalya: two short pearl strands across the top of the card
+    var pg = $("pearls");
+    [[300, 460, 98, 3.8, 21], [318, 442, 80, 3.1, 17]].forEach(function (st) {
+      for (var i = 0; i < st[4]; i++) {
+        var t = i / (st[4] - 1), x = (1 - t) * (1 - t) * st[0] + 2 * (1 - t) * t * 380 + t * t * st[1], yv = (1 - t) * (1 - t) * 30 + 2 * (1 - t) * t * st[2] + t * t * 30;
+        el("circle", { cx: x.toFixed(1), cy: yv.toFixed(1), r: st[3], fill: "url(#pearl)", stroke: "#BFAF97", "stroke-width": ".4" }, pg);
+      }
+    });
+    [300, 460].forEach(function (x) {
+      el("circle", { cx: x, cy: 30, r: 5, fill: "#E9C46A", stroke: "#A4741C" }, pg);
+      for (var k = 1; k <= 3; k++) el("circle", { cx: x, cy: 30 + k * 8, r: 3.4, fill: "url(#pearl)", stroke: "#BFAF97", "stroke-width": ".4" }, pg);
+      el("path", { d: "M" + (x - 3) + " 64H" + (x + 3) + "L" + (x + 2) + " 74H" + (x - 2) + "Z", fill: "#C2416B" }, pg);
+    });
+  }
+
+  /* ---------------- tap a motif: one-line meaning ---------------- */
+  var tip = doc.createElement("div");
+  tip.className = "hint-tip"; tip.setAttribute("role", "status"); tip.setAttribute("aria-live", "polite");
+  doc.body.appendChild(tip);
+  var tipTimer;
+  function labelHints() {
+    doc.querySelectorAll("button[data-hint]").forEach(function (b) { b.setAttribute("aria-label", loc((C.HINTS || {})[b.dataset.hint]).text); });
+  }
+  doc.addEventListener("click", function (e) {
+    var h = e.target.closest("[data-hint]"); if (!h || !C.HINTS || !C.HINTS[h.dataset.hint]) return;
+    var r = loc(C.HINTS[h.dataset.hint]), box = h.getBoundingClientRect();
+    var x = e.clientX || box.left + box.width / 2, y = e.clientY || box.top + box.height / 2;
+    setEl(tip, r);
+    tip.style.left = Math.max(12, Math.min(innerWidth - 292, x - 140)) + "px";
+    tip.style.top = (y > innerHeight - 140 ? y - 110 : y + 18) + "px";
+    tip.classList.add("show");
+    clearTimeout(tipTimer); tipTimer = setTimeout(function () { tip.classList.remove("show"); }, 4800);
+  });
+
   /* ---------------- static renders ---------------- */
   var amp = '<span class="amp">&amp;</span>';
   $("icNames").innerHTML = "<span>" + esc(N.partner1) + " " + amp + "</span><span>" + esc(N.partner2) + "</span>";
@@ -1235,7 +1412,6 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
     .map(function (st) { return '<svg viewBox="0 0 300 260" ' + st + " data-blooms></svg>"; }).join("");
   doc.querySelectorAll("[data-blooms]").forEach(bloomsSVG);
   doc.querySelectorAll("[data-elephant]").forEach(elephantSVG);
-  peacockSVG($("peacockMark"), true);
   $("branchL").innerHTML = branchSVG(3); $("branchR").innerHTML = branchSVG(11);
   $("gardenBg").innerHTML = '<svg viewBox="0 0 1200 400" preserveAspectRatio="xMidYMax slice"><g fill="#E9D3BC">' +
     '<rect x="300" y="200" width="600" height="120"/><path d="M380 200c0-60 40-80 60-90 20 10 60 30 60 90z M700 200c0-60 40-80 60-90 20 10 60 30 60 90z M540 200c0-80 50-110 60-120 10 10 60 40 60 120z"/></g>' +
@@ -1250,6 +1426,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
   $("sideArt").querySelectorAll("[data-elephant]").forEach(elephantSVG);
   skylineSVG($("skyline"));
   buildScene();
+  buildMotifs();
 
   /* ---------------- dynamic, translatable renders ---------------- */
   var mapsLink = function (link, label) {
@@ -1281,14 +1458,14 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
     var Tr = C.TRADITIONS;
     var card = function (side, key, native, pattern) {
       var d = Tr[side];
-      return '<article class="patch ' + side + '"><div class="strip" aria-hidden="true"><svg><rect width="100%" height="100%" fill="url(#' + pattern + ')"/></svg></div>' +
+      return '<article class="patch ' + side + '">' +
         "<h3>" + T(key) + "</h3>" + native + "<p>" + span(loc(d.intro)) + "</p><h4>" + T("you_might_see") + "</h4><ul>" +
         d.mightSee.map(function (s) { return "<li>" + span(loc(s)) + "</li>"; }).join("") + "</ul></article>";
     };
     var sdNative = SD === "sd_arabic" ? '<p class="native" lang="sd-Arab" dir="rtl">سنڌي</p>' : '<p class="native" lang="sd-Deva">सिन्धी</p>';
-    $("tradGrid").innerHTML = card("marathi", "marathi_label", '<p class="native" lang="mr">मराठी</p>', "paithani-h") +
+    $("tradGrid").innerHTML = card("sindhi", "sindhi_label", sdNative, "ajrak-ivory") +
       '<div class="patch meet"><h3>' + T("meet_title") + "</h3><p>" + span(loc(Tr.meet)) + "</p></div>" +
-      card("sindhi", "sindhi_label", sdNative, "ajrak-ivory");
+      card("marathi", "marathi_label", '<p class="native" lang="mr">मराठी</p>', "paithani-h");
   }
 
   function renderStory() {
@@ -1315,9 +1492,9 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
     cards.push('<article class="kcard reveal">' + icon('<path d="M30 52s16-16 16-28a16 16 0 0 0-32 0c0 12 16 28 16 28z" fill="#F2C4D0" stroke="#A8283A" stroke-width="2"/><circle cx="30" cy="24" r="6" fill="#A8283A"/>') +
       "<h3>" + T("venue_title") + '</h3><p style="margin:0;font:500 1.15rem var(--serif);color:var(--text)">' + esc(V.name) + "</p><p>" + esc(V.address) + "</p>" + mapsLink(V.mapsLink, V.name) +
       "<h4>" + T("arrival_tips") + "</h4><p>" + span(loc(V.arrivalTips)) + "</p><h4>" + T("stays") + "</h4><ul>" + V.stays.map(function (h) { return "<li>" + esc(h) + "</li>"; }).join("") + "</ul></article>");
-    cards.push('<article class="kcard reveal">' + icon(ICONS.thali) + "<h3>" + T("food_title") + '</h3><div class="two"><div><h4>' + T("food_marathi") + "</h4><ul>" +
-      F.marathi.map(function (d) { return "<li>" + esc(d) + "</li>"; }).join("") + "</ul></div><div><h4>" + T("food_sindhi") + "</h4><ul>" +
-      F.sindhi.map(function (d) { return "<li>" + esc(d) + "</li>"; }).join("") + "</ul></div></div>" +
+    cards.push('<article class="kcard reveal">' + icon(ICONS.thali) + "<h3>" + T("food_title") + '</h3><div class="two"><div><h4>' + T("food_sindhi") + "</h4><ul>" +
+      F.sindhi.map(function (d) { return "<li>" + esc(d) + "</li>"; }).join("") + "</ul></div><div><h4>" + T("food_marathi") + "</h4><ul>" +
+      F.marathi.map(function (d) { return "<li>" + esc(d) + "</li>"; }).join("") + "</ul></div></div>" +
       (isPh(F.MENU_POLL_URL) ? "" : '<p style="margin-top:12px"><a class="link-maps" href="' + esc(F.MENU_POLL_URL) + '" target="_blank" rel="noopener">' + T("food_poll") + "</a></p>") + "</article>");
     var term = function (g) {
       var nat = g.native || {}, n = nat.mr ? { text: nat.mr, k: "mr" } : nat[SD] ? { text: nat[SD], k: SD } : null;
@@ -1349,12 +1526,17 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
     }).join("");
   }
 
+  var CAPS = {
+    pagdi: '<path d="M4 27C4 17 12 11 22 11C30 11 35 13 39 17L46 8C48 15 46 23 42 27Z" fill="#A8283A" stroke="#E9C46A"/><path d="M10 17C16 15 26 15 34 19M7 22C15 20 28 20 39 23" stroke="#E9C46A" stroke-width=".9" fill="none"/><path d="M4 27H42" stroke="#E9C46A" stroke-width="2"/>',
+    topi: '<path d="M6 28V14C6 10 14 8 24 8S42 10 42 14V28Z" fill="#A8283A" stroke="#E9C46A"/><path d="M18 28V21Q24 14 30 21V28Z" fill="#1F2A5C"/><path d="M6 14L10 11L14 14L18 11L22 14L26 11L30 14L34 11L38 14L42 11" stroke="#E9C46A" stroke-width=".8" fill="none"/><g fill="#F3F6F8"><circle cx="12" cy="20" r="1.5"/><circle cx="36" cy="20" r="1.5"/><circle cx="12" cy="25" r="1.5"/><circle cx="36" cy="25" r="1.5"/></g>'
+  };
   function renderContacts() {
     $("contacts").innerHTML = C.CONTACTS.map(function (c) {
       var tel = String(c.phone).replace(/[^\d+]/g, "");
       var link = isPh(c.phone) || !tel ? '<span class="tel"><svg aria-hidden="true"><use href="#i-phone"/></svg>' + esc(c.phone) + "</span>"
         : '<a href="tel:' + esc(tel) + '"><svg aria-hidden="true"><use href="#i-phone"/></svg>' + esc(c.phone) + "</a>";
-      return '<div class="contact"><h3>' + esc(c.label) + "</h3><p>" + esc(c.name) + "</p>" + link + "</div>";
+      var ic = CAPS[c.icon] ? '<button type="button" class="hint-btn" data-hint="' + c.icon + '"><svg class="ctype" viewBox="0 0 48 32" aria-hidden="true">' + CAPS[c.icon] + "</svg></button>" : "";
+      return '<div class="contact">' + ic + "<h3>" + esc(c.label) + "</h3><p>" + esc(c.name) + "</p>" + link + "</div>";
     }).join("");
   }
 
@@ -1396,6 +1578,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
     doc.querySelectorAll("[data-i18n]").forEach(function (n) { setEl(n, tr(n.dataset.i18n)); });
     doc.querySelectorAll("[data-i18n-aria]").forEach(function (n) { n.setAttribute("aria-label", txt(n.dataset.i18nAria)); });
     renderLangs(); renderCountdown(); renderEvents(); renderTraditions(); renderStory(); renderGallery(); renderKnow(); renderRsvp(); renderContacts();
+    labelHints();
   }
   doc.addEventListener("click", function (e) {
     var b = e.target.closest("[data-langs] button[data-lang]"); if (!b) return;
@@ -1522,28 +1705,33 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
   observe(doc.querySelectorAll(".reveal"));
   cdTimer = setInterval(tick, 1000);
 
-  /* ================= INTRO: pull the rope, light the arch, step through ================= */
+  /* ================= INTRO: lower the antarpat, light the arch, step through ================= */
   var intro = $("intro"), scene = $("scene"), outside = [$("main"), $("fabs")];
   if (root.classList.contains("intro-on")) {
     outside.forEach(function (n) { n.inert = true; n.setAttribute("aria-hidden", "true"); });
     var fit = function () {
-      var W = innerWidth, H = innerHeight, a = W / H, reqW = 480, reqH = 700, vw, vh;
+      var W = innerWidth, H = innerHeight, a = W / H, reqW = 560, reqH = 700, vw, vh;
       if (a > reqW / reqH) { vh = reqH; vw = vh * a; } else { vw = reqW; vh = vw / a; }
       scene.setAttribute("viewBox", (600 - vw / 2).toFixed(1) + " " + (410 - vh / 2).toFixed(1) + " " + vw.toFixed(1) + " " + vh.toFixed(1));
       var m = scene.getScreenCTM(), pt = function (x, y) { return { x: m.a * x + m.c * y + m.e, y: m.b * x + m.d * y + m.f }; };
-      intro.style.setProperty("--rope", Math.max(80, pt(600, 196).y - 92) + "px");
+      var l = pt(428, 0).x, r = pt(772, 0).x, t = pt(0, 246).y, b = pt(0, 692).y;
+      intro.style.setProperty("--ap-l", l.toFixed(0) + "px"); intro.style.setProperty("--ap-w", (r - l).toFixed(0) + "px");
+      intro.style.setProperty("--ap-t", t.toFixed(0) + "px"); intro.style.setProperty("--ap-h", (b - t).toFixed(0) + "px");
       intro.style.setProperty("--copy-top", Math.max(70, pt(600, 318).y) + "px");
-      intro.style.setProperty("--hint-top", pt(600, 520).y + "px");
+      intro.style.setProperty("--hint-top", (innerHeight - 150) + "px");
       var o = pt(600, 470); scene.style.transformOrigin = o.x + "px " + o.y + "px";
     };
     fit(); addEventListener("resize", fit);
 
     var lit = false, done = false;
     var petals = function () {
-      var box = $("introPetals"), cols = ["#F07AA0", "#FFB3C7", "#E2A91B", "#E8891A", "#C2416B"];
-      for (var i = 0; i < (innerWidth < 600 ? 14 : 26); i++) {
-        var p = doc.createElement("i");
-        p.style.cssText = "left:" + rnd(0, 100) + "%;background:" + cols[i % 5] + ";animation-duration:" + rnd(9, 17).toFixed(1) + "s;animation-delay:-" + rnd(0, 14).toFixed(1) + "s;--dx:" + rnd(-80, 80).toFixed(0) + "px";
+      // akshata: mostly rice grains, with a few marigold petals
+      var box = $("introPetals"), cols = ["#E8891A", "#E2A91B", "#F2B13A"];
+      for (var i = 0; i < (innerWidth < 600 ? 30 : 52); i++) {
+        var p = doc.createElement("i"), rice = i % 5 < 3;
+        p.style.cssText = "left:" + rnd(0, 100) + "%;background:" + (rice ? "#FBF3E2" : cols[i % 3]) +
+          (rice ? ";width:7px;height:3px;border-radius:50%;box-shadow:0 0 1px rgba(60,30,0,.4)" : "") +
+          ";animation-duration:" + rnd(rice ? 6 : 9, rice ? 11 : 16).toFixed(1) + "s;animation-delay:-" + rnd(0, 10).toFixed(1) + "s;--dx:" + rnd(-60, 60).toFixed(0) + "px";
         box.appendChild(p);
       }
     };
@@ -1561,22 +1749,20 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
     };
     var enter = function () { intro.classList.add("zooming"); scene.style.transform = "scale(3.4)"; setTimeout(finish, 1700); };
 
-    // the rope: drag down (or tap / Enter / Space) to light
-    var tassel = $("tassel"), wrap = $("ropeWrap"), y0 = null, moved = 0;
-    tassel.addEventListener("pointerdown", function (e) { y0 = e.clientY; moved = 0; wrap.classList.add("pulling"); tassel.setPointerCapture(e.pointerId); });
-    tassel.addEventListener("pointermove", function (e) {
-      if (y0 === null) return; moved = Math.max(0, Math.min(140, e.clientY - y0));
-      intro.style.setProperty("--pull", (moved * .8).toFixed(0) + "px");
+    // the antarpat: drag it down (or tap / Enter / Space) to lower it
+    var ap = $("antarpat"), apBtn = $("antarpatBtn"), y0 = null, moved = 0;
+    var lower = function () { ap.style.transform = ""; light(); setTimeout(function () { ap.hidden = true; }, 1700); };
+    apBtn.addEventListener("pointerdown", function (e) { y0 = e.clientY; moved = 0; ap.classList.add("dragging"); apBtn.setPointerCapture(e.pointerId); });
+    apBtn.addEventListener("pointermove", function (e) {
+      if (y0 === null) return; moved = Math.max(0, Math.min(innerHeight * .5, e.clientY - y0));
+      ap.style.transform = "translateY(" + moved.toFixed(0) + "px)";
     });
     var release = function () {
-      if (y0 === null) return; y0 = null; wrap.classList.remove("pulling"); intro.style.setProperty("--pull", "0px");
-      if (moved > 30) light();
+      if (y0 === null) return; y0 = null; ap.classList.remove("dragging");
+      if (moved > 50) lower(); else ap.style.transform = "";
     };
-    tassel.addEventListener("pointerup", release); tassel.addEventListener("pointercancel", release);
-    tassel.addEventListener("click", function () {      // tap or keyboard
-      if (moved > 30) return;
-      intro.style.setProperty("--pull", "60px"); setTimeout(function () { intro.style.setProperty("--pull", "0px"); light(); }, 260);
-    });
+    apBtn.addEventListener("pointerup", release); apBtn.addEventListener("pointercancel", release);
+    apBtn.addEventListener("click", function () { if (moved > 50) return; lower(); });   // tap or keyboard
     $("openInvite").addEventListener("click", enter);
     $("skipIntro").addEventListener("click", function (e) { e.preventDefault(); lit = true; finish(); });
   } else {
