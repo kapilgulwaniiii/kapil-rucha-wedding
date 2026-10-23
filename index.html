@@ -35,14 +35,17 @@ window.CONFIG = {
   WEDDING_END_TIME: "",         // "HH:MM" in IST
   UTC_OFFSET: "+05:30",
 
-  /* ---- Languages ----
-     DEFAULT_LANGUAGE: "en", "mr" or "sd". Share  ...?lang=mr  to open in Marathi.
-     SINDHI_SCRIPT: "devanagari" or "arabic" (right-to-left). */
-  DEFAULT_LANGUAGE: "en",
+  /* ---- Scripts ----
+     The site is in English. SINDHI_SCRIPT picks how Sindhi ceremony names are
+     written under the English ones: "devanagari" or "arabic". */
   SINDHI_SCRIPT: "devanagari",
 
   /* ---- Music (optional). Never plays until a guest taps the music button. ---- */
-  MUSIC_URL: "",                // e.g. "shehnai.mp3" uploaded next to this file
+  /* ---- Background music ----
+     Starts with the guest's first tap (browsers don't allow sound before that) and loops with no gap.
+     The round button at the bottom right turns it on and off; the choice is remembered on that phone. */
+  MUSIC_URL: "music.m4a",
+  MUSIC_VOLUME: 0.6,            // 0 to 1
 
   /* ---- Our story ---- */
   STORY: [
@@ -58,18 +61,6 @@ window.CONFIG = {
      icon: rings | thali | haldi | garland | mishri | music | mehendi | mandap | knot | lantern
      name: English + translations.  expect / dress: one line each.  ⚑ needs family review */
   EVENTS: [
-    { tag: "marathi", icon: "rings", name: { en: "Sakhar Puda", mr: "साखरपुडा" },
-      date: "[date]", time: "[time]", venue: "[venue]", mapsLink: "[maps link]",
-      expect: "[The formal engagement: families exchange sugar and gifts]", dress: "[dress hint]" },
-    { tag: "marathi", icon: "thali", name: { en: "Kelvan", mr: "केळवण" },
-      date: "[date]", time: "[time]", venue: "[venue]", mapsLink: "[maps link]",
-      expect: "[A relaxed family meal in the couple's honour]", dress: "[dress hint]" },
-    { tag: "marathi", icon: "haldi", name: { en: "Halad Chadavane", mr: "हळद चढवणे" },
-      date: "[date]", time: "[time]", venue: "[venue]", mapsLink: "[maps link]",
-      expect: "[Turmeric for the couple; you may get a little yellow too]", dress: "[yellow tones]" },
-    { tag: "marathi", icon: "garland", name: { en: "Simant Pujan", mr: "सीमांत पूजन" },
-      date: "[date]", time: "[time]", venue: "[venue]", mapsLink: "[maps link]",
-      expect: "[The bride's family welcomes the groom's family]", dress: "[dress hint]" },
     { tag: "sindhi", icon: "mishri", name: { en: "Pakki Mishri", sd_devanagari: "पकी मिस्री", sd_arabic: "پڪي مصري" },
       date: "[date]", time: "[time]", venue: "[venue]", mapsLink: "[maps link]",
       expect: "[The families confirm the match and share mishri]", dress: "[dress hint]" },
@@ -84,16 +75,7 @@ window.CONFIG = {
       expect: "[Henna, music and dancing; come ready to join in]", dress: "[greens & florals]" },
     { tag: "sindhi", icon: "music", name: { en: "Baraat", mr: "वरात", sd_devanagari: "बारात", sd_arabic: "بارات" },
       date: "6th December 2026", time: "[time]", venue: "[venue]", mapsLink: "[maps link]",
-      expect: "[The groom's procession arrives with music and dancing]", dress: "[dress hint]" },
-    { tag: "both", icon: "mandap", name: { en: "Lagna: Antarpat & Mangalashtak", mr: "लग्न: अंतरपाट व मंगलाष्टके" },
-      date: "6th December 2026", time: "[time]", venue: "[venue]", mapsLink: "[maps link]",
-      expect: "[Verses are sung, the antarpat is lowered and the couple see each other]", dress: "[traditional attire]" },
-    { tag: "both", icon: "knot", name: { en: "Saptapadi / Pheras", mr: "सप्तपदी", sd_devanagari: "फेरा" },
-      date: "6th December 2026", time: "[time]", venue: "[venue]", mapsLink: "[maps link]",
-      expect: "[The couple take their wedding vows together]", dress: "[dress hint]" },
-    { tag: "both", icon: "lantern", name: { en: "Reception", mr: "स्वागत समारंभ" },
-      date: "[date]", time: "[time]", venue: "[venue]", mapsLink: "[maps link]",
-      expect: "[Dinner, music and a chance to congratulate the couple]", dress: "[evening wear]" }
+      expect: "[The groom's procession arrives with music and dancing]", dress: "[dress hint]" }
   ],
 
   /* ---- Gallery: 6 hanging frames. src "" shows a soft placeholder. ---- */
@@ -331,7 +313,7 @@ section{position:relative;scroll-margin-top:0}
 @keyframes tw{50%{opacity:.25}}
 .vignette{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 45%,transparent 35%,rgba(8,4,12,.55) 100%);transition:opacity 2s}
 .lit .vignette{opacity:.55}
-.intro-top{position:absolute;top:calc(12px + env(safe-area-inset-top));left:14px;right:14px;display:flex;justify-content:space-between;align-items:center;z-index:5}
+.intro-top{position:absolute;top:calc(12px + env(safe-area-inset-top));left:14px;right:14px;display:flex;justify-content:flex-end;align-items:center;z-index:5}
 .skip-intro{white-space:nowrap;flex:none;color:var(--gold-soft);font:400 .68rem/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;text-decoration:none;padding:10px 14px;border-radius:999px;background:rgba(14,20,51,.6)}
 @keyframes sway{50%{transform:rotate(3deg)}}
 .intro-copy{position:absolute;left:0;right:0;top:var(--copy-top,30%);z-index:3;text-align:center;pointer-events:none;padding:0 16px}
@@ -342,14 +324,21 @@ section{position:relative;scroll-margin-top:0}
 .ic-names{font:italic 500 clamp(3.4rem,15vw,7rem)/.95 var(--serif);color:#FFF6E6;text-shadow:0 4px 30px rgba(60,10,30,.65),0 0 2px rgba(60,10,30,.5);margin:0}
 .ic-names span{display:block}
 .ic-names .amp{display:inline;color:#E9C46A;font-weight:400;font-size:.8em}
-.ic-band{display:inline-block;margin-top:18px;padding:10px 26px;border-radius:999px;background:rgba(40,10,25,.55);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
-.ic-date{font:500 clamp(.92rem,3.4vw,1.15rem)/1.3 var(--serif);letter-spacing:.24em;color:#FFF0D6;margin:0}
-.ic-tag{font:italic 400 clamp(.95rem,3.4vw,1.1rem)/1.3 var(--serif);color:#F3DDBF;margin:2px 0 0}
-.ic-lotus{display:block;margin:26px auto 0;pointer-events:auto;background:none;border:0;cursor:pointer;color:#FFE9C8;padding:0}
-.ic-lotus svg{width:clamp(96px,26vw,128px);height:auto;margin:0 auto;filter:drop-shadow(0 0 16px rgba(255,214,140,.55)) drop-shadow(0 4px 10px rgba(14,20,51,.5))}
+.ic-band{display:block;margin:14px auto 0;max-width:calc(var(--arch-in,320px) - 18px)}
+.ic-date span{white-space:nowrap}
+.ic-rule{display:flex;align-items:center;justify-content:center;gap:10px;margin:0 auto 10px}
+.ic-rule::before,.ic-rule::after{content:"";height:1px;width:clamp(50px,16vw,110px);background:linear-gradient(90deg,transparent,#E9C46A)}
+.ic-rule::after{transform:scaleX(-1)}
+.ic-rule svg{width:20px;height:14px}
+.ic-date{font:600 clamp(1rem,3.8vw,1.2rem)/1.45 var(--serif);letter-spacing:.18em;padding-left:.18em;color:#F3DDA0;margin:0;text-shadow:0 0 14px rgba(233,196,106,.55),0 2px 8px rgba(30,10,30,.85)}
+.ic-tag{font:italic 400 clamp(1.02rem,3.6vw,1.2rem)/1.4 var(--serif);color:#FFF6E6;margin:6px 0 0;text-shadow:0 2px 10px rgba(30,10,30,.9),0 0 2px rgba(30,10,30,.6)}
+.ic-lotus{display:block;margin:20px auto 0;pointer-events:auto;background:none;border:0;cursor:pointer;color:#FFE9C8;padding:0}
+.ic-lotus svg{width:clamp(62px,17vw,78px);height:auto;margin:0 auto;filter:drop-shadow(0 0 16px rgba(255,214,140,.55)) drop-shadow(0 4px 10px rgba(14,20,51,.5))}
 @media (prefers-reduced-motion:no-preference){.lit .ic-lotus svg{animation:breathe 2.4s ease-in-out infinite 3.4s}}
 @keyframes breathe{50%{transform:scale(1.08)}}
-.ic-lotus span{display:block;font:400 .7rem/1 var(--sans);letter-spacing:.26em;text-transform:uppercase;margin-top:6px;color:#F6E3B8}
+.ic-lotus span:not(.visually-hidden){display:inline-block;font:500 .74rem/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;margin-top:10px;padding:9px 18px;border-radius:999px;color:#F3DDA0;background:rgba(14,20,51,.78);border:1px solid rgba(233,196,106,.6);box-shadow:0 6px 16px -6px rgba(0,0,0,.6)}
+@media (prefers-reduced-motion:no-preference){.lit .ic-lotus span:not(.visually-hidden){animation:tapPulse 2.4s ease-in-out infinite 3.6s}}
+@keyframes tapPulse{50%{box-shadow:0 0 0 6px rgba(233,196,106,.18),0 6px 16px -6px rgba(0,0,0,.6)}}
 .intro-flash{position:absolute;inset:0;background:var(--blush);opacity:0;pointer-events:none;transition:opacity 1s ease .6s;z-index:6}
 .zooming .intro-flash{opacity:1}
 .zooming .intro-copy,.zooming .intro-top{opacity:0;transition:opacity .5s}
@@ -395,7 +384,16 @@ section{position:relative;scroll-margin-top:0}
 
 /* ================= FLOATING CONTROLS ================= */
 .fab-stack{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:80;display:flex;flex-direction:column;gap:12px}
-.intro-on .fab-stack{display:none}
+.intro-on .fab-stack{z-index:110}
+.intro-on #menuBtn{display:none}
+.music-fab{position:relative}
+.music-fab .mute-slash{position:absolute;inset:13px;width:24px;height:24px}
+.music-fab[aria-pressed="true"] .mute-slash{display:none}
+.music-fab .eq{position:absolute;right:7px;bottom:9px;display:none;gap:1.5px;align-items:flex-end;height:9px}
+.music-fab[aria-pressed="true"] .eq{display:flex}
+.music-fab .eq i{width:2px;height:4px;background:currentColor;border-radius:1px}
+@media (prefers-reduced-motion:no-preference){.music-fab .eq i{animation:eq 1s ease-in-out infinite}.music-fab .eq i:nth-child(2){animation-delay:-.4s}.music-fab .eq i:nth-child(3){animation-delay:-.7s}}
+@keyframes eq{50%{height:9px}}
 .fab{width:50px;height:50px;border-radius:50%;cursor:pointer;display:grid;place-items:center;color:var(--madder);
   background:radial-gradient(circle at 35% 30%,#FFFBF0,#F1DFC0 70%,#D8BA85);border:1.5px solid #C9A54A;box-shadow:0 8px 20px -6px rgba(0,0,0,.45),inset 0 0 0 3px rgba(255,255,255,.5)}
 .fab svg{width:24px;height:24px}
@@ -966,13 +964,13 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
   <div class="petals" id="introPetals" aria-hidden="true"></div>
 
   <div class="intro-top">
-    <div class="langs" data-langs></div>
     <a href="#invite" class="skip-intro" id="skipIntro" data-i18n="skip_intro">Skip intro</a>
   </div>
 
   <div class="intro-copy" id="introCopy">
     <p class="ic-names" id="icNames"></p>
     <div class="ic-band">
+      <div class="ic-rule" aria-hidden="true"><svg viewBox="-12 -8 24 16"><use href="#rosette" x="-8" y="-8" width="16" height="16"/></svg></div>
       <p class="ic-date" id="icDate"></p>
       <p class="ic-tag" data-i18n="tagline">Two families. Two traditions. One celebration.</p>
     </div>
@@ -987,7 +985,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
 
 <!-- floating controls -->
 <div class="fab-stack" id="fabs">
-  <button type="button" class="fab" id="musicBtn" aria-pressed="false" hidden><svg aria-hidden="true"><use href="#i-music"/></svg><span class="visually-hidden" data-i18n="music_play">Play music</span></button>
+  <button type="button" class="fab music-fab" id="musicBtn" aria-pressed="false" hidden><svg aria-hidden="true"><use href="#i-music"/></svg><svg class="mute-slash" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4L20 20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span><span class="visually-hidden" data-i18n="music_play">Play music</span></button>
   <button type="button" class="fab" id="menuBtn" aria-expanded="false" aria-controls="menuPanel"><svg aria-hidden="true"><use href="#i-compass"/></svg><span class="visually-hidden" data-i18n="menu">Menu</span></button>
 </div>
 <nav class="menu-panel" id="menuPanel" aria-label="Sections" hidden>
@@ -999,7 +997,6 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
     <li><a href="#know" data-i18n="nav_know">Venues</a></li>
     <li><a href="#closing">Contact</a></li>
   </ul>
-  <div class="langs" role="group" data-langs></div>
 </nav>
 
 <main id="main">
@@ -1128,9 +1125,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
   var N = C.NAMES;
 
   /* ---------------- language helpers ---------------- */
-  var lang = C.DEFAULT_LANGUAGE || "en";
-  try { lang = localStorage.getItem("kr-lang") || lang; } catch (e) {}
-  var qp = (location.search.match(/[?&]lang=(en|mr|sd)\b/) || [])[1]; if (qp) lang = qp;
+  var lang = "en";   // the site is English only
   var dk = function () { return lang === "sd" ? SD : lang; };
   var TAG = { en: "en", mr: "mr", sd_devanagari: "sd-Deva", sd_arabic: "sd-Arab" };
   var rtl = function (k) { return k === "sd_arabic"; };
@@ -1399,7 +1394,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
   /* ---------------- static renders ---------------- */
   var amp = '<span class="amp">&amp;</span>';
   $("icNames").innerHTML = "<span>" + esc(N.partner1) + " " + amp + "</span><span>" + esc(N.partner2) + "</span>";
-  $("icDate").textContent = C.HERO_DATE_TEXT;
+  $("icDate").innerHTML = C.HERO_DATE_TEXT.replace(/^(.*?)\s+(\S+\s+\S+)$/, '<span>$1</span> <span>$2</span>');   // "4TH & 6TH" / "DECEMBER 2026" never split mid-phrase
   $("inviteNames").innerHTML = '<span class="nm" id="nm1">' + esc(N.partner1) + '</span> &amp; <span class="nm" id="nm2">' + esc(N.partner2) + "</span>";
   $("cardDate").textContent = C.DATE_TEXT;
   $("cardVenue").textContent = C.CARD_VENUE;
@@ -1630,13 +1625,83 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
   panel.addEventListener("click", function (e) { if (e.target.closest("a")) setMenu(false); });
   doc.addEventListener("keydown", function (e) { if (e.key === "Escape" && !panel.hidden) { setMenu(false); menuBtn.focus(); } });
   doc.addEventListener("click", function (e) { if (!panel.hidden && !panel.contains(e.target) && !menuBtn.contains(e.target)) setMenu(false); });
-  if (C.MUSIC_URL) {
-    var audio = new Audio(C.MUSIC_URL), mb = $("musicBtn"); audio.loop = true; audio.preload = "none"; mb.hidden = false;
+  /* ---------------- background music: gapless loop via Web Audio ---------------- */
+  (function () {
+    if (!C.MUSIC_URL) return;
+    var mb = $("musicBtn"), AC = window.AudioContext || window.webkitAudioContext;
+    var want = true, playing = false, ctx = null, buf = null, srcNode = null, gain = null, el = null, bytes = null;
+    try { want = localStorage.getItem("kr-music") !== "off"; } catch (e) {}
+    mb.hidden = false;
+    var show = function () {
+      mb.setAttribute("aria-pressed", String(playing));
+      setEl(mb.querySelector(".visually-hidden"), tr(playing ? "music_pause" : "music_play"));
+    };
+    show();
+    // fetch early so the first tap starts sound straight away
+    var loading = fetch(C.MUSIC_URL).then(function (r) { return r.arrayBuffer(); }).then(function (b) { bytes = b; }).catch(function () {});
+    var vol = C.MUSIC_VOLUME == null ? .6 : C.MUSIC_VOLUME;
+    // trim any silence the encoder adds so the loop seam has no gap
+    var loopPoints = function (b) {
+      var d = b.getChannelData(0), n = d.length, a = 0, z = n - 1;
+      while (a < n && Math.abs(d[a]) < .003) a++;
+      while (z > a && Math.abs(d[z]) < .003) z--;
+      return [a / b.sampleRate, (z + 1) / b.sampleRate];
+    };
+    var startWeb = function () {
+      return (buf ? Promise.resolve(buf) : loading.then(function () {
+        return new Promise(function (ok, no) { ctx.decodeAudioData(bytes.slice(0), ok, no); });
+      }).then(function (b) { buf = b; return b; })).then(function (b) {
+        if (!playing) return;
+        var lp = loopPoints(b);
+        srcNode = ctx.createBufferSource(); srcNode.buffer = b; srcNode.loop = true;
+        srcNode.loopStart = lp[0]; srcNode.loopEnd = lp[1];
+        srcNode.connect(gain);
+        gain.gain.cancelScheduledValues(ctx.currentTime);
+        gain.gain.setValueAtTime(0, ctx.currentTime);
+        gain.gain.linearRampToValueAtTime(vol, ctx.currentTime + 1.2);
+        srcNode.start(0, lp[0]);
+      });
+    };
+    var start = function () {
+      if (playing) return; playing = true; show();
+      if (AC) {
+        if (!ctx) { ctx = new AC(); gain = ctx.createGain(); gain.connect(ctx.destination); }
+        ctx.resume();
+        startWeb().catch(function () { playing = false; show(); });
+      } else {
+        if (!el) { el = new Audio(C.MUSIC_URL); el.loop = true; el.volume = vol; }
+        el.play().catch(function () { playing = false; show(); });
+      }
+    };
+    var stop = function () {
+      if (!playing) return; playing = false; show();
+      if (srcNode) {
+        var n = srcNode; srcNode = null;
+        gain.gain.cancelScheduledValues(ctx.currentTime);
+        gain.gain.setValueAtTime(gain.gain.value, ctx.currentTime);
+        gain.gain.linearRampToValueAtTime(0, ctx.currentTime + .35);
+        setTimeout(function () { try { n.stop(); } catch (e) {} }, 400);
+      }
+      if (el) el.pause();
+    };
     mb.addEventListener("click", function () {
-      if (audio.paused) audio.play().then(function () { mb.setAttribute("aria-pressed", "true"); setEl(mb.querySelector("span"), tr("music_pause")); }).catch(function () {});
-      else { audio.pause(); mb.setAttribute("aria-pressed", "false"); setEl(mb.querySelector("span"), tr("music_play")); }
+      if (playing) { stop(); want = false; } else { want = true; start(); }
+      try { localStorage.setItem("kr-music", want ? "on" : "off"); } catch (e) {}
     });
-  }
+    // browsers only allow sound after a tap, so start on the guest's first interaction
+    var firstTouch = function (e) {
+      if (mb.contains(e.target)) return;
+      ["click", "touchend", "keydown"].forEach(function (t) { doc.removeEventListener(t, firstTouch, true); });
+      if (want) start();
+    };
+    ["click", "touchend", "keydown"].forEach(function (t) { doc.addEventListener(t, firstTouch, true); });
+    // pause while the tab is in the background, carry on when it returns
+    var wasPlaying = false;
+    doc.addEventListener("visibilitychange", function () {
+      if (doc.hidden) { wasPlaying = playing; if (ctx) ctx.suspend(); if (el) el.pause(); }
+      else if (wasPlaying) { if (ctx) ctx.resume(); if (el) el.play().catch(function () {}); }
+    });
+  })();
 
   /* ---------------- story branches part as you scroll ---------------- */
   var story = $("story");
@@ -1688,7 +1753,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
   cdTimer = setInterval(tick, 1000);
 
   /* ================= INTRO: the arch lights up, tap the monogram to step through ================= */
-  var intro = $("intro"), scene = $("scene"), outside = [$("main"), $("fabs")];
+  var intro = $("intro"), scene = $("scene"), outside = [$("main")];
   if (root.classList.contains("intro-on")) {
     outside.forEach(function (n) { n.inert = true; n.setAttribute("aria-hidden", "true"); });
     var fit = function () {
@@ -1697,6 +1762,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
       scene.setAttribute("viewBox", (600 - vw / 2).toFixed(1) + " " + (410 - vh / 2).toFixed(1) + " " + vw.toFixed(1) + " " + vh.toFixed(1));
       var m = scene.getScreenCTM(), pt = function (x, y) { return { x: m.a * x + m.c * y + m.e, y: m.b * x + m.d * y + m.f }; };
       intro.style.setProperty("--copy-top", Math.max(70, pt(600, 318).y) + "px");
+      intro.style.setProperty("--arch-in", (pt(769, 0).x - pt(431, 0).x).toFixed(0) + "px");
       var o = pt(600, 470); scene.style.transformOrigin = o.x + "px " + o.y + "px";
     };
     fit(); addEventListener("resize", fit);
