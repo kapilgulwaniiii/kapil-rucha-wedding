@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 120 1280 1080">
+  <title>Kapil &amp; Rucha monogram</title>
+  <!-- क for Kapil (Sindhi, ajrak indigo) joined to र for Rucha (Marathi, Paithani magenta)
+       by a zari-gold head-line and stem -->
+  <defs>
+    <clipPath id="krLeft"><rect x="0" y="0" width="578" height="1300"/></clipPath>
+    <clipPath id="krRight"><rect x="578" y="0" width="702" height="1300"/></clipPath>
+    <path id="krBand" d="M95 885L500 605L637 548C780 450 930 430 1040 470C1170 520 1250 650 1250 800C1250 930 1195 1035 1122 1105L960 955C1030 850 1085 740 1080 650C1078 600 1050 585 1000 586C900 590 820 650 760 705C720 742 680 785 637 815L518 788L198 995Z"/>
+  </defs>
+  <g stroke="#E9C46A" stroke-width="12" stroke-linejoin="round" paint-order="stroke">
+    <path d="M5 535C140 410 360 380 520 548L500 605C360 510 200 540 105 638Z" fill="#1F2A5C"/>
+    <use href="#krBand" clip-path="url(#krLeft)" fill="#1F2A5C"/>
+    <use href="#krBand" clip-path="url(#krRight)" fill="#A3175B"/>
+    <path d="M520 275H637V1170L520 1060Z" fill="#C9A54A"/>
+    <path d="M2 167H1175L1280 275H100Z" fill="#C9A54A"/>
+  </g>
+</svg>
