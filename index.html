@@ -21,10 +21,11 @@ window.CONFIG = {
 
   /* ---- Couple, families & date ---- */
   NAMES: { partner1: "Kapil", partner2: "Rucha" },
-  FAMILIES: {                                   // ⚑ needs family review
-    partner2: "[Daughter of Mr. ___ & Mrs. ___]",
-    partner1: "[Son of Mr. ___ & Mrs. ___]"
-  },
+  // Shown side by side on the invitation card: Kapil's parents left, Rucha's right
+  PARENTS: [
+    { relation: "Son of", names: ["Shamsunder Rochiram Gulwani", "Leena Shamsunder Gulwani"] },
+    { relation: "Daughter of", names: ["Rajesh Nagare", "Monali Rajesh Nagare"] }
+  ],
   DATE_TEXT: "4th & 6th December 2026",
   CLOSING_DATE_TEXT: "4TH & 6TH · DECEMBER · 2026",
   HERO_DATE_TEXT: "4TH & 6TH DECEMBER 2026",
@@ -87,9 +88,11 @@ window.CONFIG = {
   /* ---- Venues: one card each, with an "Open in Maps" link ---- */
   VENUES: [
     { title: "Sangeet & Engagement", name: "Royal Connaught Boat Club",
+      date: "4th December 2026", time: "6:30 pm onwards",
       address: "Boat Club Rd, Bund Garden, Sangamvadi, Pune, Maharashtra 411001",
       mapsLink: "https://maps.app.goo.gl/tXy83PxkSVo9GkqY9" },
     { title: "Wedding & Reception", name: "Marigold Banquets",
+      date: "6th December 2026", time: "10:00 am onwards",
       address: "Windmill Village, Bavdhan, Pune, Maharashtra 411021",
       mapsLink: "https://maps.app.goo.gl/xpNxorBLmNHiVkTE7" }
   ],
@@ -99,10 +102,9 @@ window.CONFIG = {
      Sindhi family). Leave "" for no icon. */
   CONTACTS: [
     { label: "Kapil's family", icon: "topi", people: [
-      { name: "Sakshi Gulwani", phone: "+91 96572 59189" },
-      { name: "Leena Gulwani",  phone: "+91 97665 11924" } ] },
-    { label: "[Rucha's family]", icon: "pagdi", people: [
-      { name: "[name]", phone: "[phone number]" } ] }
+      { name: "Shamsunder Gulwani", role: "Father", phone: "+91 98900 13798" },
+      { name: "Leena Gulwani",      role: "Mother", phone: "+91 97665 11924" },
+      { name: "Sakshi Gulwani",     role: "Sister", phone: "+91 96572 59189" } ] }
   ],
 
   /* ---- Cultural motifs: the one-line note shown when a guest taps one  ⚑ needs family review ---- */
@@ -261,7 +263,7 @@ window.CONFIG = {
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
-body{margin:0;background:var(--plum);color:var(--text);font:300 1.0625rem/1.7 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{font-variant-numeric:lining-nums;margin:0;background:var(--plum);color:var(--text);font:300 1.0625rem/1.7 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 .intro-on body{overflow:hidden}
 h1,h2,h3,h4{font-family:var(--serif);font-weight:500;line-height:1.15;margin:0}
 p{margin:0 0 1em}
@@ -303,6 +305,9 @@ section{position:relative;scroll-margin-top:0}
 .intro-on .intro{display:block}
 .scene{position:absolute;inset:0;width:100%;height:100%;filter:brightness(.26) saturate(.35);transition:filter 2.6s ease, transform 1.5s cubic-bezier(.6,0,.3,1)}
 .lit .scene{filter:none}
+.scene .slide-l{transform:translateX(calc(var(--zp,0) * -140px));transition:transform .25s ease-out}
+.scene .slide-r{transform:translateX(calc(var(--zp,0) * 140px));transition:transform .25s ease-out}
+.intro-copy{opacity:calc(1 - var(--zp,0) * 1.6)}
 .scene .glow,.scene .flame-lit,.scene .lantern{opacity:0;transition:opacity 2s ease 1s}
 .lit .scene .glow,.lit .scene .flame-lit,.lit .scene .lantern,.scene .always .glow{opacity:1}
 .scene .pane{fill:#5A3C28;transition:fill 1.6s ease 1s}
@@ -357,7 +362,7 @@ section{position:relative;scroll-margin-top:0}
 .names-wrap h1{position:relative;z-index:1}
 .card h1{padding-top:.34em!important}
 .topi-on,.nath-on{position:absolute;z-index:2;line-height:0}
-.topi-on{transform:rotate(-14deg)}
+.topi-on{transform:none}
 .nath-on{transform:rotate(-8deg)}
 .topi-on svg,.nath-on svg{width:100%;height:auto;filter:drop-shadow(0 2px 3px rgba(60,20,10,.25))}
 .skyline{cursor:pointer}
@@ -440,6 +445,11 @@ section{position:relative;scroll-margin-top:0}
 .rule svg{width:22px;height:14px}
 .card h1{font:italic 500 clamp(3rem,13vw,5.6rem)/1 var(--serif);color:#A4741C;background:linear-gradient(180deg,#B8862A,#8A6418);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;padding:.06em 0}
 .card h1:focus{outline:none}
+.parents{display:grid;grid-template-columns:1fr auto 1fr;align-items:start;gap:0 14px;max-width:520px;margin:4px auto 6px}
+.pcol{text-align:center}
+.prel{font:italic 400 clamp(.9rem,3.2vw,1rem)/1.3 var(--serif);color:var(--text-soft);margin:0 0 4px}
+.pname{font:500 clamp(.98rem,3.5vw,1.12rem)/1.35 var(--serif);color:#7A1F3A;margin:0}
+.pdot{width:7px;height:7px;margin-top:30px;transform:rotate(45deg);background:var(--zari)}
 .families{font:italic 400 clamp(1rem,3.6vw,1.12rem)/1.5 var(--serif);color:var(--text-soft);margin:0}
 .families p{margin:0;padding:3px 0;border-bottom:1px solid rgba(201,165,74,.3)}
 .families p:last-child{border:0}
@@ -457,6 +467,9 @@ section{position:relative;scroll-margin-top:0}
 .venue-card .v-when{font:500 .8rem/1.4 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--gold-text);margin:0 0 4px}
 .venue-card h3{margin-bottom:6px}
 .venue-card .v-addr{margin:0 0 10px}
+.venue-card .v-dt{display:flex;flex-wrap:wrap;gap:6px 18px;margin:2px 0 12px;font:500 1.12rem/1.3 var(--serif);color:var(--madder)}
+.venue-card .v-dt span{display:inline-flex;align-items:center;gap:7px}
+.venue-card .v-dt svg{width:17px;height:17px;color:var(--gold-text)}
 .card-date{font:500 clamp(1.4rem,5.4vw,2rem)/1.2 var(--serif);letter-spacing:.12em;color:#7A1F3A;margin:16px 0 4px}
 .card-venue{font:italic 400 1.15rem/1.4 var(--serif);color:var(--text-soft);margin:0 0 24px}
 .card .btn{color:#FFF5E6;background:#8E1F31;border-color:#8E1F31;position:relative;z-index:1}
@@ -476,7 +489,7 @@ section{position:relative;scroll-margin-top:0}
 .scratch-reveal{margin-top:12px;background:none;border:0;color:#F3DDA0;font:italic 400 1rem var(--serif);text-decoration:underline;text-underline-offset:4px;cursor:pointer;min-height:36px}
 .scratch-reveal[hidden]{display:none}
 .cd .tile{min-width:74px;padding:12px 8px 10px;text-align:center;border-radius:10px;background:rgba(255,248,236,.82);border:1px solid rgba(201,165,74,.7);box-shadow:0 10px 24px -14px rgba(80,10,30,.6)}
-.cd b{display:block;font:500 2rem/1 var(--serif);color:var(--madder);font-variant-numeric:tabular-nums}
+.cd b{display:block;font:500 2rem/1 var(--serif);color:var(--madder);font-variant-numeric:lining-nums tabular-nums}
 .cd small{display:block;margin-top:5px;font:500 .62rem/1.2 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:#5E2A3D}
 .cd .today{font:italic 500 2rem/1.2 var(--serif);color:#FFF6E6}
 
@@ -547,19 +560,29 @@ section{position:relative;scroll-margin-top:0}
 .meet p{margin:0}
 
 /* ================= STORY (garden) ================= */
-.story{min-height:100vh;padding:110px 16px;overflow:hidden;color:var(--text);display:flex;align-items:center;justify-content:center;text-align:center;
-  background:radial-gradient(ellipse 70% 60% at 50% 45%,#FFF8EC,#F6E7D2 70%,#EFD8C3)}
-.story .garden-bg{position:absolute;left:0;right:0;bottom:0;height:60%;pointer-events:none;opacity:.55}
+.story{padding:70px 16px 56px;overflow:hidden;color:var(--text);display:flex;flex-direction:column;align-items:center;text-align:center;
+  background:radial-gradient(ellipse 60% 45% at 50% 70%,rgba(255,236,190,.75),transparent 70%),radial-gradient(ellipse 70% 60% at 50% 40%,#FFF8EC,#F6E7D2 70%,#EFD8C3)}
+.story .garden-bg{position:absolute;left:0;right:0;bottom:0;height:45%;pointer-events:none;opacity:.4}
 .story .garden-bg svg{width:100%;height:100%}
-.story-copy{position:relative;z-index:2;max-width:600px}
+.story-copy{position:relative;z-index:2;max-width:620px}
 .story .eyebrow{color:var(--gold-text)}
 .story .title{color:#6E1E3A}
-.story-copy p{font:400 clamp(1.08rem,3.8vw,1.22rem)/1.75 var(--serif);color:#3A2C34;margin:0 0 .8em}
-.hashtag{font:italic 500 1.35rem/1 var(--serif);color:#A4741C;margin-top:14px!important}
-.branch{position:absolute;top:0;bottom:0;width:62%;z-index:3;pointer-events:none;will-change:transform}
-.branch svg{width:100%;height:100%}
-.branch.l{left:-6%;transform:translateX(calc(var(--open,0) * -92%))}
-.branch.r{right:-6%;transform:translateX(calc(var(--open,0) * 92%)) scaleX(-1)}
+.story-copy p{font:400 clamp(1.04rem,3.7vw,1.18rem)/1.7 var(--serif);color:#3A2C34;margin:0 0 .7em}
+.hashtag{font:italic 500 1.3rem/1 var(--serif);color:#A4741C;margin-top:10px!important}
+.couple{position:relative;z-index:2;display:flex;align-items:flex-end;justify-content:center;gap:clamp(4px,4vw,40px);margin-top:18px;width:100%;max-width:620px}
+.couple figure{margin:0;flex:0 1 auto;width:clamp(120px,34vw,190px);text-align:center}
+.couple .fig{width:100%;height:auto;display:block}
+.couple figcaption{font:400 clamp(1.7rem,6vw,2.3rem)/1 var(--script);color:#7A1F3A;margin-top:2px}
+.couple-knot{width:12px;height:12px;margin-bottom:80px;border-radius:50%;background:#E2A91B;box-shadow:0 0 0 3px rgba(201,165,74,.35),0 0 18px rgba(226,169,27,.6);flex:none}
+.who-l{transform:translateX(calc((1 - var(--open,0)) * 30px));opacity:calc(var(--open,0) * 1.2)}
+.who-r{transform:translateX(calc((1 - var(--open,0)) * -30px));opacity:calc(var(--open,0) * 1.2)}
+.stage-curtain{position:absolute;top:0;bottom:0;width:51%;z-index:4;pointer-events:none;will-change:transform;box-shadow:0 0 40px rgba(0,0,0,.35)}
+.stage-curtain svg{width:100%;height:100%;display:block}
+.stage-curtain::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(0,0,0,.34) 0,rgba(255,255,255,.07) 26px,rgba(0,0,0,.05) 46px,rgba(0,0,0,.34) 74px)}
+.stage-curtain.l{left:0;transform:translateX(calc(var(--open,0) * -96%));border-right:3px solid #C9A54A}
+.stage-curtain.r{right:0;transform:translateX(calc(var(--open,0) * 96%));border-left:3px solid #C9A54A}
+.stage-valance{position:absolute;left:0;right:0;top:0;height:26px;z-index:5;pointer-events:none;
+  background:radial-gradient(circle at 14px -2px,#B8862A 13px,transparent 14px) 0 0/28px 26px repeat-x,linear-gradient(#E9C46A,#B8862A) 0 0/100% 10px no-repeat}
 .story-copy{opacity:calc(.15 + var(--open,0) * .85)}
 
 /* ================= GALLERY ================= */
@@ -692,10 +715,11 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
 .closing .line{font:italic 400 1.2rem/1.5 var(--serif);color:#D9C9AE;margin:18px 0 6px}
 .closing .date{font:500 .9rem/1 var(--serif);letter-spacing:.4em;color:#9C8660}
 .contacts{display:grid;gap:14px;max-width:640px;margin:50px auto 0}
-@media (min-width:600px){.contacts{grid-template-columns:1fr 1fr}}
+@media (min-width:600px){.contacts{grid-template-columns:1fr;max-width:420px}}
 .contact{border:1px solid rgba(201,165,74,.35);border-radius:12px;padding:20px 18px 14px}
 .people{list-style:none;margin:12px 0 0;padding:0}
 .people li{display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 0;border-top:1px dashed rgba(201,165,74,.3)}
+.people .role{font:italic 400 .95rem var(--serif);color:#B9A27A}
 .people .who{font:500 1.15rem/1.3 var(--serif);color:#F3E7D3}
 .people .tel{display:inline-flex;align-items:center;gap:7px;color:var(--gold-soft);text-decoration:none;font-size:1rem;letter-spacing:.04em;min-height:36px}
 .people .tel svg{width:15px;height:15px}
@@ -867,6 +891,16 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
         <path d="M2 167H1175L1280 275H100Z" fill="#C9A54A"/>
       </g>
     </g>
+    <pattern id="ajrak-fig" width="16" height="16" patternUnits="userSpaceOnUse" patternTransform="scale(.7)">
+      <rect width="16" height="16" fill="#1F2A5C"/>
+      <path d="M0 8L8 0L16 8L8 16Z" fill="none" stroke="#A8283A" stroke-width="1.6"/>
+      <use href="#m-star" transform="translate(8 8) scale(.5)" fill="#F6EFE0"/>
+    </pattern>
+    <pattern id="paithani-curtain" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="scale(2.6)">
+      <rect width="14" height="14" fill="#A3175B"/>
+      <path d="M7 3.6L8.5 7L7 10.4L5.5 7Z" fill="#E2A91B"/>
+      <g fill="#0F6B5C"><circle r="1.3"/><circle cx="14" r="1.3"/><circle cy="14" r="1.3"/><circle cx="14" cy="14" r="1.3"/></g>
+    </pattern>
     <!-- small icons -->
     <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 22s7-7.2 7-12.5A7 7 0 0 0 5 9.5C5 14.8 12 22 12 22z" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="9.5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
     <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M3 10h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.7" fill="none"/></symbol>
@@ -913,7 +947,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
     <use href="#chhatri" transform="translate(1130 548) scale(.8)"/>
     <use href="#diya" class="flame-lit" transform="translate(150 520) scale(.9)"/>
     <use href="#diya" class="flame-lit" transform="translate(1050 520) scale(.9)"/>
-    <g id="perch"></g>
+    <g id="perchL" class="slide-l"></g><g id="perchR" class="slide-r"></g>
     <rect x="-800" y="720" width="2800" height="400" fill="url(#ground)"/>
     <g stroke="#A88A5C" stroke-width="1.2" fill="none" opacity=".7">
       <ellipse cx="600" cy="790" rx="170" ry="34"/><ellipse cx="600" cy="790" rx="120" ry="24"/><ellipse cx="600" cy="790" rx="70" ry="14"/>
@@ -934,9 +968,26 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
       <use href="#diya" class="always" transform="translate(600 712) scale(.846 1.1)"/>
     </g>
     <!-- the great arch -->
-    <path d="M405 720V360C405 270 470 225 530 185C565 162 590 135 600 100C610 135 635 162 670 185C730 225 795 270 795 360V720Z
+    <path d="M405 720V352L420 336C436 262 498 150 556 104L566 90H634L644 104C702 150 764 262 780 336L795 352V720Z
              M468 720V370A26 26 0 0 1 474 330A26 26 0 0 1 489 293A26 26 0 0 1 512 262A26 26 0 0 1 540 236A26 26 0 0 1 570 212A26 26 0 0 1 600 190A26 26 0 0 1 630 212A26 26 0 0 1 660 236A26 26 0 0 1 688 262A26 26 0 0 1 711 293A26 26 0 0 1 726 330A26 26 0 0 1 732 370V720Z"
           fill="url(#stoneFloral)" fill-rule="evenodd" stroke="#A88A5C" stroke-width="2"/>
+    <!-- shikhara carving: tier lines, central rib, side spires, cornice -->
+    <clipPath id="towerClip"><path clip-rule="evenodd" d="M420 336C436 262 498 150 556 104L566 90H634L644 104C702 150 764 262 780 336Z M468 720V370A26 26 0 0 1 474 330A26 26 0 0 1 489 293A26 26 0 0 1 512 262A26 26 0 0 1 540 236A26 26 0 0 1 570 212A26 26 0 0 1 600 190A26 26 0 0 1 630 212A26 26 0 0 1 660 236A26 26 0 0 1 688 262A26 26 0 0 1 711 293A26 26 0 0 1 726 330A26 26 0 0 1 732 370V720Z"/></clipPath>
+    <g clip-path="url(#towerClip)" fill="none" stroke="#C9A97A" stroke-width="2">
+      <path d="M380 318H820M380 296H820M380 272H820M380 246H820M380 218H820M380 188H820M380 158H820M380 128H820M380 104H820" opacity=".55"/>
+      <path d="M574 90C566 160 560 250 556 336M626 90C634 160 640 250 644 336" stroke="#B8946A" stroke-width="2.4"/>
+      <path d="M582 92C560 170 520 260 470 336M590 92C578 170 556 260 520 336M610 92C622 170 644 260 680 336M618 92C640 170 680 260 730 336" stroke="#B8946A" stroke-width="1.6" opacity=".8"/>
+      <path d="M600 92V336" stroke="#C9A54A" stroke-width="1.6" stroke-dasharray="6 6"/>
+    </g>
+    <g fill="#F5E9D2" stroke="#A88A5C" stroke-width="1.6">
+      <path d="M410 336C412 306 424 284 438 272C452 284 464 306 466 336Z"/>
+      <path d="M734 336C736 306 748 284 762 272C776 284 788 306 790 336Z"/>
+      <ellipse cx="438" cy="270" rx="9" ry="4"/><ellipse cx="762" cy="270" rx="9" ry="4"/>
+    </g>
+    <g stroke="#A88A5C" stroke-width="1.2"><path d="M420 304H456M416 320H460M744 304H780M740 320H784"/></g>
+    <rect x="395" y="334" width="76" height="18" fill="#E2C9A0" stroke="#A88A5C" stroke-width="1.6"/>
+    <rect x="729" y="334" width="76" height="18" fill="#E2C9A0" stroke="#A88A5C" stroke-width="1.6"/>
+    <g fill="#C9A54A"><circle cx="414" cy="343" r="2.4"/><circle cx="433" cy="343" r="2.4"/><circle cx="452" cy="343" r="2.4"/><circle cx="748" cy="343" r="2.4"/><circle cx="767" cy="343" r="2.4"/><circle cx="786" cy="343" r="2.4"/></g>
     <use href="#innerArch" fill="none" stroke="#E2C9A0" stroke-width="12"/>
     <use href="#innerArch" fill="none" stroke="#C9A54A" stroke-width="3"/>
     <g fill="#F7EEDC" stroke="#BFA273">
@@ -954,9 +1005,22 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
       <use href="#rosette" x="-9" y="-9" width="18" height="18" transform="translate(738 298)"/><use href="#rosette" x="-9" y="-9" width="18" height="18" transform="translate(716 258)"/>
       <use href="#rosette" x="-9" y="-9" width="18" height="18" transform="translate(686 224)"/><use href="#rosette" x="-9" y="-9" width="18" height="18" transform="translate(652 198)"/>
     </g>
-    <path d="M600 84V58" stroke="#C9A54A" stroke-width="3"/><circle cx="600" cy="56" r="5" fill="#C9A54A"/>
     </g>
-    <use href="#lotus" transform="translate(600 112) scale(.75)"/>
+    <!-- amalaka (ribbed stone disc) and kalash crown the shikhara -->
+    <g>
+      <ellipse cx="600" cy="88" rx="44" ry="11" fill="#F5E9D2" stroke="#A88A5C" stroke-width="1.6"/>
+      <path d="M560 86V90M572 82V94M586 79V97M600 78V98M614 79V97M628 82V94M640 86V90" stroke="#A88A5C" stroke-width="1.4"/>
+      <rect x="586" y="72" width="28" height="6" rx="2" fill="#E2C9A0" stroke="#A88A5C"/>
+      <path d="M588 72C580 64 584 52 600 50C616 52 620 64 612 72Z" fill="#D4A63A" stroke="#8A6418" stroke-width="1.2"/>
+      <path d="M594 50L600 36L606 50Z" fill="#E9C46A" stroke="#8A6418"/>
+      <ellipse cx="600" cy="50" rx="9" ry="2.6" fill="#E9C46A" stroke="#8A6418"/>
+      <circle cx="600" cy="34" r="3" fill="#E9C46A"/>
+    </g>
+    <g fill="#EAD9BC" stroke="#A88A5C" stroke-width="1.4">
+      <rect x="372" y="722" width="456" height="10" rx="2"/>
+      <rect x="352" y="732" width="496" height="10" rx="2"/>
+      <rect x="332" y="742" width="536" height="10" rx="2"/>
+    </g>
     <use href="#diya" class="flame-lit" transform="translate(387 676) scale(.8)"/>
     <use href="#diya" class="flame-lit" transform="translate(813 676) scale(.8)"/>
   </svg>
@@ -1017,11 +1081,11 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
         <p class="blessing" data-i18n="blessing">With the blessings of our elders and the love of our families</p>
         <div class="rule" aria-hidden="true"><svg viewBox="-12 -8 24 16"><use href="#rosette" x="-8" y="-8" width="16" height="16"/></svg></div>
         <div class="names-wrap"><h1 id="inviteNames" tabindex="-1"></h1>
-          <button type="button" class="hint-btn topi-on" data-hint="topi"><svg viewBox="0 0 64 46" aria-hidden="true" id="topiSvg"></svg></button>
+          <button type="button" class="hint-btn topi-on" data-hint="ajrak"><svg viewBox="0 0 60 82" aria-hidden="true" id="topiSvg"></svg></button>
           <button type="button" class="hint-btn nath-on" data-hint="nath"><svg viewBox="0 0 64 64" aria-hidden="true" id="nathSvg"></svg></button>
           <button type="button" class="hint-btn feather" data-hint="feather"><svg viewBox="0 0 40 140" aria-hidden="true" id="featherSvg"></svg></button></div>
         <div class="rule" aria-hidden="true"><svg viewBox="-12 -8 24 16"><use href="#rosette" x="-8" y="-8" width="16" height="16"/></svg></div>
-        <div class="families" id="families"></div>
+        <div class="parents" id="parents"></div>
         <p class="families" style="margin-top:4px" data-i18n="invite_line">invite you to celebrate their engagement and wedding ceremonies</p>
         <p class="card-on" data-i18n="on_the">on the</p>
         <p class="card-date" id="cardDate"></p>
@@ -1056,14 +1120,96 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
   <!-- ======================= 5. STORY ======================= -->
   <section class="story light" id="story" aria-labelledby="storyTitle">
     <div class="garden-bg" aria-hidden="true" id="gardenBg"></div>
-    <div class="branch l" aria-hidden="true" id="branchL"></div>
-    <div class="branch r" aria-hidden="true" id="branchR"></div>
     <div class="story-copy">
       <span class="eyebrow" data-i18n="story_eyebrow">A love story</span>
       <h2 class="title" id="storyTitle" data-i18n="story_title">Meet the Couple</h2>
       <div class="rule" aria-hidden="true"><svg viewBox="-12 -8 24 16"><use href="#rosette" x="-8" y="-8" width="16" height="16"/></svg></div>
       <div id="storyText"></div>
     </div>
+    <div class="couple">
+      <figure class="who-l"><svg class="fig" viewBox="0 0 200 430" role="img" aria-label="Kapil: swept-up dark hair, full beard, black zip hoodie">
+  <ellipse cx="100" cy="420" rx="60" ry="7" fill="rgba(60,30,20,.2)"/>
+  <!-- jeans and sneakers -->
+  <path d="M78 300L76 404H96L100 320L104 404H124L122 300Z" fill="#2F3E5C"/>
+  <path d="M86 310L86 400M114 310L114 400" stroke="#26334D" stroke-width="1.4"/>
+  <path d="M70 404Q84 396 98 404V413H70Z M102 404Q116 396 130 404V413H102Z" fill="#1E1E22"/>
+  <path d="M70 410H98M102 410H130" stroke="#E9E4DA" stroke-width="2"/>
+  <!-- hoodie -->
+  <path d="M64 128Q100 116 136 128L142 306Q100 316 58 306Z" fill="#1F1F24"/>
+  <path d="M58 294Q100 304 142 294L142 308Q100 318 58 308Z" fill="#16161A"/>
+  <path d="M89 126H111L107 300H93Z" fill="#2B2B31"/>
+  <path d="M91 136L93 302M109 136L107 302" stroke="#77777F" stroke-width="1.1" stroke-dasharray="2 2"/>
+  <path d="M76 248Q100 256 124 248L120 282H80Z" fill="#19191E" stroke="#2E2E34"/>
+  <!-- sleeves and hands, red-orange thread on the wrist -->
+  <path d="M66 130Q50 140 50 212L54 272H70L73 176Z" fill="#1F1F24"/>
+  <path d="M134 130Q150 140 150 212L146 272H130L127 176Z" fill="#1F1F24"/>
+  <path d="M53 262H71V273H53ZM129 262H147V273H129Z" fill="#16161A"/>
+  <path d="M54 274H70" stroke="#E0652A" stroke-width="3"/>
+  <ellipse cx="62" cy="283" rx="8.5" ry="9.5" fill="#C48A5E"/><ellipse cx="138" cy="282" rx="8.5" ry="9.5" fill="#C48A5E"/>
+  <!-- hood bunched at the neck, drawstrings -->
+  <path d="M72 122Q100 144 128 122Q126 106 112 104H88Q74 106 72 122Z" fill="#27272C"/>
+  <path d="M93 128L91 170M107 128L109 170" stroke="#DCD5C8" stroke-width="1.7" stroke-linecap="round"/>
+  <!-- neck and head -->
+  <rect x="92" y="94" width="16" height="20" rx="6" fill="#B07A50"/>
+  <ellipse cx="77" cy="76" rx="4" ry="7" fill="#B07A50"/><ellipse cx="123" cy="76" rx="4" ry="7" fill="#B07A50"/>
+  <ellipse cx="100" cy="72" rx="23" ry="28" fill="#C48A5E"/>
+  <!-- full trimmed beard and moustache -->
+  <path d="M77 70Q77 104 100 110Q123 104 123 70Q120 88 112 92Q100 97 88 92Q80 88 77 70Z" fill="#241712"/>
+  <path d="M89 86Q100 81 111 86Q106 90 100 89Q94 90 89 86Z" fill="#241712"/>
+  <path d="M93 92Q100 97 107 92Q100 95 93 92Z" fill="#F4EEE6"/>
+  <!-- swept-up hair, short sides -->
+  <path d="M77 72Q73 46 96 38Q114 34 123 50Q127 60 123 72Q121 58 110 54Q98 51 88 55Q80 60 79 72Z" fill="#1C1310"/>
+  <path d="M84 48Q94 30 118 40Q108 37 99 42Q90 45 84 48Z" fill="#2A1D17"/>
+  <!-- face -->
+  <path d="M85 64Q91 60 97 63M103 63Q109 60 115 64" stroke="#1C1310" stroke-width="2.8" fill="none" stroke-linecap="round"/>
+  <ellipse cx="91" cy="71" rx="2.6" ry="3" fill="#2A1A14"/><ellipse cx="109" cy="71" rx="2.6" ry="3" fill="#2A1A14"/>
+  <circle cx="92" cy="70" r=".9" fill="#fff"/><circle cx="110" cy="70" r=".9" fill="#fff"/>
+  <path d="M100 72Q104 80 99 82" stroke="#A06A42" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+</svg><figcaption>Kapil</figcaption></figure>
+      <span class="couple-knot" aria-hidden="true"></span>
+      <figure class="who-r"><svg class="fig" viewBox="0 0 200 430" role="img" aria-label="Rucha: long wavy brown hair in a half-up ponytail, hoop earrings, olive-green tee">
+  <ellipse cx="100" cy="420" rx="56" ry="7" fill="rgba(60,30,20,.2)"/>
+  <!-- long hair behind the shoulders, and the ponytail -->
+  <path d="M74 62Q60 110 64 168Q60 202 74 214Q84 198 82 162L86 96Z" fill="#6A4126"/>
+  <path d="M126 62Q140 110 136 168Q140 202 126 214Q116 198 118 162L114 96Z" fill="#6A4126"/>
+  <path d="M112 42Q142 40 140 78Q138 104 126 118Q130 82 116 58Z" fill="#6A4126"/>
+  <!-- light jeans and white sneakers -->
+  <path d="M68 226Q100 234 132 226L134 304L120 404H104L100 322L96 404H80L66 304Z" fill="#8FA8C8"/>
+  <path d="M88 310L88 400M112 310L112 400" stroke="#7690B2" stroke-width="1.4"/>
+  <path d="M68 228Q100 236 132 228" stroke="#6F86A6" stroke-width="2.4" fill="none"/>
+  <path d="M74 404Q88 397 98 404V412H74Z M102 404Q112 397 126 404V412H102Z" fill="#F4F1EA" stroke="#CFC8BA"/>
+  <!-- olive-green tee, tucked in -->
+  <path d="M70 130Q100 120 130 130L134 230Q100 238 66 230Z" fill="#3E5A3A"/>
+  <path d="M70 130Q55 136 53 166L70 170Z M130 130Q145 136 147 166L130 170Z" fill="#3E5A3A"/>
+  <path d="M90 124Q100 132 110 124" stroke="#2F4A2C" stroke-width="2" fill="none"/>
+  <!-- arms and hands -->
+  <path d="M55 165L54 250H67L69 170Z M145 165L146 250H133L131 170Z" fill="#D7A27A"/>
+  <ellipse cx="60" cy="257" rx="7.5" ry="8.5" fill="#D7A27A"/><ellipse cx="140" cy="257" rx="7.5" ry="8.5" fill="#D7A27A"/>
+  <!-- neck and face -->
+  <rect x="93" y="96" width="14" height="22" rx="6" fill="#C8916A"/>
+  <ellipse cx="100" cy="76" rx="22" ry="26" fill="#D7A27A"/>
+  <!-- front hair: middle part, waves falling over the shoulders -->
+  <path d="M77 82Q73 48 100 44Q127 48 123 82Q118 60 104 57Q100 56 98 57Q84 60 79 74Z" fill="#7A4E2D"/>
+  <path d="M78 76Q68 112 75 148Q79 168 72 192Q88 182 87 150Q84 112 84 84Z" fill="#7A4E2D"/>
+  <path d="M122 76Q132 112 125 148Q121 168 128 192Q112 182 113 150Q116 112 116 84Z" fill="#7A4E2D"/>
+  <path d="M77 120Q82 130 77 142Q73 152 78 164M123 120Q118 130 123 142Q127 152 122 164M88 52Q96 48 104 50" stroke="#A8773F" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+  <!-- hoops -->
+  <circle cx="78" cy="94" r="5.5" fill="none" stroke="#C9CCD1" stroke-width="1.6"/>
+  <circle cx="122" cy="94" r="5.5" fill="none" stroke="#C9CCD1" stroke-width="1.6"/>
+  <!-- face -->
+  <path d="M86 69Q91 65 96 68M104 68Q109 65 114 69" stroke="#4A2E1C" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <ellipse cx="91" cy="76" rx="3" ry="3.6" fill="#3A2416"/><ellipse cx="109" cy="76" rx="3" ry="3.6" fill="#3A2416"/>
+  <circle cx="92" cy="75" r="1" fill="#fff"/><circle cx="110" cy="75" r="1" fill="#fff"/>
+  <path d="M87 73L85 71M113 73L115 71" stroke="#3A2416" stroke-width="1.2" stroke-linecap="round"/>
+  <ellipse cx="86" cy="86" rx="5" ry="3" fill="#E8957E" opacity=".45"/><ellipse cx="114" cy="86" rx="5" ry="3" fill="#E8957E" opacity=".45"/>
+  <path d="M100 78Q103 84 99 86" stroke="#B57E58" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+  <path d="M93 92Q100 98 107 92Q100 95 93 92Z" fill="#F4EEE6" stroke="#B8566A" stroke-width="1.2" stroke-linejoin="round"/>
+</svg><figcaption>Rucha</figcaption></figure>
+    </div>
+    <!-- the curtain: ajrak on Kapil's side, Paithani on Rucha's -->
+    <div class="stage-curtain l" aria-hidden="true"><svg><rect width="100%" height="100%" fill="url(#ajrak-cloth-lg)"/></svg></div>
+    <div class="stage-curtain r" aria-hidden="true"><svg><rect width="100%" height="100%" fill="url(#paithani-curtain)"/></svg></div>
+    <div class="stage-valance" aria-hidden="true"></div>
   </section>
 
   <!-- ======================= 6. GALLERY ======================= -->
@@ -1302,9 +1448,8 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
     [[11, -88], [15.5, -89], [20, -87]].forEach(function (d) { el("circle", { cx: d[0], cy: d[1], r: 1.5, fill: "#2A68BE" }, g); });
   }
   function buildMotifs() {
-    var perch = $("perch");
-    drape(perch, 262, "ajrak"); drape(perch, 868, "paithani");
-    perchedPeacock(perch, 302, false); perchedPeacock(perch, 898, true);
+    drape($("perchL"), 262, "ajrak"); drape($("perchR"), 868, "paithani");
+    perchedPeacock($("perchL"), 302, false); perchedPeacock($("perchR"), 898, true);
     // peacock feather beside the names
     var f = '<path d="M21 8C37 28 36 66 22 104C8 66 6 28 21 8Z" fill="#2E8B6E" opacity=".3"/>';
     for (var y = 12; y < 104; y += 3.5) {
@@ -1331,20 +1476,21 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
   }
 
   // Kapil's Sindhi topi: arched front opening, embroidery and little mirrors
+  // Kapil's Sindhi ajrak shawl, wrapped once around the stem of the K with the ends hanging down
   function buildTopi() {
-    var t = '<path d="M5 40V17Q5 8 32 6Q59 8 59 17V40Q32 45 5 40Z" fill="#A8283A" stroke="#6E1626" stroke-width="1"/>' +
-      '<path d="M5 17Q32 25 59 17Q59 8 32 6Q5 8 5 17Z" fill="#C2416B" stroke="#6E1626" stroke-width="1"/>' +
-      '<ellipse cx="32" cy="14" rx="18" ry="4.2" fill="none" stroke="#E9C46A" stroke-width="1"/>' +
-      '<ellipse cx="32" cy="14" rx="9" ry="2.2" fill="#0F6B5C" stroke="#E9C46A" stroke-width=".8"/>' +
-      '<path d="M5 25L9 21L13 25L17 21L21 25L25 21L29 25L33 21L37 25L41 21L45 25L49 21L53 25L57 21L59 23" fill="none" stroke="#E9C46A" stroke-width="1.1"/>' +
-      '<path d="M5 33L59 33" stroke="#1F2A5C" stroke-width="2.2"/>' +
-      '<path d="M23 43V33Q32 21 41 33V43.6Q32 45 23 43Z" fill="#FBF3E2" stroke="#E9C46A" stroke-width="1.2"/>';
-    [[11, 30], [17, 37], [47, 37], [53, 30], [32, 18.5]].forEach(function (m, i) {
-      t += '<circle cx="' + m[0] + '" cy="' + m[1] + '" r="2.4" fill="url(#mirrorGrad)" stroke="#E9C46A" stroke-width=".6"/>' +
-        '<use href="#spark" class="spark" fill="#fff" transform="translate(' + (m[0] + 1) + " " + (m[1] - 1) + ') scale(.45)" style="animation-delay:' + (i * 1.3).toFixed(1) + 's"/>';
-    });
-    [[13, 37], [51, 37], [9, 21.5], [55, 21.5]].forEach(function (d) { t += '<circle cx="' + d[0] + '" cy="' + d[1] + '" r="1.1" fill="#E2A91B"/>'; });
-    $("topiSvg").innerHTML = t;
+    $("topiSvg").innerHTML =
+      // back of the wrap (seen between the turns)
+      '<path d="M6 24L52 14L54 24L8 34Z" fill="#141B3E"/>' +
+      // tails hanging from the knot
+      '<path d="M34 34L44 33L40 74L28 72Z" fill="url(#ajrak-fig)" stroke="#6E1626" stroke-width=".8"/>' +
+      '<path d="M42 33L52 34L56 70L44 72Z" fill="url(#ajrak-fig)" stroke="#6E1626" stroke-width=".8"/>' +
+      '<path d="M28 68L40 70M44 68L56 66" stroke="#A8283A" stroke-width="3"/>' +
+      '<g stroke="#A8283A" stroke-width="1.1" stroke-linecap="round"><path d="M29 72V79M33 72.6V80M37 73.2V79M45 72V79M49 71.4V78M53 70.8V77"/></g>' +
+      // front turn of the wrap crossing the stem
+      '<path d="M4 36L54 22L56 34L6 48Z" fill="url(#ajrak-fig)" stroke="#6E1626" stroke-width=".8"/>' +
+      '<path d="M5 39L55 25M6 45L56 31" stroke="#A8283A" stroke-width="1.2"/>' +
+      // knot
+      '<ellipse cx="44" cy="32" rx="7" ry="5.5" fill="url(#ajrak-fig)" stroke="#6E1626" stroke-width=".8"/>';
   }
   // Rucha's Marathi nath: a paisley ring edged with pearls, a ruby and a pearl chain
   function buildNath() {
@@ -1364,9 +1510,9 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
     var h1 = $("inviteNames"), a = $("nm1"), b = $("nm2"), fs = parseFloat(getComputedStyle(h1).fontSize);
     var topi = doc.querySelector(".topi-on"), nath = doc.querySelector(".nath-on");
     if (!a || !b || !topi) return;
-    topi.style.width = (fs * .72).toFixed(0) + "px";
-    topi.style.left = (h1.offsetLeft + a.offsetLeft - fs * .2).toFixed(0) + "px";
-    topi.style.top = (h1.offsetTop + a.offsetTop - fs * .1).toFixed(0) + "px";
+    topi.style.width = (fs * .6).toFixed(0) + "px";
+    topi.style.left = (h1.offsetLeft + a.offsetLeft - fs * .1).toFixed(0) + "px";
+    topi.style.top = (h1.offsetTop + a.offsetTop + fs * .36).toFixed(0) + "px";
     nath.style.width = (fs * .64).toFixed(0) + "px";
     nath.style.left = (h1.offsetLeft + b.offsetLeft - fs * .3).toFixed(0) + "px";
     nath.style.top = (h1.offsetTop + b.offsetTop - fs * .08).toFixed(0) + "px";
@@ -1398,6 +1544,9 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
   $("inviteNames").innerHTML = '<span class="nm" id="nm1">' + esc(N.partner1) + '</span> &amp; <span class="nm" id="nm2">' + esc(N.partner2) + "</span>";
   $("cardDate").textContent = C.DATE_TEXT;
   $("cardVenue").textContent = C.CARD_VENUE;
+  $("parents").innerHTML = C.PARENTS.map(function (pp) {
+    return '<div class="pcol"><p class="prel">' + esc(pp.relation) + "</p>" + pp.names.map(function (n) { return '<p class="pname">' + esc(n) + "</p>"; }).join("") + "</div>";
+  }).join('<span class="pdot" aria-hidden="true"></span>');
   $("closingNames").innerHTML = "<span>" + esc(N.partner1) + "</span><span>&amp;</span><span>" + esc(N.partner2) + "</span>";
   $("closingDate").textContent = C.CLOSING_DATE_TEXT;
   $("foot").innerHTML = "<span>" + esc(N.partner1) + " &amp; " + esc(N.partner2) + "</span> · <span>" + esc(C.DATE_TEXT) + "</span>";
@@ -1407,7 +1556,6 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
     .map(function (st) { return '<svg viewBox="0 0 300 260" ' + st + " data-blooms></svg>"; }).join("");
   doc.querySelectorAll("[data-blooms]").forEach(bloomsSVG);
   doc.querySelectorAll("[data-elephant]").forEach(elephantSVG);
-  $("branchL").innerHTML = branchSVG(3); $("branchR").innerHTML = branchSVG(11);
   $("gardenBg").innerHTML = '<svg viewBox="0 0 1200 400" preserveAspectRatio="xMidYMax slice"><g fill="#E9D3BC">' +
     '<rect x="300" y="200" width="600" height="120"/><path d="M380 200c0-60 40-80 60-90 20 10 60 30 60 90z M700 200c0-60 40-80 60-90 20 10 60 30 60 90z M540 200c0-80 50-110 60-120 10 10 60 40 60 120z"/></g>' +
     '<rect x="0" y="320" width="1200" height="80" fill="#E8D9CC"/><g opacity=".7"><use href="#lotus" transform="translate(260 360) scale(1.2)"/><use href="#lotus" transform="translate(940 370) scale(1.1)"/></g></svg>';
@@ -1471,7 +1619,10 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
     var pin = '<svg class="kicon" viewBox="0 0 60 56" aria-hidden="true"><path d="M30 52s16-16 16-28a16 16 0 0 0-32 0c0 12 16 28 16 28z" fill="#F2C4D0" stroke="#A8283A" stroke-width="2"/><circle cx="30" cy="24" r="6" fill="#A8283A"/></svg>';
     $("knowGrid").innerHTML = C.VENUES.map(function (v, i) {
       return '<article class="kcard venue-card reveal" style="transition-delay:' + (i * .12) + 's">' + pin +
-        '<p class="v-when">' + span(loc(v.title)) + "</p><h3>" + esc(v.name) + '</h3><p class="v-addr">' + esc(v.address) + "</p>" +
+        '<p class="v-when">' + span(loc(v.title)) + "</p><h3>" + esc(v.name) + "</h3>" +
+        (v.date ? '<p class="v-dt"><span><svg aria-hidden="true"><use href="#i-cal"/></svg>' + esc(v.date) + "</span>" +
+          (v.time ? '<span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="1.7"/></svg>' + esc(v.time) + "</span>" : "") + "</p>" : "") +
+        '<p class="v-addr">' + esc(v.address) + "</p>" +
         mapsLink(v.mapsLink, v.name) + "</article>";
     }).join("");
     observe($("knowGrid").querySelectorAll(".reveal"));
@@ -1488,7 +1639,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
         var tel = String(pp.phone).replace(/[^\d+]/g, "");
         var num = isPh(pp.phone) || !tel ? '<span class="tel">' + esc(pp.phone) + "</span>"
           : '<a class="tel" href="tel:' + esc(tel) + '" aria-label="Call ' + esc(pp.name) + '"><svg aria-hidden="true"><use href="#i-phone"/></svg>' + esc(pp.phone) + "</a>";
-        return '<li><span class="who">' + esc(pp.name) + "</span>" + num + "</li>";
+        return '<li><span class="who">' + esc(pp.name) + (pp.role ? ' <span class="role">· ' + esc(pp.role) + "</span>" : "") + "</span>" + num + "</li>";
       }).join("");
       return '<div class="contact">' + ic + "<h3>" + esc(c.label) + '</h3><ul class="people">' + rows + "</ul></div>";
     }).join("");
@@ -1707,7 +1858,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
   var story = $("story");
   function onScroll() {
     var r = story.getBoundingClientRect(), vh = innerHeight;
-    var p = reduce ? 1 : Math.min(1, Math.max(0, (vh - r.top) / (vh * .9) - .15));
+    var p = reduce ? 1 : Math.min(1, Math.max(0, (vh - r.top) / (vh * .75) - .1));
     story.style.setProperty("--open", p.toFixed(3));
   }
   addEventListener("scroll", onScroll, { passive: true }); onScroll();
@@ -1757,15 +1908,21 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
   if (root.classList.contains("intro-on")) {
     outside.forEach(function (n) { n.inert = true; n.setAttribute("aria-hidden", "true"); });
     var fit = function () {
-      var W = innerWidth, H = innerHeight, a = W / H, reqW = 660, reqH = 720, vw, vh;
+      var W = innerWidth, H = innerHeight, a = W / H, reqW = 660, reqH = 770, vw, vh;
+      if (!W || !H) return;   // hidden or zero-size tab: wait for a real size
       if (a > reqW / reqH) { vh = reqH; vw = vh * a; } else { vw = reqW; vh = vw / a; }
-      scene.setAttribute("viewBox", (600 - vw / 2).toFixed(1) + " " + (410 - vh / 2).toFixed(1) + " " + vw.toFixed(1) + " " + vh.toFixed(1));
+      scene.setAttribute("viewBox", (600 - vw / 2).toFixed(1) + " " + (400 - vh / 2).toFixed(1) + " " + vw.toFixed(1) + " " + vh.toFixed(1));
       var m = scene.getScreenCTM(), pt = function (x, y) { return { x: m.a * x + m.c * y + m.e, y: m.b * x + m.d * y + m.f }; };
-      intro.style.setProperty("--copy-top", Math.max(70, pt(600, 318).y) + "px");
+      var top0 = Math.max(70, pt(600, 318).y);
+      intro.style.setProperty("--copy-top", top0 + "px");
+      // keep the whole block (names, date, logo, "Tap to open") on screen on short windows
+      var copy = $("introCopy"), over = copy.offsetTop + copy.offsetHeight + 18 - H;
+      if (over > 0) intro.style.setProperty("--copy-top", Math.max(56, top0 - over) + "px");
       intro.style.setProperty("--arch-in", (pt(769, 0).x - pt(431, 0).x).toFixed(0) + "px");
       var o = pt(600, 470); scene.style.transformOrigin = o.x + "px " + o.y + "px";
     };
     fit(); addEventListener("resize", fit);
+    if (doc.fonts && doc.fonts.ready) doc.fonts.ready.then(fit);
 
     var lit = false, done = false;
     var petals = function () { shower($("introPetals"), innerWidth < 600 ? 30 : 52); };
@@ -1781,9 +1938,23 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
       outside.forEach(function (n) { n.inert = false; n.removeAttribute("aria-hidden"); });
       scrollTo(0, 0); $("inviteNames").focus({ preventScroll: true });
     };
-    var enter = function () { intro.classList.add("zooming"); scene.style.transform = "scale(3.4)"; setTimeout(finish, 1700); };
+    var enter = function () { intro.classList.add("zooming"); scene.style.transition = ""; scene.style.transform = "scale(3.4)"; setTimeout(finish, 1700); };
 
     $("openInvite").addEventListener("click", enter);
+    // scrolling or swiping pulls the guest toward the temple; far enough and it opens
+    var zp = 0, entered = false, ty = null;
+    var zoomBy = function (d) {
+      if (entered || !lit) return;
+      zp = Math.max(0, Math.min(1, zp + d));
+      intro.style.setProperty("--zp", zp.toFixed(3));
+      scene.style.transition = "filter 2.6s ease, transform .25s ease-out";
+      scene.style.transform = "scale(" + (1 + zp * .9).toFixed(3) + ")";
+      if (zp >= 1) { entered = true; scene.style.transition = ""; enter(); }
+    };
+    intro.addEventListener("wheel", function (e) { zoomBy(e.deltaY / 900); }, { passive: true });
+    intro.addEventListener("touchstart", function (e) { ty = e.touches[0].clientY; }, { passive: true });
+    intro.addEventListener("touchmove", function (e) { if (ty === null) return; var y = e.touches[0].clientY; zoomBy((ty - y) / 420); ty = y; }, { passive: true });
+    doc.addEventListener("keydown", function (e) { if (!intro.hidden && (e.key === "ArrowDown" || e.key === "PageDown")) zoomBy(.34); });
     // the scene lights itself: dusk fades to lamplight and the peacocks open their tails
     setTimeout(light, 450);
     $("skipIntro").addEventListener("click", function (e) { e.preventDefault(); lit = true; finish(); });
