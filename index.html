@@ -32,9 +32,9 @@ window.CONFIG = {
     ]
   },
   FAMILY_LINE: "Gulwani and Nagare Family",   // under "Sharing the joy" at the foot of the card
-  DATE_TEXT: "4th & 6th December 2026",
-  CLOSING_DATE_TEXT: "4TH & 6TH · DECEMBER · 2026",
-  HERO_DATE_TEXT: "4TH & 6TH DECEMBER 2026",
+  DATE_TEXT: "4th and 6th December 2026",
+  CLOSING_DATE_TEXT: "4TH AND 6TH · DECEMBER · 2026",
+  HERO_DATE_TEXT: "4TH AND 6TH DECEMBER 2026",
   CARD_VENUE: "Pune",       // the line under the date on the invitation card
   // Countdown + calendar, in India time (IST is always +05:30).
   WEDDING_DATE: "2026-12-06",
@@ -64,11 +64,11 @@ window.CONFIG = {
   /* ---- The two celebrations: each gets its own scroll page ----
      icon: music | mandap | rings | lantern | knot */
   VENUES: [
-    { title: "Sangeet & Engagement", icon: "music", name: "Royal Connaught Boat Club",
+    { title: "Sangeet and Engagement", icon: "rings", name: "Royal Connaught Boat Club",
       date: "4th December 2026", time: "6:30 pm onwards",
       address: "Boat Club Rd, Bund Garden, Sangamvadi, Pune, Maharashtra 411001",
       mapsLink: "https://maps.app.goo.gl/tXy83PxkSVo9GkqY9" },
-    { title: "Wedding & Reception", icon: "mandap", name: "Marigold Banquets",
+    { title: "Wedding and Reception", icon: "mandap", name: "Marigold Banquets",
       date: "6th December 2026", time: "10:00 am onwards",
       address: "Windmill Village, Bavdhan, Pune, Maharashtra 411021",
       mapsLink: "https://maps.app.goo.gl/xpNxorBLmNHiVkTE7" }
@@ -195,17 +195,17 @@ window.CONFIG = {
 
 <!-- ✿ Link preview for WhatsApp / social. Edit by hand.
      og:image must be a full https:// URL to a ~1200×630 JPG. -->
-<title>Kapil &amp; Rucha — Save the Date</title>
+<title>Kapil and Rucha — Save the Date</title>
 <meta name="description" content="Kapil and Rucha are getting married on 6th December 2026. Two families, two traditions, one celebration.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Kapil &amp; Rucha — Save the Date">
+<meta property="og:title" content="Kapil and Rucha — Save the Date">
 <meta property="og:description" content="Two families. Two traditions. One celebration. 6th December 2026.">
 <meta property="og:image" content="[preview image URL]">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://kapilgulwaniiii.github.io/kapil-rucha-wedding/">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Kapil &amp; Rucha — Save the Date">
+<meta name="twitter:title" content="Kapil and Rucha — Save the Date">
 <meta name="twitter:description" content="Two families. Two traditions. One celebration. 6th December 2026.">
 <meta name="twitter:image" content="[preview image URL]">
 <meta name="theme-color" content="#141A3E">
@@ -295,7 +295,7 @@ section{position:relative;scroll-margin-top:0}
 .ic-std{font:italic 500 clamp(1.1rem,4vw,1.5rem)/1 var(--serif);color:var(--gold-soft);margin-bottom:6px;transition-delay:1.3s!important}
 .ic-names{font:italic 500 clamp(3.4rem,15vw,7rem)/.95 var(--serif);color:#FFF6E6;text-shadow:0 4px 30px rgba(60,10,30,.65),0 0 2px rgba(60,10,30,.5);margin:0}
 .ic-names{white-space:nowrap;font-size:clamp(2.5rem,10vw,4.6rem)!important;line-height:1.05!important}
-.ic-names .amp{display:inline!important;font:400 .9em/1 var(--script)!important;color:#E9C46A;margin:0 .26em 0 .2em;position:relative;top:.06em}
+.ic-names .amp{display:inline!important;font:400 .62em/1 var(--script)!important;color:#E9C46A;margin:0 .3em;position:relative;top:-.08em}
 .ic-tag{font-size:clamp(1.35rem,5.2vw,1.95rem)!important;margin-top:4px!important}
 .ic-names span{display:block}
 .ic-names .amp{display:inline;color:#E9C46A;font-weight:400;font-size:.8em}
@@ -329,10 +329,11 @@ section{position:relative;scroll-margin-top:0}
 .lit .scene .train{opacity:0}
 .hint-btn{background:none;border:0;padding:0;margin:0;cursor:pointer;color:inherit}
 .names-wrap{position:relative;display:inline-block}
-.divine{display:flex;justify-content:center;gap:clamp(18px,8vw,64px);margin:6px auto 8px}
-.deity{margin:0;text-align:center;width:clamp(96px,26vw,140px)}
-.deity svg{width:clamp(66px,17vw,84px);height:auto;margin:0 auto 4px;filter:drop-shadow(0 3px 6px rgba(120,70,10,.25))}
-.deity figcaption{font:600 clamp(.7rem,2.6vw,.82rem)/1.3 var(--serif);letter-spacing:.06em;color:#8E1F31;white-space:nowrap}
+.divine{display:grid;grid-template-columns:1fr auto 1fr;align-items:start;gap:clamp(6px,3vw,30px);max-width:520px;margin:6px auto 10px}
+.divine .card-logo{width:clamp(64px,17vw,96px);margin:6px auto 0}
+.deity{margin:0;text-align:center}
+.deity img{display:block;height:clamp(68px,18vw,96px);width:auto;margin:0 auto 6px}
+.deity figcaption{font:600 clamp(.6rem,2.4vw,.82rem)/1.3 var(--serif);letter-spacing:0;white-space:nowrap;color:#8E1F31}
 .cordial{max-width:30em;margin-left:auto!important;margin-right:auto!important;font:500 clamp(.78rem,2.9vw,.92rem)/1.7 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--gold-text);margin:6px 0 4px}
 .person{margin:2px 0}
 .pname-big{font:italic 500 clamp(2.9rem,12vw,4.8rem)/1.05 var(--serif);margin:0;color:#A4741C}
@@ -499,7 +500,7 @@ section{position:relative;scroll-margin-top:0}
 .ev-scroll{width:min(520px,90vw);margin:0}
 .ev-scroll .scroll-body{min-height:0;padding:42px 30px 38px}
 .ev-scroll .ev-icon{width:64px;height:60px}
-.ev-scroll h3{font:400 clamp(2.4rem,9vw,3.3rem)/1.15 var(--script);color:#7A1F3A;margin:4px 0 10px}
+.ev-scroll h3{font:400 clamp(2.2rem,8.4vw,3.1rem)/1.2 var(--script);letter-spacing:.02em;word-spacing:.22em;color:#7A1F3A;margin:4px 0 12px}
 .ev-date{font:600 clamp(1.3rem,5vw,1.6rem)/1.2 var(--serif);letter-spacing:.08em;color:var(--madder);margin:0}
 .ev-time{font:italic 500 clamp(1.1rem,4vw,1.3rem)/1.3 var(--serif);color:var(--gold-text);margin:2px 0 0}
 .ev-rule{display:flex;align-items:center;justify-content:center;gap:10px;margin:16px auto}
@@ -929,50 +930,6 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
       <path d="M7 3.6L8.5 7L7 10.4L5.5 7Z" fill="#E2A91B"/>
       <g fill="#0F6B5C"><circle r="1.3"/><circle cx="14" r="1.3"/><circle cy="14" r="1.3"/><circle cx="14" cy="14" r="1.3"/></g>
     </pattern>
-    <!-- Lord Ganesha: simple icon in gold, ivory and madder -->
-    <g id="ganesha" stroke="#8A6418" stroke-width="1.4" stroke-linejoin="round">
-      <circle cx="50" cy="50" r="47" fill="#FBF0D6" stroke="#C9A54A" stroke-width="2"/>
-      <circle cx="50" cy="50" r="42" fill="none" stroke="#E2A91B" stroke-width=".8" stroke-dasharray="2 3"/>
-      <path d="M24 92L28 66Q50 56 72 66L76 92Z" fill="#A8283A"/>
-      <path d="M28 70Q50 62 72 70" fill="none" stroke="#E9C46A" stroke-width="2.4"/>
-      <ellipse cx="50" cy="78" rx="13" ry="11" fill="#F3D2A0"/>
-      <path d="M33 30C14 24 10 52 30 56C32 48 32 38 33 30Z" fill="#F3D2A0"/>
-      <path d="M67 30C86 24 90 52 70 56C68 48 68 38 67 30Z" fill="#F3D2A0"/>
-      <path d="M29 36C21 36 20 48 28 50M71 36C79 36 80 48 72 50" fill="none" stroke="#E79A8E" stroke-width="2"/>
-      <ellipse cx="50" cy="40" rx="17" ry="16" fill="#F3D2A0"/>
-      <path d="M45 48C43 60 45 70 54 73C62 75 64 67 58 65C52 65 51 60 53 51Z" fill="#F3D2A0"/>
-      <path d="M43 50L39 57" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round"/>
-      <circle cx="44" cy="40" r="1.6" fill="#2A1A14" stroke="none"/><circle cx="56" cy="40" r="1.6" fill="#2A1A14" stroke="none"/>
-      <path d="M46 31Q50 36 54 31" fill="none" stroke="#C2272D" stroke-width="2"/>
-      <path d="M35 25L38 14L44 20L50 9L56 20L62 14L65 25Z" fill="#E2A91B"/>
-      <rect x="34" y="24" width="32" height="5" rx="2" fill="#C9A54A"/>
-      <circle cx="50" cy="17" r="2" fill="#C2272D" stroke="none"/>
-      <circle cx="30" cy="80" r="5" fill="#E2A91B"/>
-      <path d="M70 66L70 82M66 70L74 70" stroke="#E9C46A" stroke-width="1.6"/>
-      <path d="M30 94Q50 86 70 94" fill="none" stroke="#E79A8E" stroke-width="2"/>
-    </g>
-    <!-- Jhulelal: bearded saint with crown and peacock feather, holding a book, seated on the palla fish -->
-    <g id="jhulelal" stroke="#5E3A12" stroke-width="1.2" stroke-linejoin="round">
-      <circle cx="50" cy="50" r="47" fill="#FBF0D6" stroke="#C9A54A" stroke-width="2"/>
-      <circle cx="50" cy="30" r="20" fill="none" stroke="#E2A91B" stroke-width="2.4"/>
-      <circle cx="50" cy="30" r="16" fill="none" stroke="#C2272D" stroke-width="1" stroke-dasharray="3 2"/>
-      <path d="M50 4C46 8 46 12 50 14C54 12 54 8 50 4Z" fill="#1B7A62"/><circle cx="50" cy="9" r="1.6" fill="#2459A8" stroke="none"/>
-      <path d="M41 22L43 13L47 17L50 11L53 17L57 13L59 22Z" fill="#E2A91B"/>
-      <rect x="40" y="21" width="20" height="4" rx="1.5" fill="#C9A54A"/>
-      <ellipse cx="50" cy="31" rx="7.5" ry="8.5" fill="#FBEEDC"/>
-      <path d="M48 26.5H52M50 26.5V29" stroke="#C2272D" stroke-width="1.2"/>
-      <circle cx="47" cy="30" r="1" fill="#2A1A14" stroke="none"/><circle cx="53" cy="30" r="1" fill="#2A1A14" stroke="none"/>
-      <path d="M42.5 32Q43 47 50 51Q57 47 57.5 32Q55 38 50 38Q45 38 42.5 32Z" fill="#FFFFFF" stroke="#BDB3A2"/>
-      <path d="M45 35Q50 33 55 35" fill="none" stroke="#BDB3A2" stroke-width="1.6"/>
-      <path d="M30 70L34 48Q50 42 66 48L70 70Z" fill="#2F6FA8"/>
-      <path d="M36 48L40 70M64 48L60 70" stroke="#E8891A" stroke-width="5"/>
-      <path d="M38 56Q50 68 62 56L60 52Q50 63 40 52Z" fill="#FBF6EA"/>
-      <ellipse cx="50" cy="71" rx="21" ry="5.5" fill="#F3E6CC"/>
-      <path d="M30 74Q36 70 40 75Q45 70 50 75Q55 70 60 75Q64 70 70 74Q60 79 50 79Q40 79 30 74Z" fill="#F08DA6"/>
-      <path d="M14 86Q40 74 76 82Q86 78 90 72L89 92Q84 88 76 90Q40 98 14 86Z" fill="#2BB3A3"/>
-      <path d="M30 84Q32 88 30 92M40 82Q42 87 40 92M50 82Q52 87 50 92M60 82Q62 87 60 91" fill="none" stroke="#1B7A62" stroke-width="1"/>
-      <circle cx="20" cy="85" r="1.6" fill="#2A1A14" stroke="none"/>
-    </g>
     <!-- small icons -->
     <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 22s7-7.2 7-12.5A7 7 0 0 0 5 9.5C5 14.8 12 22 12 22z" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="9.5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
     <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M3 10h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.7" fill="none"/></symbol>
@@ -1014,11 +971,11 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
     <g id="bushes"></g>
     <g id="wall"></g>
     <use href="#chhatri" x="0" y="0" transform="translate(70 548) scale(.8)"/>
-    <use href="#chhatri" transform="translate(150 548) scale(.9)"/>
-    <use href="#chhatri" transform="translate(1050 548) scale(.9)"/>
+    <use href="#chhatri" transform="translate(178 548) scale(1)"/>
+    <use href="#chhatri" transform="translate(1022 548) scale(1)"/>
     <use href="#chhatri" transform="translate(1130 548) scale(.8)"/>
-    <use href="#diya" class="flame-lit" transform="translate(70 520) scale(.9)"/>
-    <use href="#diya" class="flame-lit" transform="translate(1130 520) scale(.9)"/>
+    <use href="#diya" class="flame-lit" transform="translate(150 520) scale(.9)"/>
+    <use href="#diya" class="flame-lit" transform="translate(1050 520) scale(.9)"/>
     <g id="perchL" class="slide-l"></g><g id="perchR" class="slide-r"></g>
     <rect x="-800" y="720" width="2800" height="400" fill="url(#ground)"/>
     <g stroke="#A88A5C" stroke-width="1.2" fill="none" opacity=".7">
@@ -1028,55 +985,73 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
     <g><ellipse cx="160" cy="790" rx="190" ry="40" fill="#A9C2B6" opacity=".8"/><ellipse cx="1040" cy="790" rx="190" ry="40" fill="#A9C2B6" opacity=".8"/></g>
     <use href="#lotus" transform="translate(110 782) scale(1.3)"/><use href="#lotus" transform="translate(220 800) scale(1)"/>
     <use href="#lotus" transform="translate(990 800) scale(1)"/><use href="#lotus" transform="translate(1100 782) scale(1.3)"/>
-    <!-- ===== the wedding mandap ===== -->
-    <g id="mandap">
-      <rect x="374" y="262" width="452" height="432" fill="url(#opening)"/>
-      <ellipse cx="600" cy="600" rx="220" ry="150" fill="url(#warmGlow)" opacity=".6"/>
-      <!-- back pillars and beam -->
-      <rect x="420" y="290" width="360" height="12" fill="#B8946A"/>
-      <g fill="#DCC49A" stroke="#A88A5C" stroke-width="1.2"><rect x="432" y="300" width="16" height="394"/><rect x="752" y="300" width="16" height="394"/></g>
-      <!-- platform and steps -->
-      <rect x="330" y="690" width="540" height="20" fill="#EAD9BC" stroke="#A88A5C" stroke-width="1.4"/>
-      <path d="M346 700H854" stroke="#C9A54A" stroke-width="1.4" stroke-dasharray="3 6"/>
-      <g fill="#EAD9BC" stroke="#A88A5C" stroke-width="1.4">
-        <rect x="350" y="710" width="500" height="11" rx="2"/><rect x="330" y="721" width="540" height="11" rx="2"/><rect x="310" y="732" width="580" height="11" rx="2"/>
-      </g>
-      <!-- front pillars -->
-      <g fill="#F5E9D2" stroke="#A88A5C" stroke-width="1.6">
-        <rect x="340" y="272" width="34" height="420"/><rect x="826" y="272" width="34" height="420"/>
-        <rect x="330" y="664" width="54" height="28" rx="2"/><rect x="816" y="664" width="54" height="28" rx="2"/>
-        <rect x="332" y="262" width="50" height="14" rx="2"/><rect x="818" y="262" width="50" height="14" rx="2"/>
-      </g>
-      <g id="pillarWraps"></g>
-      <!-- canopy -->
-      <path d="M314 240C356 156 476 100 600 94C724 100 844 156 886 240Z" fill="#A8283A" stroke="#6E1626" stroke-width="1.6"/>
-      <g id="canopyFolds"></g>
-      <rect x="312" y="236" width="576" height="30" fill="#C9A54A" stroke="#8A6418" stroke-width="1.4"/>
-      <rect x="312" y="245" width="576" height="10" fill="#A3175B"/>
-      <g id="canopyFringe"></g>
-      <!-- kalash on the peak -->
-      <g stroke="#8A6418" stroke-width="1.2">
-        <rect x="584" y="86" width="32" height="8" rx="2" fill="#E2C9A0"/>
-        <path d="M588 86C579 77 583 64 600 62C617 64 621 77 612 86Z" fill="#D4A63A"/>
-        <path d="M590 62Q584 54 578 56M610 62Q616 54 622 56M596 61Q594 50 588 48M604 61Q606 50 612 48" stroke="#4F7D52" stroke-width="3" stroke-linecap="round" fill="none"/>
-        <ellipse cx="600" cy="54" rx="7" ry="8" fill="#B8862A"/>
-      </g>
-      <!-- sheer swags between the front pillars -->
-      <path d="M374 266Q487 330 600 266Q713 330 826 266L826 278Q713 344 600 278Q487 344 374 278Z" fill="#FBF3E2" opacity=".88" stroke="#E9C46A"/>
-      <!-- tied-back drapes: ajrak on Kapil's side, Paithani on Rucha's -->
-      <path d="M300 262H380Q384 370 364 446Q346 470 330 446Q318 370 300 262Z" fill="url(#ajrak-cloth)" stroke="#141B3E" stroke-width="1"/>
-      <path d="M338 452Q330 540 344 640L358 636Q350 540 360 452Z" fill="url(#ajrak-cloth)" stroke="#141B3E" stroke-width="1"/>
-      <path d="M900 262H820Q816 370 836 446Q854 470 870 446Q882 370 900 262Z" fill="url(#paithani-cloth)" stroke="#6E0F3B" stroke-width="1"/>
-      <path d="M862 452Q870 540 856 640L842 636Q850 540 840 452Z" fill="url(#paithani-cloth)" stroke="#6E0F3B" stroke-width="1"/>
-      <g fill="#E9C46A" stroke="#8A6418"><circle cx="348" cy="448" r="7"/><circle cx="852" cy="448" r="7"/></g>
-      <g id="mandapStrings"></g>
-      <!-- diyas along the platform -->
-      <use href="#diya" class="flame-lit" transform="translate(410 692) scale(.62)"/>
-      <use href="#diya" class="flame-lit" transform="translate(480 692) scale(.62)"/>
-      <use href="#diya" class="always" transform="translate(600 696) scale(.9)"/>
-      <use href="#diya" class="flame-lit" transform="translate(720 692) scale(.62)"/>
-      <use href="#diya" class="flame-lit" transform="translate(790 692) scale(.62)"/>
+    <g transform="translate(600 0) scale(1.3 1) translate(-600 0)">
+    <!-- view through the arch -->
+    <g clip-path="url(#openClip)">
+      <rect x="400" y="150" width="400" height="600" fill="url(#opening)"/>
+      <path d="M520 720V520Q520 470 560 450Q600 420 640 450Q680 470 680 520V720Z" fill="#F0C7C8" opacity=".35"/>
+      <use href="#chhatri" transform="translate(520 690) scale(.323 .42)" opacity=".55"/>
+      <use href="#chhatri" transform="translate(680 690) scale(.323 .42)" opacity=".55"/>
+      <rect x="440" y="690" width="320" height="10" fill="#E2C9A0" opacity=".6"/><rect x="460" y="700" width="280" height="10" fill="#E2C9A0" opacity=".5"/>
+      <use href="#lantern" class="lantern" transform="translate(600 186) scale(.446 .58)"/>
+      <use href="#diya" class="always" transform="translate(600 712) scale(.846 1.1)"/>
     </g>
+    <!-- the great arch -->
+    <path d="M405 720V352L420 336C436 262 498 150 556 104L566 90H634L644 104C702 150 764 262 780 336L795 352V720Z
+             M468 720V370A26 26 0 0 1 474 330A26 26 0 0 1 489 293A26 26 0 0 1 512 262A26 26 0 0 1 540 236A26 26 0 0 1 570 212A26 26 0 0 1 600 190A26 26 0 0 1 630 212A26 26 0 0 1 660 236A26 26 0 0 1 688 262A26 26 0 0 1 711 293A26 26 0 0 1 726 330A26 26 0 0 1 732 370V720Z"
+          fill="url(#stoneFloral)" fill-rule="evenodd" stroke="#A88A5C" stroke-width="2"/>
+    <!-- shikhara carving: tier lines, central rib, side spires, cornice -->
+    <clipPath id="towerClip"><path clip-rule="evenodd" d="M420 336C436 262 498 150 556 104L566 90H634L644 104C702 150 764 262 780 336Z M468 720V370A26 26 0 0 1 474 330A26 26 0 0 1 489 293A26 26 0 0 1 512 262A26 26 0 0 1 540 236A26 26 0 0 1 570 212A26 26 0 0 1 600 190A26 26 0 0 1 630 212A26 26 0 0 1 660 236A26 26 0 0 1 688 262A26 26 0 0 1 711 293A26 26 0 0 1 726 330A26 26 0 0 1 732 370V720Z"/></clipPath>
+    <g clip-path="url(#towerClip)" fill="none" stroke="#C9A97A" stroke-width="2">
+      <path d="M380 318H820M380 296H820M380 272H820M380 246H820M380 218H820M380 188H820M380 158H820M380 128H820M380 104H820" opacity=".55"/>
+      <path d="M574 90C566 160 560 250 556 336M626 90C634 160 640 250 644 336" stroke="#B8946A" stroke-width="2.4"/>
+      <path d="M582 92C560 170 520 260 470 336M590 92C578 170 556 260 520 336M610 92C622 170 644 260 680 336M618 92C640 170 680 260 730 336" stroke="#B8946A" stroke-width="1.6" opacity=".8"/>
+      <path d="M600 92V336" stroke="#C9A54A" stroke-width="1.6" stroke-dasharray="6 6"/>
+    </g>
+    <g fill="#F5E9D2" stroke="#A88A5C" stroke-width="1.6">
+      <path d="M410 336C412 306 424 284 438 272C452 284 464 306 466 336Z"/>
+      <path d="M734 336C736 306 748 284 762 272C776 284 788 306 790 336Z"/>
+      <ellipse cx="438" cy="270" rx="9" ry="4"/><ellipse cx="762" cy="270" rx="9" ry="4"/>
+    </g>
+    <g stroke="#A88A5C" stroke-width="1.2"><path d="M420 304H456M416 320H460M744 304H780M740 320H784"/></g>
+    <rect x="395" y="334" width="76" height="18" fill="#E2C9A0" stroke="#A88A5C" stroke-width="1.6"/>
+    <rect x="729" y="334" width="76" height="18" fill="#E2C9A0" stroke="#A88A5C" stroke-width="1.6"/>
+    <g fill="#C9A54A"><circle cx="414" cy="343" r="2.4"/><circle cx="433" cy="343" r="2.4"/><circle cx="452" cy="343" r="2.4"/><circle cx="748" cy="343" r="2.4"/><circle cx="767" cy="343" r="2.4"/><circle cx="786" cy="343" r="2.4"/></g>
+    <use href="#innerArch" fill="none" stroke="#E2C9A0" stroke-width="12"/>
+    <use href="#innerArch" fill="none" stroke="#C9A54A" stroke-width="3"/>
+    <g fill="#F7EEDC" stroke="#BFA273">
+      <rect x="414" y="392" width="44" height="280" rx="3"/><rect x="742" y="392" width="44" height="280" rx="3"/>
+    </g>
+    <g fill="#E2C9A0" stroke="#A88A5C">
+      <rect x="398" y="356" width="76" height="14"/><rect x="726" y="356" width="76" height="14"/>
+      <rect x="398" y="680" width="76" height="40"/><rect x="726" y="680" width="76" height="40"/>
+    </g>
+    <g id="vines"></g>
+    <g>
+      <use href="#rosette" x="-9" y="-9" width="18" height="18" transform="translate(452 345)"/><use href="#rosette" x="-9" y="-9" width="18" height="18" transform="translate(462 298)"/>
+      <use href="#rosette" x="-9" y="-9" width="18" height="18" transform="translate(484 258)"/><use href="#rosette" x="-9" y="-9" width="18" height="18" transform="translate(514 224)"/>
+      <use href="#rosette" x="-9" y="-9" width="18" height="18" transform="translate(548 198)"/><use href="#rosette" x="-9" y="-9" width="18" height="18" transform="translate(748 345)"/>
+      <use href="#rosette" x="-9" y="-9" width="18" height="18" transform="translate(738 298)"/><use href="#rosette" x="-9" y="-9" width="18" height="18" transform="translate(716 258)"/>
+      <use href="#rosette" x="-9" y="-9" width="18" height="18" transform="translate(686 224)"/><use href="#rosette" x="-9" y="-9" width="18" height="18" transform="translate(652 198)"/>
+    </g>
+    </g>
+    <!-- amalaka (ribbed stone disc) and kalash crown the shikhara -->
+    <g>
+      <ellipse cx="600" cy="88" rx="44" ry="11" fill="#F5E9D2" stroke="#A88A5C" stroke-width="1.6"/>
+      <path d="M560 86V90M572 82V94M586 79V97M600 78V98M614 79V97M628 82V94M640 86V90" stroke="#A88A5C" stroke-width="1.4"/>
+      <rect x="586" y="72" width="28" height="6" rx="2" fill="#E2C9A0" stroke="#A88A5C"/>
+      <path d="M588 72C580 64 584 52 600 50C616 52 620 64 612 72Z" fill="#D4A63A" stroke="#8A6418" stroke-width="1.2"/>
+      <path d="M594 50L600 36L606 50Z" fill="#E9C46A" stroke="#8A6418"/>
+      <ellipse cx="600" cy="50" rx="9" ry="2.6" fill="#E9C46A" stroke="#8A6418"/>
+      <circle cx="600" cy="34" r="3" fill="#E9C46A"/>
+    </g>
+    <g fill="#EAD9BC" stroke="#A88A5C" stroke-width="1.4">
+      <rect x="372" y="722" width="456" height="10" rx="2"/>
+      <rect x="352" y="732" width="496" height="10" rx="2"/>
+      <rect x="332" y="742" width="536" height="10" rx="2"/>
+    </g>
+    <use href="#diya" class="flame-lit" transform="translate(387 676) scale(.8)"/>
+    <use href="#diya" class="flame-lit" transform="translate(813 676) scale(.8)"/>
   </svg>
   <div class="vignette"></div>
   <div class="petals" id="introPetals" aria-hidden="true"></div>
@@ -1128,19 +1103,20 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
       <button type="button" class="hint-btn pearl-hit" data-hint="mundavalya"></button>
       <div class="card">
         <div class="divine">
-          <figure class="deity"><svg viewBox="0 0 100 100" role="img" aria-label="Lord Ganesha"><use href="#ganesha"/></svg><figcaption>|| Shree Ganeshay Namah ||</figcaption></figure>
-          <figure class="deity"><svg viewBox="0 0 100 100" role="img" aria-label="Jhulelal"><use href="#jhulelal"/></svg><figcaption>|| Jai Jhulelal ||</figcaption></figure>
+          <figure class="deity"><img src="ganesha.svg" alt="Lord Ganesha" width="80" height="100"><figcaption>|| Shree Ganeshay Namah ||</figcaption></figure>
+          <svg class="logo card-logo" viewBox="0 120 1280 1080" role="img" aria-label="Kapil and Rucha monogram"><use href="#kr-logo-pat"/></svg>
+          <figure class="deity"><img src="jhulelal.svg" alt="Jhulelal" width="96" height="100"><figcaption>|| Jai Jhulelal ||</figcaption></figure>
         </div>
         <p class="blessing" data-i18n="blessing">With the divine blessings of Jaibaba, our elders and the love of our families</p>
         <div class="rule" aria-hidden="true"><svg viewBox="-12 -8 24 16"><use href="#rosette" x="-8" y="-8" width="16" height="16"/></svg></div>
         <p class="cordial">We cordially invite you for the wedding celebration of</p>
-        <h1 class="visually-hidden" id="inviteNames" tabindex="-1">Kapil &amp; Rucha</h1>
+        <h1 class="visually-hidden" id="inviteNames" tabindex="-1">Kapil and Rucha</h1>
         <div class="person">
           <p class="pname-big" aria-hidden="true"><span class="nm-wrap"><span id="nm1"></span>
             <button type="button" class="hint-btn topi-on" data-hint="topi"><svg viewBox="0 0 64 46" aria-hidden="true" id="topiSvg"></svg></button></span></p>
           <div class="lineage" id="lineage1"></div>
         </div>
-        <p class="weds" aria-hidden="true">&amp;</p>
+        <p class="weds" aria-hidden="true">and</p>
         <div class="person">
           <p class="pname-big" aria-hidden="true"><span class="nm-wrap"><span id="nm2"></span>
             <button type="button" class="hint-btn nath-on" data-hint="nath"><svg viewBox="0 0 64 64" aria-hidden="true" id="nathSvg"></svg></button>
@@ -1263,7 +1239,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
       el("use", { href: "#sprig", transform: "translate(" + (p + 64) + " 690) scale(2.4)" }, w);
     }
     var v = $("vines");
-    [].forEach(function (cx) {
+    [436, 764].forEach(function (cx) {
       el("path", { d: "M" + cx + " 666C" + (cx - 9) + " 636 " + (cx + 9) + " 610 " + cx + " 580C" + (cx - 9) + " 550 " + (cx + 9) + " 524 " + cx + " 494C" + (cx - 9) + " 464 " + (cx + 9) + " 440 " + cx + " 404", fill: "none", stroke: "#6E8B5A", "stroke-width": "2" }, v);
       for (var yy = 420; yy < 660; yy += 30) {
         el("ellipse", { cx: cx + (yy % 60 ? 8 : -8), cy: yy, rx: 7, ry: 3, fill: "#86A26E", transform: "rotate(" + (yy % 60 ? 30 : -30) + " " + (cx + (yy % 60 ? 8 : -8)) + " " + yy + ")" }, v);
@@ -1353,14 +1329,14 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
     svg.innerHTML = s;
   }
   var ICONS = {
-    rings: '<circle cx="23" cy="34" r="12" fill="none" stroke="#C9A54A" stroke-width="3.5"/><circle cx="37" cy="34" r="12" fill="none" stroke="#E2A91B" stroke-width="3.5"/><path d="M33 18l4-6 4 6-4 4z" fill="#F2C4D0" stroke="#B5546F"/>',
+    rings: '<circle cx="23" cy="34" r="13" fill="none" stroke="#B8862A" stroke-width="5"/><circle cx="23" cy="34" r="13" fill="none" stroke="#F3DDA0" stroke-width="1.6"/><circle cx="37" cy="34" r="13" fill="none" stroke="#C9A54A" stroke-width="5"/><circle cx="37" cy="34" r="13" fill="none" stroke="#FBEFC8" stroke-width="1.6"/><path d="M25 22.6A13 13 0 0 1 33 22" fill="none" stroke="#B8862A" stroke-width="5"/><path d="M19 15l4-7 4 7-4 4z" fill="#E8F1F5" stroke="#8FA6B5"/><path d="M33 13l4-6 4 6-4 4z" fill="#E8F1F5" stroke="#8FA6B5"/><g fill="#fff"><circle cx="21.5" cy="12" r=".8"/><circle cx="35.5" cy="10" r=".8"/></g>',
     thali: '<ellipse cx="30" cy="38" rx="24" ry="9" fill="#E9C46A" stroke="#A4741C" stroke-width="1.5"/><ellipse cx="30" cy="35" rx="18" ry="5.5" fill="#F7E3A8"/><circle cx="22" cy="33" r="4" fill="#E2A91B"/><circle cx="31" cy="31" r="4" fill="#C2416B"/><circle cx="39" cy="34" r="4" fill="#6E9B5E"/>',
     haldi: '<path d="M10 30h40q-2 18-20 18T10 30z" fill="#C25E1A" stroke="#6E2A0A"/><ellipse cx="30" cy="30" rx="20" ry="5" fill="#E2A91B"/><circle cx="18" cy="22" r="6" fill="#E8891A"/><circle cx="18" cy="22" r="2.5" fill="#C25E0A"/><path d="M40 26l8-14" stroke="#6E9B5E" stroke-width="3" stroke-linecap="round"/>',
     garland: '<path d="M8 14Q30 54 52 14" fill="none" stroke="#6E9B5E" stroke-width="1.5"/><g fill="#E8891A"><circle cx="12" cy="22" r="5"/><circle cx="18" cy="31" r="5"/><circle cx="26" cy="37" r="5"/><circle cx="34" cy="37" r="5"/><circle cx="42" cy="31" r="5"/><circle cx="48" cy="22" r="5"/></g><g fill="#E2A91B"><circle cx="12" cy="22" r="2"/><circle cx="26" cy="37" r="2"/><circle cx="42" cy="31" r="2"/></g>',
     mishri: '<path d="M14 30h32l-4 16H18z" fill="#E7EAF2" stroke="#1F2A5C" stroke-width="1.4"/><g fill="#FFFFFF" stroke="#9AA3C4"><path d="M20 30l4-8 5 6-3 4z"/><path d="M28 30l5-10 5 7-2 3z"/><path d="M35 30l3-6 4 4-1 2z"/></g><path d="M14 30h32" stroke="#A8283A" stroke-width="2"/>',
     music: '<rect x="14" y="24" width="32" height="20" rx="10" fill="#A8283A" stroke="#6E1A28"/><path d="M18 26l8 16M26 26l8 16M34 26l8 16" stroke="#E9C46A" stroke-width="1.2"/><ellipse cx="14" cy="34" rx="3" ry="10" fill="#F3E3C0" stroke="#8A6418"/><ellipse cx="46" cy="34" rx="3" ry="10" fill="#F3E3C0" stroke="#8A6418"/><path d="M40 10v12M40 10l6 3" stroke="#1F2A5C" stroke-width="2"/>',
     mehendi: '<path d="M30 8l7 26-7 18-7-18z" fill="#7A4A1E" stroke="#4A2A0E"/><path d="M26 34h8" stroke="#E9C46A" stroke-width="2"/><g fill="#6E9B5E"><ellipse cx="14" cy="40" rx="7" ry="3" transform="rotate(-30 14 40)"/><ellipse cx="46" cy="40" rx="7" ry="3" transform="rotate(30 46 40)"/></g>',
-    mandap: '<path d="M8 22Q30 4 52 22" fill="#C2416B" stroke="#7A1F3A"/><path d="M8 22h44" stroke="#C9A54A" stroke-width="3"/><path d="M12 22v26M48 22v26M22 22v26M38 22v26" stroke="#C9A54A" stroke-width="2.5"/><path d="M12 30q8 6 18 0q10 6 18 0" fill="none" stroke="#E8891A" stroke-width="2"/><path d="M6 48h48" stroke="#8A6418" stroke-width="2"/>',
+    mandap: '<path d="M6 18Q30 0 54 18Z" fill="#A8283A" stroke="#6E1626"/><rect x="5" y="17" width="50" height="4" fill="#C9A54A"/><g fill="#F3E6CC" stroke="#A88A5C" stroke-width=".8"><rect x="8" y="21" width="4" height="27"/><rect x="48" y="21" width="4" height="27"/></g><g fill="#E8891A"><circle cx="10" cy="26" r="1.5"/><circle cx="10" cy="32" r="1.5"/><circle cx="10" cy="38" r="1.5"/><circle cx="50" cy="26" r="1.5"/><circle cx="50" cy="32" r="1.5"/><circle cx="50" cy="38" r="1.5"/></g><path d="M12 22Q21 28 30 22Q39 28 48 22" fill="none" stroke="#FBF3E2" stroke-width="1.6"/><path d="M20 44H40L37 52H23Z" fill="#8A4A1E" stroke="#5A2E0E"/><rect x="18" y="41" width="24" height="4" fill="#B5652A" stroke="#5A2E0E"/><path d="M30 25C25 32 23 36 26 40C27 37 28 36 30 34C32 36 33 37 34 40C37 36 35 32 30 25Z" fill="#E8891A"/><path d="M30 31C28 35 28 38 30 40C32 38 32 35 30 31Z" fill="#FFD25A"/><path d="M4 52H56" stroke="#8A6418" stroke-width="2"/>',
     knot: '<path d="M8 30q12-14 22 0t22 0" fill="none" stroke="#A8283A" stroke-width="4"/><path d="M8 34q12 14 22 0t22 0" fill="none" stroke="#E2A91B" stroke-width="4"/><circle cx="30" cy="32" r="5" fill="#C9A54A"/>',
     lantern: '<path d="M30 4v8" stroke="#C9A54A" stroke-width="1.5"/><path d="M20 18q0-8 10-8t10 8z" fill="#B8325A"/><path d="M18 18h24l-2 22H20z" fill="#FFE6A6" stroke="#9C5A28" stroke-width="1.5"/><path d="M20 40h20l-6 6h-8z" fill="#C9A54A"/><circle cx="30" cy="30" r="12" fill="url(#warmGlow)"/>'
   };
@@ -1406,8 +1382,8 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
     [[11, -88], [15.5, -89], [20, -87]].forEach(function (d) { el("circle", { cx: d[0], cy: d[1], r: 1.5, fill: "#2A68BE" }, g); });
   }
   function buildMotifs() {
-    drape($("perchL"), 214, "ajrak"); drape($("perchR"), 916, "paithani");
-    perchedPeacock($("perchL"), 254, false); perchedPeacock($("perchR"), 946, true);
+    drape($("perchL"), 262, "ajrak"); drape($("perchR"), 868, "paithani");
+    perchedPeacock($("perchL"), 302, false); perchedPeacock($("perchR"), 898, true);
     // peacock feather beside the names
     var f = '<path d="M21 8C37 28 36 66 22 104C8 66 6 28 21 8Z" fill="#2E8B6E" opacity=".3"/>';
     for (var y = 12; y < 104; y += 3.5) {
@@ -1485,8 +1461,8 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
 
   /* ---------------- static renders ---------------- */
   var amp = '<span class="amp">&amp;</span>';
-  $("icNames").innerHTML = esc(N.partner1) + '<span class="amp">&amp;</span>' + esc(N.partner2);
-  $("inviteNames").textContent = N.partner1 + " & " + N.partner2;
+  $("icNames").innerHTML = esc(N.partner1) + '<span class="amp">and</span>' + esc(N.partner2);
+  $("inviteNames").textContent = N.partner1 + " and " + N.partner2;
   $("nm1").textContent = N.partner1; $("nm2").textContent = N.partner2;
   ["1", "2"].forEach(function (k) {
     $("lineage" + k).innerHTML = (C.LINEAGE["partner" + k] || []).map(function (l, i) { return '<p class="' + (i ? "lin2" : "lin1") + '">' + esc(l) + "</p>"; }).join("");
@@ -1502,7 +1478,6 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
     '<rect x="300" y="200" width="600" height="120"/><path d="M380 200c0-60 40-80 60-90 20 10 60 30 60 90z M700 200c0-60 40-80 60-90 20 10 60 30 60 90z M540 200c0-80 50-110 60-120 10 10 60 40 60 120z"/></g>' +
     '<rect x="0" y="320" width="1200" height="80" fill="#E8D9CC"/><g opacity=".7"><use href="#lotus" transform="translate(260 360) scale(1.2)"/><use href="#lotus" transform="translate(940 370) scale(1.1)"/></g></svg>';
   buildScene();
-  buildMandap();
   buildMotifs();
   buildTopi(); buildNath();
 
@@ -1766,7 +1741,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
   if (root.classList.contains("intro-on")) {
     outside.forEach(function (n) { n.inert = true; n.setAttribute("aria-hidden", "true"); });
     var fit = function () {
-      var W = innerWidth, H = innerHeight, a = W / H, reqW = 640, reqH = 740, vw, vh;
+      var W = innerWidth, H = innerHeight, a = W / H, reqW = 660, reqH = 770, vw, vh;
       if (!W || !H) return;   // hidden or zero-size tab: wait for a real size
       if (a > reqW / reqH) { vh = reqH; vw = vh * a; } else { vw = reqW; vh = vw / a; }
       scene.setAttribute("viewBox", (600 - vw / 2).toFixed(1) + " " + (400 - vh / 2).toFixed(1) + " " + vw.toFixed(1) + " " + vh.toFixed(1));
@@ -1776,7 +1751,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
       // keep the whole block (names, date, logo, "Tap to open") on screen on short windows
       var copy = $("introCopy"), over = copy.offsetTop + copy.offsetHeight + 18 - H;
       if (over > 0) intro.style.setProperty("--copy-top", Math.max(56, top0 - over) + "px");
-      intro.style.setProperty("--arch-in", (pt(820, 0).x - pt(380, 0).x).toFixed(0) + "px");
+      intro.style.setProperty("--arch-in", (pt(769, 0).x - pt(431, 0).x).toFixed(0) + "px");
       var o = pt(600, 470); scene.style.transformOrigin = o.x + "px " + o.y + "px";
     };
     fit(); addEventListener("resize", fit);
