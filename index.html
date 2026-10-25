@@ -87,6 +87,7 @@ window.CONFIG = {
     topi: "The Sindhi topi: an embroidered cap with an arched front, often set with tiny mirrors.",
     mukut: "The mukut: the gold-fringed crown a Sindhi groom wears, sparkling with sequins.",
     nath: "Green bangles: worn by Marathi brides, a sign of new beginnings and prosperity.",
+    wada: "Pune's wadas: traditional courtyard mansions with carved wooden balconies and tiled roofs, lit with diyas for the wedding.",
     mangh: "Manghs: the rooftop wind-catchers of old Hyderabad, Sindh, all turned to catch the same breeze."
   },
 
@@ -197,7 +198,7 @@ window.CONFIG = {
 
 <!-- ✿ Link preview for WhatsApp / social. Edit by hand.
      og:image must be a full https:// URL to a ~1200×630 JPG. -->
-<title>Kapil and Rucha — Save the Date</title>
+<title>Kapil and Rucha Wedding Invitation</title>
 <meta name="description" content="Kapil and Rucha are getting married on 6th December 2026. Two families, two traditions, one celebration.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Kapil and Rucha — Save the Date">
@@ -751,8 +752,13 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
   background:radial-gradient(ellipse 70% 50% at 50% 100%,rgba(245,198,106,.18),transparent 70%),linear-gradient(180deg,#0E1230 0%,#171A44 55%,#1D1640 100%)}
 .finale canvas{position:absolute;left:0;top:0;width:100%;height:75%;pointer-events:none}
 .finale{flex-direction:column;justify-content:flex-end;align-items:stretch!important;min-height:clamp(560px,80vw,820px)!important}
-.finale-copy{position:relative;z-index:2;text-align:center;padding:70px 20px 26px;margin:auto 0 0}
-.finale-logo{width:clamp(60px,13vw,84px);margin:0 auto 18px;filter:drop-shadow(0 0 10px rgba(255,214,140,.75)) drop-shadow(0 0 28px rgba(233,196,106,.55))}
+.finale-copy{position:relative;z-index:2;text-align:center;padding:70px 20px 34px;margin:auto 0 0}
+.finale-photo{width:clamp(190px,46vw,280px)!important;margin:0 auto 22px!important;position:relative}
+.finale-photo .cp-outer{background:linear-gradient(160deg,#FFF3D0,#E9C46A 55%,#B8862A)!important;
+  filter:drop-shadow(0 0 18px rgba(255,214,140,.55)) drop-shadow(0 0 46px rgba(233,196,106,.35))!important}
+@media (prefers-reduced-motion:no-preference){.finale-photo .cp-outer{animation:archGlow 3.2s ease-in-out infinite}}
+@keyframes archGlow{50%{filter:drop-shadow(0 0 26px rgba(255,224,160,.8)) drop-shadow(0 0 64px rgba(233,196,106,.5))}}
+.finale-logo{position:relative;z-index:2;margin-bottom:-12px!important;width:clamp(60px,13vw,84px);margin:0 auto 18px;filter:drop-shadow(0 0 10px rgba(255,214,140,.75)) drop-shadow(0 0 28px rgba(233,196,106,.55))}
 @media (prefers-reduced-motion:no-preference){.finale-logo{animation:logoGlow 3.2s ease-in-out infinite}}
 @keyframes logoGlow{50%{filter:drop-shadow(0 0 16px rgba(255,224,160,.95)) drop-shadow(0 0 44px rgba(233,196,106,.8))}}
 .finale-from{font:500 clamp(.74rem,2.8vw,.9rem)/1.4 var(--sans);letter-spacing:.34em;text-transform:uppercase;color:#D9C190;margin:6px 0 0;padding-left:.34em}
@@ -760,8 +766,8 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
 .finale-rule::before,.finale-rule::after{content:"";height:1px;width:clamp(50px,14vw,110px);background:linear-gradient(90deg,transparent,#E9C46A)}
 .finale-rule::after{transform:scaleX(-1)}
 .finale-rule svg{width:20px;height:14px}
-.finale-fam{font:400 clamp(2.4rem,9vw,3.8rem)/1.05 var(--script);color:#F3DDA0;margin:0;text-shadow:0 0 26px rgba(233,196,106,.45)}
-.finale-fam span{display:block;font:italic 400 .42em/1.6 var(--serif);color:#E9DCC4;letter-spacing:.04em}
+.finale-fam{font:600 clamp(1.9rem,7vw,2.8rem)/1.15 var(--serif);letter-spacing:.06em;color:#F3DDA0;margin:0;text-shadow:0 0 26px rgba(233,196,106,.45)}
+.finale-fam span{display:block;font:italic 400 .56em/1.7 var(--serif);letter-spacing:.02em;color:#E9DCC4;letter-spacing:.04em}
 .sky-lanterns{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1}
 .sky-lanterns i{position:absolute;bottom:18%;width:16px;height:22px;border-radius:40% 40% 30% 30%;
   background:radial-gradient(ellipse at 50% 70%,#FFE9A8,#F5A23A 60%,#C25E1A);box-shadow:0 0 18px 6px rgba(255,180,90,.35);opacity:0;
@@ -1252,9 +1258,6 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
       <span class="eyebrow" data-i18n="story_eyebrow">A love story</span>
       <h2 class="title" id="storyTitle" data-i18n="story_title">Meet the Couple</h2>
       <div class="rule" aria-hidden="true"><svg viewBox="-12 -8 24 16"><use href="#rosette" x="-8" y="-8" width="16" height="16"/></svg></div>
-      <div class="couple-photo">
-        <span class="cp-outer"><span class="cp-inner" id="couplePhoto"></span></span>
-      </div>
       <div id="storyText"></div>
     </div>
     <!-- the curtain: ajrak on Kapil's side, Paithani on Rucha's -->
@@ -1270,11 +1273,14 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
     <div class="sky-lanterns" id="skyLanterns" aria-hidden="true"></div>
     <div class="finale-copy reveal">
       <svg class="logo finale-logo" viewBox="0 120 1280 1080" aria-hidden="true"><use href="#kr-logo-pat"/></svg>
+      <div class="couple-photo finale-photo">
+        <span class="cp-outer"><span class="cp-inner" id="couplePhoto"></span></span>
+      </div>
       <p class="finale-from">With best compliments from</p>
       <div class="finale-rule" aria-hidden="true"><svg viewBox="-12 -8 24 16"><use href="#rosette" x="-8" y="-8" width="16" height="16"/></svg></div>
       <p class="finale-fam">Gulwani Family<span>and Friends</span></p>
     </div>
-    <div class="skyline" aria-hidden="true"><svg viewBox="0 0 1200 300" preserveAspectRatio="xMidYMax slice" id="skyline"></svg></div>
+    <div class="skyline" aria-hidden="true" data-hint="wada"><svg viewBox="0 0 1200 300" preserveAspectRatio="xMidYMax slice" id="skyline"></svg></div>
   </section>
 </main>
 
