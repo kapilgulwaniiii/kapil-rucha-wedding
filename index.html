@@ -22,13 +22,14 @@ window.CONFIG = {
   /* ---- Couple, families & date ---- */
   NAMES: { partner1: "Kapil", partner2: "Rucha" },
   // Lines printed under each name on the invitation card
+  // Each name stays on one line; the whole line wraps between names, never inside one
   LINEAGE: {
     partner1: [
-      "S/O Mrs. Leena Shamsunder Gulwani and Mr. Shamsunder Rochiram Gulwani",
-      "Grandson of Late Mrs. Gunwanti Rochiram Gulwani and Late Dr. Rochiram Gulwani"
+      { prefix: "Grandson of", names: ["Late Mrs. Gunwanti Rochiram Gulwani", "Late Dr. Rochiram Gulwani"] },
+      { prefix: "S/O", names: ["Mrs. Leena Shamsunder Gulwani", "Mr. Shamsunder Rochiram Gulwani"] }
     ],
     partner2: [
-      "D/O Mrs. Monali Rajesh Nagare and Mr. Rajesh Nagare"
+      { prefix: "D/O", names: ["Mrs. Monali Rajesh Nagare", "Mr. Rajesh Nagare"] }
     ]
   },
   FAMILY_LINE: "Gulwani and Nagare Family",   // under "Sharing the joy" at the foot of the card
@@ -84,6 +85,7 @@ window.CONFIG = {
     mirrorwork: "Ajrak and mirror work: small mirrors stitched into Sindhi embroidery, said to ward off the evil eye.",
     pagdi: "The Puneri pagdi: the pre-stitched turban of Pune.",
     topi: "The Sindhi topi: an embroidered cap with an arched front, often set with tiny mirrors.",
+    mukut: "The mukut: the gold-fringed crown a Sindhi groom wears, sparkling with sequins.",
     nath: "Green bangles: worn by Marathi brides, a sign of new beginnings and prosperity.",
     mangh: "Manghs: the rooftop wind-catchers of old Hyderabad, Sindh, all turned to catch the same breeze."
   },
@@ -355,12 +357,14 @@ section{position:relative;scroll-margin-top:0}
 .pname-big{font:italic 500 clamp(2.9rem,12vw,4.8rem)/1.05 var(--serif);margin:0;color:#A4741C}
 .pname-big #nm1,.pname-big #nm2{background:linear-gradient(180deg,#B8862A,#8A6418);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 .nm-wrap{position:relative;display:inline-block}
-.nm-wrap .topi-on{position:absolute;left:-.4em;top:-.06em;width:.5em;z-index:2;line-height:0}
+.nm-wrap .topi-on{position:absolute;left:-.5em;top:-.2em;width:.68em;z-index:2;line-height:0}
 .nm-wrap .nath-on{position:absolute;left:-.44em;top:.1em;width:.42em;z-index:2;line-height:0}
 .joy-feather{position:relative!important;right:auto!important;top:auto!important;display:inline-block;vertical-align:middle;width:.8em!important;height:2.8em!important;margin:-1em 0 -.7em .5em;transform:rotate(28deg)!important}
 .lineage p{margin:2px auto;max-width:44ch;color:var(--text-soft)}
 .lin1{font:500 clamp(.92rem,3.4vw,1.06rem)/1.45 var(--serif);color:#7A1F3A!important}
 .lin2{font:italic 400 clamp(.86rem,3.1vw,.98rem)/1.45 var(--serif)}
+.lineage .nw{white-space:nowrap}
+.lineage .pre{white-space:nowrap}
 .weds{font:400 clamp(2.4rem,9vw,3.4rem)/1 var(--script);color:#C9A54A;margin:8px 0 2px}
 .joy{font:italic 400 clamp(1rem,3.6vw,1.12rem)/1.3 var(--serif);color:var(--text-soft);margin:26px 0 2px;position:relative;z-index:1}
 .joy-fam{font:600 clamp(1.1rem,4vw,1.3rem)/1.3 var(--serif);letter-spacing:.06em;color:#7A1F3A;margin:0;position:relative;z-index:1}
@@ -369,7 +373,7 @@ section{position:relative;scroll-margin-top:0}
 .card h1{padding-top:.34em!important}
 .topi-on,.nath-on{position:absolute;z-index:2;line-height:0}
 .topi-on{transform:rotate(-18deg)}
-.nath-on{transform:rotate(-14deg)}
+.nath-on{transform:rotate(-30deg)}
 .topi-on svg,.nath-on svg{width:100%;height:auto;filter:drop-shadow(0 2px 3px rgba(60,20,10,.25))}
 .skyline{cursor:pointer}
 .feather{position:absolute;right:-74px;top:-52px;width:34px;height:118px;transform:rotate(24deg);z-index:0}
@@ -746,6 +750,19 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
 .finale{position:relative;overflow:hidden;min-height:clamp(380px,62vw,620px);display:flex;align-items:flex-end;
   background:radial-gradient(ellipse 70% 50% at 50% 100%,rgba(245,198,106,.18),transparent 70%),linear-gradient(180deg,#0E1230 0%,#171A44 55%,#1D1640 100%)}
 .finale canvas{position:absolute;left:0;top:0;width:100%;height:75%;pointer-events:none}
+.finale{flex-direction:column;justify-content:flex-end;align-items:stretch!important;min-height:clamp(560px,80vw,820px)!important}
+.finale-copy{position:relative;z-index:2;text-align:center;padding:70px 20px 26px;margin:auto 0 0}
+.finale-logo{width:clamp(54px,12vw,76px);margin:0 auto 14px;filter:drop-shadow(0 0 18px rgba(233,196,106,.35))}
+.finale-line{font:400 clamp(2.1rem,8vw,3.4rem)/1.15 var(--script);color:#F3DDA0;margin:0 0 14px;text-shadow:0 0 24px rgba(233,196,106,.45)}
+.finale-from{font:italic 400 clamp(1.02rem,3.8vw,1.25rem)/1.5 var(--serif);color:#E9DCC4;margin:0;letter-spacing:.02em}
+.sky-lanterns{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1}
+.sky-lanterns i{position:absolute;bottom:18%;width:16px;height:22px;border-radius:40% 40% 30% 30%;
+  background:radial-gradient(ellipse at 50% 70%,#FFE9A8,#F5A23A 60%,#C25E1A);box-shadow:0 0 18px 6px rgba(255,180,90,.35);opacity:0;
+  animation:rise-lantern linear infinite}
+@keyframes rise-lantern{0%{transform:translate(0,0) scale(1);opacity:0}10%{opacity:.95}80%{opacity:.75}100%{transform:translate(var(--dx),-520px) scale(.55);opacity:0}}
+@media (prefers-reduced-motion:no-preference){.skyline .win{animation:flickerWin 4s ease-in-out infinite}}
+@keyframes flickerWin{50%{opacity:.6}}
+@media (prefers-reduced-motion:reduce){.sky-lanterns{display:none}}
 .finale .stars{opacity:.8}
 .skyline{position:relative;z-index:1;width:100%;margin:0;height:clamp(170px,30vw,300px)}
 .skyline svg{width:100%;height:100%}
@@ -1183,7 +1200,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
         <h1 class="visually-hidden" id="inviteNames" tabindex="-1">Kapil and Rucha</h1>
         <div class="person">
           <p class="pname-big" aria-hidden="true"><span class="nm-wrap"><span id="nm1"></span>
-            <button type="button" class="hint-btn topi-on" data-hint="topi"><svg viewBox="0 0 64 46" aria-hidden="true" id="topiSvg"></svg></button></span></p>
+            <button type="button" class="hint-btn topi-on" data-hint="mukut"><svg viewBox="0 0 80 58" aria-hidden="true" id="topiSvg"></svg></button></span></p>
           <div class="lineage" id="lineage1"></div>
         </div>
         <p class="weds" aria-hidden="true">and</p>
@@ -1243,7 +1260,13 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
   <section class="finale" id="finale" aria-label="Closing scene">
     <div class="stars" aria-hidden="true"></div>
     <canvas id="fireworks" aria-hidden="true"></canvas>
-    <div class="skyline" aria-hidden="true" data-hint="mangh"><svg viewBox="0 0 1200 300" preserveAspectRatio="xMidYMax slice" id="skyline"></svg></div>
+    <div class="sky-lanterns" id="skyLanterns" aria-hidden="true"></div>
+    <div class="finale-copy reveal">
+      <svg class="logo finale-logo" viewBox="0 120 1280 1080" aria-hidden="true"><use href="#kr-logo-pat"/></svg>
+      <p class="finale-line">With love and blessings, we await you</p>
+      <p class="finale-from">With best compliments from<br>Gulwani Family and Friends</p>
+    </div>
+    <div class="skyline" aria-hidden="true"><svg viewBox="0 0 1200 300" preserveAspectRatio="xMidYMax slice" id="skyline"></svg></div>
   </section>
 </main>
 
@@ -1403,24 +1426,42 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
     }
     svg.innerHTML = s;
   }
+  // Pune wadas: two-storey courtyard houses with tiled roofs, wooden balconies, arched windows and a grand gate
   function skylineSVG(svg) {
-    var s = '<rect x="0" y="230" width="1200" height="80" fill="#0D0F26"/>';
-    var blocks = [[0, 150, 230], [150, 120, 190], [270, 160, 150], [430, 340, 120], [770, 160, 150], [930, 120, 190], [1050, 150, 230]];
-    blocks.forEach(function (b) {
-      var x = b[0], w = b[1], top = b[2];
-      s += '<rect x="' + x + '" y="' + top + '" width="' + w + '" height="' + (300 - top) + '" fill="#141836"/>';
-      s += '<path d="M' + x + " " + top + "h" + w + 'v-8h-' + w + 'z" fill="#1C2148"/>';
-      for (var mx = x + 10; mx < x + w - 22; mx += rnd(30, 46)) {
-        var mw = rnd(16, 24), back = rnd(30, 52), front = back - rnd(12, 18), base = top - 8;
-        s += '<path d="M' + mx.toFixed(0) + " " + base + "V" + (base - front).toFixed(0) + "L" + (mx + mw).toFixed(0) + " " + (base - back).toFixed(0) + "V" + base + 'Z" fill="#1A1E42"/>';
-        s += '<path d="M' + (mx + 3).toFixed(0) + " " + (base - 4) + "V" + (base - front + 3).toFixed(0) + "L" + (mx + mw - 3).toFixed(0) + " " + (base - back + 6).toFixed(0) + "V" + (base - 4) + 'Z" fill="#232955"/>';
-        s += '<path d="M' + mx.toFixed(0) + " " + (base - front).toFixed(0) + "L" + (mx + mw).toFixed(0) + " " + (base - back).toFixed(0) + '" stroke="#C9A54A" stroke-width="1.2" opacity=".55"/>';
+    var s = '<rect x="0" y="262" width="1200" height="40" fill="#0D0F26"/>';
+    var wada = function (x, w, h, gate) {
+      var base = 300, top = base - h, roof = 22, mid = top + h * .46;
+      s += '<path d="M' + (x - 10) + " " + top + "L" + (x + 14) + " " + (top - roof) + "H" + (x + w - 14) + "L" + (x + w + 10) + " " + top + 'Z" fill="#2A2246"/>';
+      for (var rx = x - 4; rx < x + w + 6; rx += 7) s += '<path d="M' + rx + " " + top + "L" + (rx + 4) + " " + (top - roof + 3) + '" stroke="#3A3060" stroke-width="1.4"/>';
+      s += '<rect x="' + x + '" y="' + top + '" width="' + w + '" height="' + h + '" fill="#161A3C"/>';
+      s += '<path d="M' + (x - 6) + " " + mid + "h" + (w + 12) + 'v6h-' + (w + 12) + 'z" fill="#2A2246"/>';
+      s += '<path d="M' + (x - 6) + " " + mid + "h" + (w + 12) + '" stroke="#C9A54A" stroke-width="1" opacity=".55"/>';
+      // upper storey: wooden balcony posts and lit windows
+      for (var px = x + 8; px < x + w - 4; px += 18) {
+        s += '<rect x="' + px + '" y="' + (top + 6) + '" width="3" height="' + (mid - top - 6) + '" fill="#3A3060"/>';
+        if (px + 18 < x + w - 2) s += '<path d="M' + (px + 5) + " " + (mid - 4) + "v-" + ((mid - top) * .44).toFixed(0) + "q5-7 10 0v" + ((mid - top) * .44).toFixed(0) + 'z" fill="#F5C66A" class="win" style="animation-delay:-' + rnd(0, 4).toFixed(1) + 's" opacity="' + rnd(.55, 1).toFixed(2) + '"/>';
       }
-      for (var wx = x + 16; wx < x + w - 14; wx += 26) for (var wy = top + 20; wy < 290; wy += 34) {
-        if ((wx + wy) % 3 === 0) continue;
-        s += '<path d="M' + wx + " " + (wy + 18) + "v-10q0-8 6-10q6 2 6 10v10z" + '" fill="#F5C66A" opacity="' + rnd(.45, .95).toFixed(2) + '"/>';
+      s += '<path d="M' + x + " " + (mid - 2) + "h" + w + '" stroke="#5A4A3A" stroke-width="3"/>';
+      // ground storey: arched windows, and a big wooden gate on the main wada
+      if (gate) {
+        var gx = x + w / 2 - 22;
+        s += '<path d="M' + gx + " 300V" + (mid + 26) + "q22-26 44 0V300z" + '" fill="#4A2E1E" stroke="#C9A54A" stroke-width="1.2"/>';
+        s += '<path d="M' + (gx + 22) + " " + (mid + 14) + "V300" + '" stroke="#C9A54A" stroke-width="1"/>';
+        for (var sy = mid + 34; sy < 296; sy += 10) s += '<circle cx="' + (gx + 11) + '" cy="' + sy + '" r="1.2" fill="#E9C46A"/><circle cx="' + (gx + 33) + '" cy="' + sy + '" r="1.2" fill="#E9C46A"/>';
+        s += '<path d="M' + (gx - 8) + " " + (mid + 18) + "q30-14 60 0" + '" fill="none" stroke="#E8891A" stroke-width="4" stroke-dasharray="3 3"/>';
       }
-    });
+      for (var wx = x + 10; wx < x + w - 12; wx += 24) {
+        if (gate && Math.abs(wx + 6 - (x + w / 2)) < 32) continue;
+        s += '<path d="M' + wx + " " + (300 - 10) + "v-" + (h * .26).toFixed(0) + "q6-8 12 0v" + (h * .26).toFixed(0) + 'z" fill="#F5C66A" class="win" style="animation-delay:-' + rnd(0, 4).toFixed(1) + 's" opacity="' + rnd(.45, .95).toFixed(2) + '"/>';
+      }
+      // diyas along the roof edge and the balcony ledge
+      for (var dx = x + 6; dx < x + w - 2; dx += 22) {
+        [top - 2, mid - 1].forEach(function (dy) {
+          s += '<ellipse cx="' + dx + '" cy="' + dy + '" rx="3.6" ry="1.4" fill="#C25E1A"/><ellipse class="flame" cx="' + dx + '" cy="' + (dy - 4) + '" rx="1.7" ry="3.6" fill="url(#flameGrad)" style="animation-delay:-' + rnd(0, 1.6).toFixed(2) + 's"/>';
+        });
+      }
+    };
+    [[-20, 170, 118], [168, 150, 96], [334, 210, 150, 1], [560, 150, 104], [726, 200, 140, 1], [944, 130, 92], [1086, 150, 120]].forEach(function (b) { wada(b[0], b[1], b[2], b[3]); });
     svg.innerHTML = s;
   }
   var ICONS = {
@@ -1504,21 +1545,35 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
     });
   }
 
-  // Kapil's Sindhi topi: arched front opening, embroidery and little mirrors
-  // Kapil's Sindhi topi: arched front opening, embroidery and little mirrors
+  // Kapil's mukut: the gold-fringed groom's crown with sequins and a central rosette
   function buildTopi() {
-    var t = '<path d="M5 40V17Q5 8 32 6Q59 8 59 17V40Q32 45 5 40Z" fill="#A8283A" stroke="#6E1626" stroke-width="1"/>' +
-      '<path d="M5 17Q32 25 59 17Q59 8 32 6Q5 8 5 17Z" fill="#C2416B" stroke="#6E1626" stroke-width="1"/>' +
-      '<ellipse cx="32" cy="14" rx="18" ry="4.2" fill="none" stroke="#E9C46A" stroke-width="1"/>' +
-      '<ellipse cx="32" cy="14" rx="9" ry="2.2" fill="#0F6B5C" stroke="#E9C46A" stroke-width=".8"/>' +
-      '<path d="M5 25L9 21L13 25L17 21L21 25L25 21L29 25L33 21L37 25L41 21L45 25L49 21L53 25L57 21L59 23" fill="none" stroke="#E9C46A" stroke-width="1.1"/>' +
-      '<path d="M5 33L59 33" stroke="#1F2A5C" stroke-width="2.2"/>' +
-      '<path d="M23 43V33Q32 21 41 33V43.6Q32 45 23 43Z" fill="#FBF3E2" stroke="#E9C46A" stroke-width="1.2"/>';
-    [[11, 30], [17, 37], [47, 37], [53, 30], [32, 18.5]].forEach(function (m, i) {
-      t += '<circle cx="' + m[0] + '" cy="' + m[1] + '" r="2.4" fill="url(#mirrorGrad)" stroke="#E9C46A" stroke-width=".6"/>' +
-        '<use href="#spark" class="spark" fill="#fff" transform="translate(' + (m[0] + 1) + " " + (m[1] - 1) + ') scale(.45)" style="animation-delay:' + (i * 1.3).toFixed(1) + 's"/>';
+    var shape = "M6 50Q4 40 14 36Q24 33 28 30Q30 14 40 6Q50 14 52 30Q56 33 66 36Q76 40 74 50Z";
+    var t = '<path d="' + shape + '" fill="none" stroke="#C9A54A" stroke-width="9" stroke-linejoin="round"/>';
+    // tinsel fringe all round
+    var fringe = "";
+    for (var a = 0; a < 70; a++) {
+      var ang = a / 70 * Math.PI * 2;
+      fringe += '<path d="M40 30L' + (40 + Math.cos(ang) * 46).toFixed(1) + " " + (30 + Math.sin(ang) * 30).toFixed(1) + '" />';
+    }
+    t += '<clipPath id="mkClip"><path d="' + shape + '"/></clipPath>' +
+      '<path d="' + shape + '" fill="none" stroke="#E9C46A" stroke-width="7" stroke-dasharray="1.2 1.4" stroke-linejoin="round"/>' +
+      '<path d="' + shape + '" fill="#F2C94C" stroke="#B8862A" stroke-width="1.2"/>' +
+      '<g clip-path="url(#mkClip)">' +
+        '<path d="M8 46Q40 34 72 46" fill="none" stroke="#B8862A" stroke-width="1.4"/>' +
+        '<path d="M14 42Q40 30 66 42" fill="none" stroke="#E8EEF2" stroke-width="2" stroke-dasharray="1.6 1.6"/>' +
+        '<path d="M22 34Q40 26 58 34" fill="none" stroke="#B8862A" stroke-width="1"/>' +
+      "</g>";
+    [[20, 44], [60, 44]].forEach(function (c) {
+      t += '<circle cx="' + c[0] + '" cy="' + c[1] + '" r="5.4" fill="#E2468A" stroke="#B8862A" stroke-width=".8"/>' +
+        '<circle cx="' + c[0] + '" cy="' + c[1] + '" r="3.4" fill="none" stroke="#FFD1E4" stroke-width=".8" stroke-dasharray="1 1"/>' +
+        '<circle cx="' + c[0] + '" cy="' + c[1] + '" r="1.8" fill="#1E9A55"/>';
     });
-    [[13, 37], [51, 37], [9, 21.5], [55, 21.5]].forEach(function (d) { t += '<circle cx="' + d[0] + '" cy="' + d[1] + '" r="1.1" fill="#E2A91B"/>'; });
+    t += '<circle cx="40" cy="22" r="7" fill="#C2416B" stroke="#E9C46A" stroke-width="1.6"/>' +
+      '<circle cx="40" cy="22" r="4" fill="#F3DDA0"/><circle cx="40" cy="22" r="1.8" fill="#C2416B"/>';
+    [[34, 13, "#1E9A55"], [46, 13, "#E2468A"], [30, 30, "#E2468A"], [50, 30, "#1E9A55"], [26, 38, "#1E9A55"], [54, 38, "#E2468A"],
+     [40, 33, "#2BB3A3"], [33, 40, "#E2468A"], [47, 40, "#1E9A55"], [40, 10, "#E2468A"]].forEach(function (d) {
+      t += '<circle cx="' + d[0] + '" cy="' + d[1] + '" r="1.6" fill="' + d[2] + '" stroke="#FFF3D6" stroke-width=".4"/>';
+    });
     $("topiSvg").innerHTML = t;
   }
   // Rucha's Marathi green bangles: a stack of glass chudas between gold kangans
@@ -1530,12 +1585,12 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
           '<ellipse cx="32" cy="' + y + '" rx="27" ry="8.5" fill="none" stroke="#E2B54A" stroke-width="3.6"/>';
         for (var a = 0; a < 18; a++) {
           var t = a / 18 * Math.PI * 2, x = 32 + Math.cos(t) * 27, yy = y + Math.sin(t) * 8.5;
-          if (Math.sin(t) > -0.2) out += '<circle cx="' + x.toFixed(1) + '" cy="' + yy.toFixed(1) + '" r="1.5" fill="#1E7A3A" stroke="#F3DDA0" stroke-width=".4"/>';
+          if (Math.sin(t) > -0.2) out += '<circle cx="' + x.toFixed(1) + '" cy="' + yy.toFixed(1) + '" r="1.5" fill="#0E5A2C" stroke="#F3DDA0" stroke-width=".4"/>';
         }
       } else {
-        out += '<ellipse cx="32" cy="' + y + '" rx="26" ry="8" fill="none" stroke="#0B4A24" stroke-width="3.6"/>' +
-          '<ellipse cx="32" cy="' + y + '" rx="26" ry="8" fill="none" stroke="#1E8A43" stroke-width="2.4"/>' +
-          '<path d="M10 ' + (y + 3) + 'Q32 ' + (y + 10) + ' 54 ' + (y + 3) + '" fill="none" stroke="#9BE0A8" stroke-width=".8" opacity=".8"/>';
+        out += '<ellipse cx="32" cy="' + y + '" rx="26" ry="8" fill="none" stroke="#062E16" stroke-width="3.6"/>' +
+          '<ellipse cx="32" cy="' + y + '" rx="26" ry="8" fill="none" stroke="#0E5A2C" stroke-width="2.4"/>' +
+          '<path d="M10 ' + (y + 3) + 'Q32 ' + (y + 10) + ' 54 ' + (y + 3) + '" fill="none" stroke="#5FAE78" stroke-width=".8" opacity=".7"/>';
       }
     };
     ["gold", "glass", "glass", "glass", "gold", "glass", "glass", "gold"].forEach(function (k, i) { ring(y0 + i * 5.6, k); });
@@ -1567,7 +1622,12 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
   $("inviteNames").textContent = N.partner1 + " and " + N.partner2;
   $("nm1").textContent = N.partner1; $("nm2").textContent = N.partner2;
   ["1", "2"].forEach(function (k) {
-    $("lineage" + k).innerHTML = (C.LINEAGE["partner" + k] || []).map(function (l, i) { return '<p class="' + (i ? "lin2" : "lin1") + '">' + esc(l) + "</p>"; }).join("");
+    var rows = C.LINEAGE["partner" + k] || [];
+    $("lineage" + k).innerHTML = rows.map(function (l, i) {
+      var cls = i === rows.length - 1 ? "lin1" : "lin2";
+      return '<p class="' + cls + '"><span class="pre">' + esc(l.prefix) + "</span> " +
+        l.names.map(function (n) { return '<span class="nw">' + esc(n) + "</span>"; }).join(' <span class="and">and</span> ') + "</p>";
+    }).join("");
   });
   $("familyLine").textContent = C.FAMILY_LINE;
   var cr = $("crownRosettes");
@@ -1581,6 +1641,13 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
     '<rect x="0" y="320" width="1200" height="80" fill="#E8D9CC"/><g opacity=".7"><use href="#lotus" transform="translate(260 360) scale(1.2)"/><use href="#lotus" transform="translate(940 370) scale(1.1)"/></g></svg>';
   buildScene();
   skylineSVG($("skyline"));
+  if (!reduce) {
+    for (var li = 0; li < (innerWidth < 600 ? 7 : 12); li++) {
+      var ln = doc.createElement("i");
+      ln.style.cssText = "left:" + rnd(4, 94).toFixed(1) + "%;animation-duration:" + rnd(14, 24).toFixed(1) + "s;animation-delay:-" + rnd(0, 20).toFixed(1) + "s;--dx:" + rnd(-60, 60).toFixed(0) + "px;transform:scale(" + rnd(.7, 1.1).toFixed(2) + ")";
+      $("skyLanterns").appendChild(ln);
+    }
+  }
   buildRangoli();
   buildMotifs();
   buildTopi(); buildNath();
