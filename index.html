@@ -276,6 +276,8 @@ section{position:relative;scroll-margin-top:0}
 .scene .slide-r{transform:translateX(calc(var(--zp,0) * 140px));transition:transform .25s ease-out}
 .intro-copy{opacity:calc(1 - var(--zp,0) * 1.6)}
 .scene .glow,.scene .flame-lit,.scene .lantern{opacity:0;transition:opacity 2s ease 1s}
+.scene .dtower .flame-lit{opacity:0;transition:opacity 1.6s ease 1.2s}
+.lit .scene .dtower .flame-lit{opacity:1}
 .lit .scene .glow,.lit .scene .flame-lit,.lit .scene .lantern,.scene .always .glow{opacity:1}
 .scene .pane{fill:#5A3C28;transition:fill 1.6s ease 1s}
 .lit .scene .pane{fill:#FFE6A6}
@@ -299,16 +301,18 @@ section{position:relative;scroll-margin-top:0}
 .ic-tag{font-size:clamp(1.35rem,5.2vw,1.95rem)!important;margin-top:4px!important}
 .ic-names span{display:block}
 .ic-names .amp{display:inline;color:#E9C46A;font-weight:400;font-size:.8em}
-.ic-band{display:block;margin:calc(var(--u,3.3px) * 3) auto 0;max-width:calc(var(--u,3.3px) * 92)}
+.ic-band{display:block;margin:calc(var(--u,3.3px) * 6) auto 0;max-width:calc(var(--u,3.3px) * 92)}
 /* every piece of the intro text is sized in arch units (--u) so it always fits inside the arch */
 .intro-copy{padding:0!important}
-.ic-names{font-size:calc(var(--u,3.3px) * 12.5)!important}
-.ic-tag{font-size:calc(var(--u,3.3px) * 6.6)!important;line-height:1.3!important;margin-top:calc(var(--u,3.3px) * 1)!important}
+.ic-names{font-size:calc(var(--u,3.3px) * 17)!important;line-height:.98!important}
+.ic-names .n{display:block}
+.ic-names .amp{display:block!important;font-size:.56em!important;line-height:1.05!important;margin:.02em 0 .04em!important;top:0!important}
+.ic-tag{font-size:calc(var(--u,3.3px) * 7.6)!important;line-height:1.25!important;margin-top:calc(var(--u,3.3px) * 1)!important}
 .ic-rule{gap:calc(var(--u,3.3px) * 2.6)!important;margin-bottom:calc(var(--u,3.3px) * 2.6)!important}
 .ic-rule::before,.ic-rule::after{width:calc(var(--u,3.3px) * 26)!important}
 .ic-rule svg{width:calc(var(--u,3.3px) * 5.6)!important;height:auto!important}
-.ic-lotus{margin-top:calc(var(--u,3.3px) * 5)!important}
-.ic-lotus svg{width:calc(var(--u,3.3px) * 20)!important}
+.ic-lotus{margin-top:calc(var(--u,3.3px) * 12)!important}
+.ic-lotus svg{width:calc(var(--u,3.3px) * 13)!important}
 .ic-date span{white-space:nowrap}
 .ic-rule{display:flex;align-items:center;justify-content:center;gap:10px;margin:0 auto 10px}
 .ic-rule::before,.ic-rule::after{content:"";height:1px;width:clamp(50px,16vw,110px);background:linear-gradient(90deg,transparent,#E9C46A)}
@@ -320,7 +324,7 @@ section{position:relative;scroll-margin-top:0}
 .ic-lotus svg{width:clamp(62px,17vw,78px);height:auto;margin:0 auto;filter:drop-shadow(0 0 16px rgba(255,214,140,.55)) drop-shadow(0 4px 10px rgba(14,20,51,.5))}
 @media (prefers-reduced-motion:no-preference){.lit .ic-lotus svg{animation:breathe 2.4s ease-in-out infinite 3.4s}}
 @keyframes breathe{50%{transform:scale(1.08)}}
-.ic-lotus span:not(.visually-hidden){font-size:max(10.5px,calc(var(--u,3.3px) * 2.7))!important;padding:max(7px,calc(var(--u,3.3px) * 2.6)) max(14px,calc(var(--u,3.3px) * 5))!important;margin-top:calc(var(--u,3.3px) * 2.6)!important;white-space:nowrap}
+.ic-lotus span:not(.visually-hidden){font-size:max(9px,calc(var(--u,3.3px) * 2.1))!important;letter-spacing:.2em!important;padding:max(5px,calc(var(--u,3.3px) * 1.7)) max(11px,calc(var(--u,3.3px) * 3.6))!important;margin-top:calc(var(--u,3.3px) * 2)!important;white-space:nowrap}
 .ic-lotus span:not(.visually-hidden){display:inline-block;font:500 .74rem/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;margin-top:10px;padding:9px 18px;border-radius:999px;color:#F3DDA0;background:rgba(14,20,51,.78);border:1px solid rgba(233,196,106,.6);box-shadow:0 6px 16px -6px rgba(0,0,0,.6)}
 @media (prefers-reduced-motion:no-preference){.lit .ic-lotus span:not(.visually-hidden){animation:tapPulse 2.4s ease-in-out infinite 3.6s}}
 @keyframes tapPulse{50%{box-shadow:0 0 0 6px rgba(233,196,106,.18),0 6px 16px -6px rgba(0,0,0,.6)}}
@@ -817,17 +821,62 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
       <path d="M-4 191H4L3 210H-3Z" fill="#E2A91B"/>
       <g fill="#E9C46A"><circle cx="-22" cy="158" r="1.6"/><circle cx="22" cy="158" r="1.6"/><circle cx="-12" cy="172" r="1.4"/><circle cx="12" cy="172" r="1.4"/></g>
     </g>
+    <!-- small Nagara-style temple: plinth, sanctum with lit doorway, ribbed shikhara, amalaka, kalash and saffron flag -->
     <g id="chhatri">
-      <rect x="-54" y="-30" width="108" height="30" fill="#EFE0C4" stroke="#A88A5C"/>
-      <rect x="-48" y="-36" width="96" height="7" fill="#E2C9A0" stroke="#A88A5C" stroke-width=".8"/>
-      <rect x="-40" y="-100" width="80" height="64" fill="#F5E9D2" stroke="#A88A5C"/>
-      <g fill="#2A2350"><path d="M-34 -36V-70Q-34 -86 -24 -90Q-14 -86 -14 -70V-36Z"/><path d="M-10 -36V-72Q-10 -88 0 -92Q10 -88 10 -72V-36Z"/><path d="M14 -36V-70Q14 -86 24 -90Q34 -86 34 -70V-36Z"/></g>
-      <g class="glow" fill="#FFD27A"><circle cx="-24" cy="-58" r="4"/><circle cy="-60" r="4.5"/><circle cx="24" cy="-58" r="4"/></g>
-      <path d="M-52 -100H52L44 -110H-44Z" fill="#E2C9A0" stroke="#A88A5C"/>
-      <rect x="-30" y="-120" width="60" height="10" fill="#F5E9D2" stroke="#A88A5C"/>
-      <path d="M-30 -120C-36 -152 -10 -170 0 -180C10 -170 36 -152 30 -120Z" fill="#F5E9D2" stroke="#A88A5C"/>
-      <path d="M-18 -122C-20 -146 -6 -160 0 -170M18 -122C20 -146 6 -160 0 -170" fill="none" stroke="#CDB48A"/>
-      <path d="M0 -180V-198" stroke="#C9A54A" stroke-width="2"/><circle cy="-188" r="3" fill="#C9A54A"/>
+      <rect x="-54" y="-22" width="108" height="22" fill="#EFE0C4" stroke="#A88A5C"/>
+      <rect x="-48" y="-30" width="96" height="9" fill="#E2C9A0" stroke="#A88A5C" stroke-width=".8"/>
+      <rect x="-38" y="-86" width="76" height="56" fill="#F5E9D2" stroke="#A88A5C"/>
+      <path d="M-14 -30V-62Q0 -78 14 -62V-30Z" fill="#2A2350"/>
+      <g class="glow" fill="#FFD27A"><ellipse cx="0" cy="-44" rx="7" ry="9"/></g>
+      <path d="M-30 -86H30M-32 -76H-18M18 -76H32" stroke="#C9A97A" stroke-width="1.2"/>
+      <path d="M-42 -86H42L36 -94H-36Z" fill="#E2C9A0" stroke="#A88A5C"/>
+      <path d="M-34 -94C-30 -136 -14 -168 -6 -182H6C14 -168 30 -136 34 -94Z" fill="#F5E9D2" stroke="#A88A5C"/>
+      <path d="M-34 -108H34M-32 -122H32M-28 -136H28M-23 -150H23M-17 -164H17" stroke="#D9C29A" stroke-width="1.2"/>
+      <path d="M-8 -180C-12 -150 -14 -122 -16 -94M8 -180C12 -150 14 -122 16 -94M0 -182V-94" stroke="#BFA273" stroke-width="1.2" fill="none"/>
+      <path d="M-34 -94C-40 -110 -40 -124 -30 -130M34 -94C40 -110 40 -124 30 -130" fill="#EADBC0" stroke="#A88A5C" stroke-width=".8"/>
+      <ellipse cy="-184" rx="12" ry="4" fill="#EADBC0" stroke="#A88A5C"/>
+      <path d="M-9 -186V-182M-4 -187V-181M4 -187V-181M9 -186V-182" stroke="#A88A5C" stroke-width=".8"/>
+      <path d="M-5 -188C-8 -194 -6 -199 0 -200C6 -199 8 -194 5 -188Z" fill="#D4A63A" stroke="#8A6418" stroke-width=".8"/>
+      <path d="M0 -200V-224" stroke="#8A6418" stroke-width="1.6"/>
+      <path d="M0 -224L22 -218L0 -210Z" fill="#F08A1C"/>
+    </g>
+    <!-- deepastambh: a stone lamp tower with tiers of diyas -->
+    <g id="deepstambh">
+      <rect x="-30" y="-14" width="60" height="14" fill="#EFE0C4" stroke="#A88A5C"/>
+      <rect x="-22" y="-26" width="44" height="12" fill="#E2C9A0" stroke="#A88A5C"/>
+      <path d="M-15 -26L-9 -238H9L15 -26Z" fill="#E9D8BA" stroke="#A88A5C"/>
+      <path d="M-11 -110H11M-10 -170H10" stroke="#C9A97A" stroke-width="1.2"/>
+      <g fill="#E2C9A0" stroke="#A88A5C" stroke-width=".9">
+        <rect x="-32" y="-62" width="64" height="7" rx="2"/><rect x="-28" y="-104" width="56" height="7" rx="2"/>
+        <rect x="-24" y="-146" width="48" height="7" rx="2"/><rect x="-20" y="-188" width="40" height="7" rx="2"/><rect x="-16" y="-228" width="32" height="7" rx="2"/>
+      </g>
+      <g class="glow" fill="url(#warmGlow)"><circle cy="-140" r="70"/></g>
+      <g class="dlamps">
+        <g fill="#C25E1A"><ellipse cx="-27" cy="-64" rx="4.5" ry="2"/><ellipse cx="-9" cy="-64" rx="4.5" ry="2"/><ellipse cx="9" cy="-64" rx="4.5" ry="2"/><ellipse cx="27" cy="-64" rx="4.5" ry="2"/>
+          <ellipse cx="-22" cy="-106" rx="4.5" ry="2"/><ellipse cx="0" cy="-106" rx="4.5" ry="2"/><ellipse cx="22" cy="-106" rx="4.5" ry="2"/>
+          <ellipse cx="-17" cy="-148" rx="4.5" ry="2"/><ellipse cx="0" cy="-148" rx="4.5" ry="2"/><ellipse cx="17" cy="-148" rx="4.5" ry="2"/>
+          <ellipse cx="-12" cy="-190" rx="4" ry="2"/><ellipse cx="12" cy="-190" rx="4" ry="2"/><ellipse cy="-230" rx="4" ry="2"/></g>
+        <g class="flame-lit" fill="url(#flameGrad)">
+          <ellipse class="flame" cx="-27" cy="-70" rx="2.4" ry="5"/><ellipse class="flame" cx="-9" cy="-70" rx="2.4" ry="5"/><ellipse class="flame" cx="9" cy="-70" rx="2.4" ry="5"/><ellipse class="flame" cx="27" cy="-70" rx="2.4" ry="5"/>
+          <ellipse class="flame" cx="-22" cy="-112" rx="2.4" ry="5"/><ellipse class="flame" cx="0" cy="-112" rx="2.4" ry="5"/><ellipse class="flame" cx="22" cy="-112" rx="2.4" ry="5"/>
+          <ellipse class="flame" cx="-17" cy="-154" rx="2.4" ry="5"/><ellipse class="flame" cx="0" cy="-154" rx="2.4" ry="5"/><ellipse class="flame" cx="17" cy="-154" rx="2.4" ry="5"/>
+          <ellipse class="flame" cx="-12" cy="-196" rx="2.2" ry="4.6"/><ellipse class="flame" cx="12" cy="-196" rx="2.2" ry="4.6"/><ellipse class="flame" cy="-236" rx="2.2" ry="4.6"/>
+        </g>
+      </g>
+      <path d="M-6 -238C-9 -246 -6 -252 0 -253C6 -252 9 -246 6 -238Z" fill="#D4A63A" stroke="#8A6418" stroke-width=".8"/>
+    </g>
+    <!-- kalash with mango leaves and a coconut -->
+    <g id="kalash">
+      <path d="M-16 0H16L13 -6H-13Z" fill="#B8862A"/>
+      <path d="M-14 -6C-24 -14 -22 -34 -8 -38H8C22 -34 24 -14 14 -6Z" fill="#D4A63A" stroke="#8A6418"/>
+      <path d="M-18 -20H18" stroke="#A8283A" stroke-width="3"/>
+      <g fill="#D9BFA0"><circle cx="-10" cy="-20" r="1.2"/><circle cy="-20" r="1.2"/><circle cx="10" cy="-20" r="1.2"/></g>
+      <rect x="-9" y="-42" width="18" height="5" rx="2" fill="#B8862A"/>
+      <g fill="#4F7D52"><ellipse cx="-13" cy="-46" rx="11" ry="3.4" transform="rotate(-24 -13 -46)"/><ellipse cx="13" cy="-46" rx="11" ry="3.4" transform="rotate(24 13 -46)"/>
+        <ellipse cx="-7" cy="-50" rx="10" ry="3" transform="rotate(-50 -7 -50)"/><ellipse cx="7" cy="-50" rx="10" ry="3" transform="rotate(50 7 -50)"/></g>
+      <ellipse cy="-55" rx="9" ry="10" fill="#8A5A2B" stroke="#5A3A1A"/>
+      <path d="M-4 -63Q0 -67 4 -63" stroke="#5A3A1A" fill="none"/>
+      <path d="M-12 -24L12 -24" stroke="#C2272D" stroke-width="1.2" stroke-dasharray="2 2"/>
     </g>
     <g id="sprig">
       <path d="M0 4C-2 -10 2 -22 0 -36" stroke="#6E8B5A" stroke-width="1.4" fill="none"/>
@@ -981,18 +1030,15 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
     </g>
     <g id="bushes"></g>
     <g id="wall"></g>
-    <use href="#chhatri" x="0" y="0" transform="translate(70 548) scale(.8)"/>
-    <use href="#chhatri" transform="translate(178 548) scale(1)"/>
-    <use href="#chhatri" transform="translate(1022 548) scale(1)"/>
-    <use href="#chhatri" transform="translate(1130 548) scale(.8)"/>
+    <use href="#chhatri" transform="translate(84 548) scale(.85)"/>
+    <use href="#deepstambh" class="dtower" transform="translate(196 548) scale(1)"/>
+    <use href="#deepstambh" class="dtower" transform="translate(1004 548) scale(1)"/>
+    <use href="#chhatri" transform="translate(1116 548) scale(.85)"/>
     <use href="#diya" class="flame-lit" transform="translate(150 520) scale(.9)"/>
     <use href="#diya" class="flame-lit" transform="translate(1050 520) scale(.9)"/>
     <g id="perchL" class="slide-l"></g><g id="perchR" class="slide-r"></g>
     <rect x="-800" y="720" width="2800" height="400" fill="url(#ground)"/>
-    <g stroke="#A88A5C" stroke-width="1.2" fill="none" opacity=".7">
-      <ellipse cx="600" cy="790" rx="170" ry="34"/><ellipse cx="600" cy="790" rx="120" ry="24"/><ellipse cx="600" cy="790" rx="70" ry="14"/>
-      <path d="M430 790H770M600 756V824"/>
-    </g>
+    <g id="rangoli" transform="translate(600 772) scale(.82 .2)"></g>
     <g><ellipse cx="160" cy="790" rx="190" ry="40" fill="#A9C2B6" opacity=".8"/><ellipse cx="1040" cy="790" rx="190" ry="40" fill="#A9C2B6" opacity=".8"/></g>
     <use href="#lotus" transform="translate(110 782) scale(1.3)"/><use href="#lotus" transform="translate(220 800) scale(1)"/>
     <use href="#lotus" transform="translate(990 800) scale(1)"/><use href="#lotus" transform="translate(1100 782) scale(1.3)"/>
@@ -1001,8 +1047,6 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
     <g clip-path="url(#openClip)">
       <rect x="400" y="150" width="400" height="600" fill="url(#opening)"/>
       <path d="M520 720V520Q520 470 560 450Q600 420 640 450Q680 470 680 520V720Z" fill="#F0C7C8" opacity=".35"/>
-      <use href="#chhatri" transform="translate(520 690) scale(.323 .42)" opacity=".55"/>
-      <use href="#chhatri" transform="translate(680 690) scale(.323 .42)" opacity=".55"/>
       <rect x="440" y="690" width="320" height="10" fill="#E2C9A0" opacity=".6"/><rect x="460" y="700" width="280" height="10" fill="#E2C9A0" opacity=".5"/>
       <use href="#lantern" class="lantern" transform="translate(600 186) scale(.446 .58)"/>
       <use href="#diya" class="always" transform="translate(600 712) scale(.846 1.1)"/>
@@ -1020,16 +1064,21 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
       <path d="M600 92V336" stroke="#C9A54A" stroke-width="1.6" stroke-dasharray="6 6"/>
     </g>
     <g fill="#F5E9D2" stroke="#A88A5C" stroke-width="1.6">
-      <path d="M410 336C412 306 424 284 438 272C452 284 464 306 466 336Z"/>
-      <path d="M734 336C736 306 748 284 762 272C776 284 788 306 790 336Z"/>
-      <ellipse cx="438" cy="270" rx="9" ry="4"/><ellipse cx="762" cy="270" rx="9" ry="4"/>
+      <path d="M410 336C414 312 428 280 434 262H442C448 280 462 312 466 336Z"/>
+      <path d="M734 336C738 312 752 280 758 262H766C772 280 786 312 790 336Z"/>
+      <ellipse cx="438" cy="260" rx="7" ry="3"/><ellipse cx="762" cy="260" rx="7" ry="3"/>
     </g>
-    <g stroke="#A88A5C" stroke-width="1.2"><path d="M420 304H456M416 320H460M744 304H780M740 320H784"/></g>
+    <g stroke="#A88A5C" stroke-width="1.2"><path d="M424 296H452M418 312H458M413 326H463M748 296H776M742 312H782M737 326H787M438 264V334M762 264V334"/></g>
+    <g fill="#D4A63A" stroke="#8A6418" stroke-width=".8"><path d="M434 257C432 252 434 248 438 247C442 248 444 252 442 257Z"/><path d="M758 257C756 252 758 248 762 247C766 248 768 252 766 257Z"/></g>
     <rect x="395" y="334" width="76" height="18" fill="#E2C9A0" stroke="#A88A5C" stroke-width="1.6"/>
     <rect x="729" y="334" width="76" height="18" fill="#E2C9A0" stroke="#A88A5C" stroke-width="1.6"/>
     <g fill="#C9A54A"><circle cx="414" cy="343" r="2.4"/><circle cx="433" cy="343" r="2.4"/><circle cx="452" cy="343" r="2.4"/><circle cx="748" cy="343" r="2.4"/><circle cx="767" cy="343" r="2.4"/><circle cx="786" cy="343" r="2.4"/></g>
     <use href="#innerArch" fill="none" stroke="#E2C9A0" stroke-width="12"/>
     <use href="#innerArch" fill="none" stroke="#C9A54A" stroke-width="3"/>
+    <!-- toran: mango leaves and marigolds following the arch -->
+    <use href="#innerArch" fill="none" stroke="#4F7D52" stroke-width="13" stroke-dasharray="5 9" stroke-dashoffset="2" opacity=".95"/>
+    <use href="#innerArch" fill="none" stroke="#E8891A" stroke-width="9" stroke-dasharray="0 14" stroke-linecap="round"/>
+    <use href="#innerArch" fill="none" stroke="#F2B13A" stroke-width="5" stroke-dasharray="0 14" stroke-dashoffset="7" stroke-linecap="round"/>
     <g fill="#F7EEDC" stroke="#BFA273">
       <rect x="414" y="392" width="44" height="280" rx="3"/><rect x="742" y="392" width="44" height="280" rx="3"/>
     </g>
@@ -1061,6 +1110,8 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
       <rect x="352" y="732" width="496" height="10" rx="2"/>
       <rect x="332" y="742" width="536" height="10" rx="2"/>
     </g>
+    <use href="#kalash" transform="translate(452 722) scale(.95)"/>
+    <use href="#kalash" transform="translate(748 722) scale(.95)"/>
     <use href="#diya" class="flame-lit" transform="translate(387 676) scale(.8)"/>
     <use href="#diya" class="flame-lit" transform="translate(813 676) scale(.8)"/>
   </svg>
@@ -1228,6 +1279,26 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
       for (var y = 284; y < 284 + d[1]; y += 8) el("circle", { cx: d[0], cy: y, r: 3.6, fill: cols[(i + y / 8) % 3 | 0] }, st);
       el("path", { d: "M" + (d[0] - 3) + " " + (284 + d[1]) + "h6l-1 10h-4z", fill: "#C2416B" }, st);
     });
+  }
+  function buildRangoli() {
+    var g = $("rangoli"); if (!g) return;
+    el("circle", { r: 178, fill: "#F6E9D0", stroke: "#C9A54A", "stroke-width": 4 }, g);
+    var ring = function (n, r, rx, ry, fill, rot) {
+      for (var i = 0; i < n; i++) {
+        var a = (i / n) * 360 + (rot || 0);
+        el("ellipse", { cx: 0, cy: -r, rx: rx, ry: ry, fill: fill, transform: "rotate(" + a + ")" }, g);
+      }
+    };
+    ring(24, 152, 14, 24, "#A3175B");
+    ring(24, 152, 7, 14, "#F2B13A", 0);
+    ring(16, 112, 16, 30, "#E8891A", 11.25);
+    ring(16, 112, 7, 16, "#FFF3D6", 11.25);
+    ring(12, 70, 14, 28, "#0F6B5C");
+    ring(12, 70, 6, 14, "#E9C46A");
+    el("circle", { r: 40, fill: "#C2272D" }, g);
+    el("circle", { r: 26, fill: "#F2B13A" }, g);
+    el("circle", { r: 12, fill: "#FFF3D6" }, g);
+    for (var k = 0; k < 48; k++) { var b = k / 48 * Math.PI * 2; el("circle", { cx: (Math.cos(b) * 168).toFixed(1), cy: (Math.sin(b) * 168).toFixed(1), r: 4, fill: "#FFFFFF" }, g); }
   }
   function buildScene() {
     var stars = $("stars");
@@ -1471,7 +1542,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
 
   /* ---------------- static renders ---------------- */
   var amp = '<span class="amp">&amp;</span>';
-  $("icNames").innerHTML = esc(N.partner1) + '<span class="amp">and</span>' + esc(N.partner2);
+  $("icNames").innerHTML = '<span class="n">' + esc(N.partner1) + '</span><span class="amp">and</span><span class="n">' + esc(N.partner2) + "</span>";
   $("inviteNames").textContent = N.partner1 + " and " + N.partner2;
   $("nm1").textContent = N.partner1; $("nm2").textContent = N.partner2;
   ["1", "2"].forEach(function (k) {
@@ -1488,6 +1559,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
     '<rect x="300" y="200" width="600" height="120"/><path d="M380 200c0-60 40-80 60-90 20 10 60 30 60 90z M700 200c0-60 40-80 60-90 20 10 60 30 60 90z M540 200c0-80 50-110 60-120 10 10 60 40 60 120z"/></g>' +
     '<rect x="0" y="320" width="1200" height="80" fill="#E8D9CC"/><g opacity=".7"><use href="#lotus" transform="translate(260 360) scale(1.2)"/><use href="#lotus" transform="translate(940 370) scale(1.1)"/></g></svg>';
   buildScene();
+  buildRangoli();
   buildMotifs();
   buildTopi(); buildNath();
 
