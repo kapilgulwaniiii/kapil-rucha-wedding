@@ -84,7 +84,7 @@ window.CONFIG = {
     mirrorwork: "Ajrak and mirror work: small mirrors stitched into Sindhi embroidery, said to ward off the evil eye.",
     pagdi: "The Puneri pagdi: the pre-stitched turban of Pune.",
     topi: "The Sindhi topi: an embroidered cap with an arched front, often set with tiny mirrors.",
-    nath: "The nath: a pearl-set, paisley-shaped nose ring worn by Marathi brides.",
+    nath: "Green bangles: worn by Marathi brides, a sign of new beginnings and prosperity.",
     mangh: "Manghs: the rooftop wind-catchers of old Hyderabad, Sindh, all turned to catch the same breeze."
   },
 
@@ -356,7 +356,7 @@ section{position:relative;scroll-margin-top:0}
 .pname-big #nm1,.pname-big #nm2{background:linear-gradient(180deg,#B8862A,#8A6418);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 .nm-wrap{position:relative;display:inline-block}
 .nm-wrap .topi-on{position:absolute;left:-.4em;top:-.06em;width:.5em;z-index:2;line-height:0}
-.nm-wrap .nath-on{position:absolute;left:-.27em;top:.2em;width:.32em;z-index:2;line-height:0}
+.nm-wrap .nath-on{position:absolute;left:-.44em;top:.1em;width:.42em;z-index:2;line-height:0}
 .joy-feather{position:relative!important;right:auto!important;top:auto!important;display:inline-block;vertical-align:middle;width:.8em!important;height:2.8em!important;margin:-1em 0 -.7em .5em;transform:rotate(28deg)!important}
 .lineage p{margin:2px auto;max-width:44ch;color:var(--text-soft)}
 .lin1{font:500 clamp(.92rem,3.4vw,1.06rem)/1.45 var(--serif);color:#7A1F3A!important}
@@ -369,7 +369,7 @@ section{position:relative;scroll-margin-top:0}
 .card h1{padding-top:.34em!important}
 .topi-on,.nath-on{position:absolute;z-index:2;line-height:0}
 .topi-on{transform:rotate(-18deg)}
-.nath-on{transform:rotate(-8deg)}
+.nath-on{transform:rotate(-14deg)}
 .topi-on svg,.nath-on svg{width:100%;height:auto;filter:drop-shadow(0 2px 3px rgba(60,20,10,.25))}
 .skyline{cursor:pointer}
 .feather{position:absolute;right:-74px;top:-52px;width:34px;height:118px;transform:rotate(24deg);z-index:0}
@@ -514,7 +514,7 @@ section{position:relative;scroll-margin-top:0}
 .ev-toran{position:absolute;left:0;right:0;top:0;height:46px;pointer-events:none;
   background:radial-gradient(circle at 12px 10px,#E8891A 6px,transparent 6.5px) 0 0/24px 20px repeat-x,
     radial-gradient(circle at 12px 10px,#E2A91B 6px,transparent 6.5px) 12px 18px/24px 20px repeat-x,
-    linear-gradient(#5A8A4E,#5A8A4E) 0 0/100% 3px no-repeat}
+    none}
 .ev-num{font:500 .8rem/1.4 var(--sans);letter-spacing:.32em;text-transform:uppercase;color:#F3C98A;margin:0 0 22px}
 .ev-scroll{width:min(520px,90vw);margin:0}
 .ev-scroll .scroll-body{min-height:0;padding:42px 30px 38px}
@@ -743,7 +743,11 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
 .pill-btn{display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:8px 16px;border-radius:999px;border:1px solid rgba(243,221,160,.45);background:rgba(255,255,255,.05);color:#F3E3C0;text-decoration:none;font:italic 500 1rem/1 var(--serif);cursor:pointer}
 .pill-btn svg{width:15px;height:15px}
 .pill-btn:hover{background:rgba(243,221,160,.12)}
-.skyline{position:relative;z-index:1;margin:50px -16px 0;height:clamp(170px,30vw,300px)}
+.finale{position:relative;overflow:hidden;min-height:clamp(380px,62vw,620px);display:flex;align-items:flex-end;
+  background:radial-gradient(ellipse 70% 50% at 50% 100%,rgba(245,198,106,.18),transparent 70%),linear-gradient(180deg,#0E1230 0%,#171A44 55%,#1D1640 100%)}
+.finale canvas{position:absolute;left:0;top:0;width:100%;height:75%;pointer-events:none}
+.finale .stars{opacity:.8}
+.skyline{position:relative;z-index:1;width:100%;margin:0;height:clamp(170px,30vw,300px)}
 .skyline svg{width:100%;height:100%}
 
 /* ================= CLOSING ================= */
@@ -1175,7 +1179,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
         </div>
         <p class="blessing" data-i18n="blessing">With the divine blessings of Jaibaba, our elders and the love of our families</p>
         <div class="rule" aria-hidden="true"><svg viewBox="-12 -8 24 16"><use href="#rosette" x="-8" y="-8" width="16" height="16"/></svg></div>
-        <p class="cordial">We cordially invite you for the wedding celebration of</p>
+        <p class="cordial">We invite you for the wedding celebration of</p>
         <h1 class="visually-hidden" id="inviteNames" tabindex="-1">Kapil and Rucha</h1>
         <div class="person">
           <p class="pname-big" aria-hidden="true"><span class="nm-wrap"><span id="nm1"></span>
@@ -1185,7 +1189,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
         <p class="weds" aria-hidden="true">and</p>
         <div class="person">
           <p class="pname-big" aria-hidden="true"><span class="nm-wrap"><span id="nm2"></span>
-            <button type="button" class="hint-btn nath-on" data-hint="nath"><svg viewBox="0 0 64 64" aria-hidden="true" id="nathSvg"></svg></button></span></p>
+            <button type="button" class="hint-btn nath-on" data-hint="nath"><svg viewBox="0 0 64 70" aria-hidden="true" id="nathSvg"></svg></button></span></p>
           <div class="lineage" id="lineage2"></div>
         </div>
         <div class="rule" aria-hidden="true"><svg viewBox="-12 -8 24 16"><use href="#rosette" x="-8" y="-8" width="16" height="16"/></svg></div>
@@ -1235,6 +1239,12 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
     <div class="stage-valance" aria-hidden="true"></div>
   </section>
 
+  <!-- ======================= FINALE: the city lights up ======================= -->
+  <section class="finale" id="finale" aria-label="Closing scene">
+    <div class="stars" aria-hidden="true"></div>
+    <canvas id="fireworks" aria-hidden="true"></canvas>
+    <div class="skyline" aria-hidden="true" data-hint="mangh"><svg viewBox="0 0 1200 300" preserveAspectRatio="xMidYMax slice" id="skyline"></svg></div>
+  </section>
 </main>
 
 <script>
@@ -1511,18 +1521,25 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
     [[13, 37], [51, 37], [9, 21.5], [55, 21.5]].forEach(function (d) { t += '<circle cx="' + d[0] + '" cy="' + d[1] + '" r="1.1" fill="#E2A91B"/>'; });
     $("topiSvg").innerHTML = t;
   }
-  // Rucha's Marathi nath: a paisley ring edged with pearls, a ruby and a pearl chain
+  // Rucha's Marathi green bangles: a stack of glass chudas between gold kangans
   function buildNath() {
-    var svg = $("nathSvg");
-    svg.innerHTML = '<path id="nathPath" d="M30 54C14 54 6 40 12 28C18 16 36 12 42 24C46 32 40 38 33 34" fill="none" stroke="#D4A63A" stroke-width="3.2" stroke-linecap="round"/>';
-    var path = $("nathPath"), len = path.getTotalLength(), out = "";
-    for (var i = 0; i <= 15; i++) {
-      var q = path.getPointAtLength(len * (0.04 + i * 0.058));
-      out += '<circle cx="' + q.x.toFixed(1) + '" cy="' + q.y.toFixed(1) + '" r="3.1" fill="url(#pearl)" stroke="#A8987F" stroke-width=".5"/>';
-    }
-    out += '<circle cx="33" cy="34" r="4.2" fill="#C2416B" stroke="#E9C46A" stroke-width="1.2"/><circle cx="37.5" cy="39" r="2" fill="#0F6B5C"/>';
-    for (var k = 1; k <= 6; k++) out += '<circle cx="' + (42 + k * 3.2).toFixed(1) + '" cy="' + (24 - k * 3.4).toFixed(1) + '" r="1.7" fill="url(#pearl)" stroke="#BFAF97" stroke-width=".3"/>';
-    svg.insertAdjacentHTML("beforeend", out);
+    var out = "", y0 = 14;
+    var ring = function (y, kind) {
+      if (kind === "gold") {
+        out += '<ellipse cx="32" cy="' + y + '" rx="27" ry="8.5" fill="none" stroke="#8A6418" stroke-width="5.4"/>' +
+          '<ellipse cx="32" cy="' + y + '" rx="27" ry="8.5" fill="none" stroke="#E2B54A" stroke-width="3.6"/>';
+        for (var a = 0; a < 18; a++) {
+          var t = a / 18 * Math.PI * 2, x = 32 + Math.cos(t) * 27, yy = y + Math.sin(t) * 8.5;
+          if (Math.sin(t) > -0.2) out += '<circle cx="' + x.toFixed(1) + '" cy="' + yy.toFixed(1) + '" r="1.5" fill="#1E7A3A" stroke="#F3DDA0" stroke-width=".4"/>';
+        }
+      } else {
+        out += '<ellipse cx="32" cy="' + y + '" rx="26" ry="8" fill="none" stroke="#0B4A24" stroke-width="3.6"/>' +
+          '<ellipse cx="32" cy="' + y + '" rx="26" ry="8" fill="none" stroke="#1E8A43" stroke-width="2.4"/>' +
+          '<path d="M10 ' + (y + 3) + 'Q32 ' + (y + 10) + ' 54 ' + (y + 3) + '" fill="none" stroke="#9BE0A8" stroke-width=".8" opacity=".8"/>';
+      }
+    };
+    ["gold", "glass", "glass", "glass", "gold", "glass", "glass", "gold"].forEach(function (k, i) { ring(y0 + i * 5.6, k); });
+    $("nathSvg").innerHTML = out;
   }
   // sit the topi on the first letter of Kapil and the nath on the first letter of Rucha
   /* ---------------- tap a motif: one-line meaning ---------------- */
@@ -1563,6 +1580,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
     '<rect x="300" y="200" width="600" height="120"/><path d="M380 200c0-60 40-80 60-90 20 10 60 30 60 90z M700 200c0-60 40-80 60-90 20 10 60 30 60 90z M540 200c0-80 50-110 60-120 10 10 60 40 60 120z"/></g>' +
     '<rect x="0" y="320" width="1200" height="80" fill="#E8D9CC"/><g opacity=".7"><use href="#lotus" transform="translate(260 360) scale(1.2)"/><use href="#lotus" transform="translate(940 370) scale(1.1)"/></g></svg>';
   buildScene();
+  skylineSVG($("skyline"));
   buildRangoli();
   buildMotifs();
   buildTopi(); buildNath();
@@ -1574,10 +1592,8 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
   };
 
   function renderEventPages() {
-    var words = ["The first celebration", "The second celebration", "The third celebration"];
     $("eventPages").innerHTML = C.VENUES.map(function (v, i) {
       return '<article class="ev-page' + (i % 2 ? " alt" : "") + '"><div class="ev-toran" aria-hidden="true"></div>' +
-        '<p class="ev-num reveal">' + (words[i] || "") + "</p>" +
         '<div class="scroll ev-scroll reveal"><div class="scroll-body">' +
         '<span class="vine l" aria-hidden="true">' + vineSVG + '</span><span class="vine r" aria-hidden="true">' + vineSVG + "</span>" +
         '<svg class="ev-icon" viewBox="0 0 60 56" aria-hidden="true">' + (ICONS[v.icon] || ICONS.lantern) + "</svg>" +
@@ -1802,6 +1818,27 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
     story.style.setProperty("--open", p.toFixed(3));
   }
   addEventListener("scroll", onScroll, { passive: true }); onScroll();
+
+  /* ---------------- fireworks over the palace ---------------- */
+  (function () {
+    var cv = $("fireworks"), ctx = cv.getContext("2d"), parts = [], on = false, last = 0, raf;
+    if (reduce || !ctx) return;
+    var size = function () { cv.width = cv.offsetWidth; cv.height = cv.offsetHeight; };
+    size(); addEventListener("resize", size);
+    var burst = function () {
+      var x = rnd(.12, .88) * cv.width, y = rnd(.1, .45) * cv.height, col = ["#F3DDA0", "#F59AB8", "#E9C46A", "#FFD6E0"][Math.floor(rnd(0, 4))];
+      for (var i = 0; i < 46; i++) { var a = i / 46 * Math.PI * 2, s = rnd(.6, 2.2); parts.push({ x: x, y: y, vx: Math.cos(a) * s, vy: Math.sin(a) * s, life: 1, col: col }); }
+    };
+    var loop = function (t) {
+      if (!on) return;
+      if (t - last > 1300) { burst(); last = t; }
+      ctx.clearRect(0, 0, cv.width, cv.height);
+      parts = parts.filter(function (p) { return p.life > 0; });
+      parts.forEach(function (p) { p.x += p.vx; p.y += p.vy; p.vy += .012; p.vx *= .99; p.life -= .011; ctx.globalAlpha = Math.max(p.life, 0); ctx.fillStyle = p.col; ctx.fillRect(p.x, p.y, 2, 2); });
+      raf = requestAnimationFrame(loop);
+    };
+    new IntersectionObserver(function (en) { on = en[0].isIntersecting; if (on) raf = requestAnimationFrame(loop); else cancelAnimationFrame(raf); }).observe($("finale"));
+  })();
 
   /* ---------------- akshata shower: rice grains and marigold petals ---------------- */
   function shower(box, count) {
