@@ -21,11 +21,17 @@ window.CONFIG = {
 
   /* ---- Couple, families & date ---- */
   NAMES: { partner1: "Kapil", partner2: "Rucha" },
-  // Shown side by side on the invitation card: Kapil's parents left, Rucha's right
-  PARENTS: [
-    { relation: "Son of", names: ["Shamsunder Rochiram Gulwani", "Leena Shamsunder Gulwani"] },
-    { relation: "Daughter of", names: ["Rajesh Nagare", "Monali Rajesh Nagare"] }
-  ],
+  // Lines printed under each name on the invitation card
+  LINEAGE: {
+    partner1: [
+      "S/O Mrs. Leena Shamsunder Gulwani and Mr. Shamsunder Rochiram Gulwani",
+      "Grandson of Late Mrs. Gunwanti Rochiram Gulwani and Late Dr. Rochiram Gulwani"
+    ],
+    partner2: [
+      "D/O Mrs. Monali Rajesh Nagare and Mr. Rajesh Nagare"
+    ]
+  },
+  FAMILY_LINE: "Gulwani and Nagare Family",   // under "Sharing the joy" at the foot of the card
   DATE_TEXT: "4th & 6th December 2026",
   CLOSING_DATE_TEXT: "4TH & 6TH · DECEMBER · 2026",
   HERO_DATE_TEXT: "4TH & 6TH DECEMBER 2026",
@@ -48,63 +54,24 @@ window.CONFIG = {
   MUSIC_URL: "music.m4a",
   MUSIC_VOLUME: 0.6,            // 0 to 1
 
-  /* ---- Our story ---- */
+  /* ---- Our story: one photo and a short brief ---- */
+  COUPLE_PHOTO: { src: "", alt: "Kapil and Rucha" },   // e.g. "couple.jpg" uploaded next to this file
   STORY: [
-    "It started over coffee at Social café in Shivaji Nagar, Pune. One conversation turned into many, and neither of us wanted the evening to end.",
-    "Then came about three years of time zones: Kapil in Hyderabad, Rucha in Manchester, held together by late-night messages and a lot of “are you still awake?”",
-    "No more goodnight texts across continents. We're getting married, and we'd love you there when we do."
+    "We met over coffee at Social café in Shivaji Nagar, Pune. Three years of Hyderabad–Manchester time zones and late-night messages later, we're getting married, and we'd love you there."
   ],
   HASHTAG: "#KapilWedsRucha",
 
-  /* ---- Ceremonies ----
-     Keep ONLY the events your families follow, in date order.
-     tag: "marathi" | "sindhi" | "both"
-     icon: rings | thali | haldi | garland | mishri | music | mehendi | mandap | knot | lantern
-     name: English + translations.  expect / dress: one line each.  ⚑ needs family review */
-  EVENTS: [
-    { tag: "sindhi", icon: "mishri", name: { en: "Pakki Mishri", sd_devanagari: "पकी मिस्री", sd_arabic: "پڪي مصري" },
-      date: "[date]", time: "[time]", venue: "[venue]", mapsLink: "[maps link]",
-      expect: "[The families confirm the match and share mishri]", dress: "[dress hint]" },
-    { tag: "sindhi", icon: "music", name: { en: "Berana / Satsang", sd_devanagari: "बेराणो / सत्संग" },
-      date: "[date]", time: "[time]", venue: "[venue]", mapsLink: "[maps link]",
-      expect: "[An evening of songs and blessings with the family]", dress: "[dress hint]" },
-    { tag: "sindhi", icon: "lantern", name: { en: "Tih" },
-      date: "[date]", time: "[time]", venue: "[venue]", mapsLink: "[maps link]",
-      expect: "[what to expect]", dress: "[dress hint]" },
-    { tag: "sindhi", icon: "mehendi", name: { en: "Mehendi", mr: "मेहंदी", sd_devanagari: "मेहंदी", sd_arabic: "مهندي" },
-      date: "[date]", time: "[time]", venue: "[venue]", mapsLink: "[maps link]",
-      expect: "[Henna, music and dancing; come ready to join in]", dress: "[greens & florals]" },
-    { tag: "sindhi", icon: "music", name: { en: "Baraat", mr: "वरात", sd_devanagari: "बारात", sd_arabic: "بارات" },
-      date: "6th December 2026", time: "[time]", venue: "[venue]", mapsLink: "[maps link]",
-      expect: "[The groom's procession arrives with music and dancing]", dress: "[dress hint]" }
-  ],
-
-  /* ---- Gallery: 6 hanging frames. src "" shows a soft placeholder. ---- */
-  GALLERY: [
-    { src: "", alt: "[photo 1]" }, { src: "", alt: "[photo 2]" }, { src: "", alt: "[photo 3]" },
-    { src: "", alt: "[photo 4]" }, { src: "", alt: "[photo 5]" }, { src: "", alt: "[photo 6]" }
-  ],
-
-  /* ---- Venues: one card each, with an "Open in Maps" link ---- */
+  /* ---- The two celebrations: each gets its own scroll page ----
+     icon: music | mandap | rings | lantern | knot */
   VENUES: [
-    { title: "Sangeet & Engagement", name: "Royal Connaught Boat Club",
+    { title: "Sangeet & Engagement", icon: "music", name: "Royal Connaught Boat Club",
       date: "4th December 2026", time: "6:30 pm onwards",
       address: "Boat Club Rd, Bund Garden, Sangamvadi, Pune, Maharashtra 411001",
       mapsLink: "https://maps.app.goo.gl/tXy83PxkSVo9GkqY9" },
-    { title: "Wedding & Reception", name: "Marigold Banquets",
+    { title: "Wedding & Reception", icon: "mandap", name: "Marigold Banquets",
       date: "6th December 2026", time: "10:00 am onwards",
       address: "Windmill Village, Bavdhan, Pune, Maharashtra 411021",
       mapsLink: "https://maps.app.goo.gl/xpNxorBLmNHiVkTE7" }
-  ],
-
-  /* ---- Contacts ---- */
-  /* icon: "pagdi" (Puneri pagdi, for the Marathi family) or "topi" (Sindhi topi, for the
-     Sindhi family). Leave "" for no icon. */
-  CONTACTS: [
-    { label: "Kapil's family", icon: "topi", people: [
-      { name: "Shamsunder Gulwani", role: "Father", phone: "+91 98900 13798" },
-      { name: "Leena Gulwani",      role: "Mother", phone: "+91 97665 11924" },
-      { name: "Sakshi Gulwani",     role: "Sister", phone: "+91 96572 59189" } ] }
   ],
 
   /* ---- Cultural motifs: the one-line note shown when a guest taps one  ⚑ needs family review ---- */
@@ -126,9 +93,9 @@ window.CONFIG = {
     en: {
       skip_intro: "Skip intro", pull: "Lower the antarpat", pull_label: "Lower the antarpat to reveal the couple",
       open_invite: "Open the invitation", tap_lotus: "Tap to open",
-      save_the_date: "Save the Date", tagline: "Two families. Two traditions. One celebration.",
-      blessing: "With the blessings of our elders and the love of our families",
-      invite_line: "invite you to celebrate their engagement and wedding ceremonies", on_the: "on the", view_events: "View ceremonies",
+      save_the_date: "Save the Date", tagline: "Two traditions. One celebration.",
+      blessing: "With the divine blessings of Jaibaba, our elders and the love of our families",
+      invite_line: "invite you to celebrate their engagement and wedding ceremonies", on_the: "on the", view_events: "View the celebrations",
       days: "Days", hours: "Hours", minutes: "Minutes", seconds: "Seconds", today: "Today is the day!",
       cd_title: "Countdown", scratch_hint: "Scratch to reveal", scratch_btn: "Reveal the countdown",
       cer_eyebrow: "Celebration journey", cer_title: "Our Ceremonies",
@@ -327,6 +294,9 @@ section{position:relative;scroll-margin-top:0}
 .lit .intro-copy .ic-names{transition-delay:1.6s}.lit .intro-copy .ic-band{transition-delay:2.3s}.lit .intro-copy .ic-lotus{transition-delay:2.9s}
 .ic-std{font:italic 500 clamp(1.1rem,4vw,1.5rem)/1 var(--serif);color:var(--gold-soft);margin-bottom:6px;transition-delay:1.3s!important}
 .ic-names{font:italic 500 clamp(3.4rem,15vw,7rem)/.95 var(--serif);color:#FFF6E6;text-shadow:0 4px 30px rgba(60,10,30,.65),0 0 2px rgba(60,10,30,.5);margin:0}
+.ic-names{white-space:nowrap;font-size:clamp(2.5rem,10vw,4.6rem)!important;line-height:1.05!important}
+.ic-names .amp{display:inline!important;font:400 .9em/1 var(--script)!important;color:#E9C46A;margin:0 .26em 0 .2em;position:relative;top:.06em}
+.ic-tag{font-size:clamp(1.35rem,5.2vw,1.95rem)!important;margin-top:4px!important}
 .ic-names span{display:block}
 .ic-names .amp{display:inline;color:#E9C46A;font-weight:400;font-size:.8em}
 .ic-band{display:block;margin:14px auto 0;max-width:calc(var(--arch-in,320px) - 18px)}
@@ -359,10 +329,29 @@ section{position:relative;scroll-margin-top:0}
 .lit .scene .train{opacity:0}
 .hint-btn{background:none;border:0;padding:0;margin:0;cursor:pointer;color:inherit}
 .names-wrap{position:relative;display:inline-block}
+.divine{display:flex;justify-content:center;gap:clamp(18px,8vw,64px);margin:6px auto 8px}
+.deity{margin:0;text-align:center;width:clamp(96px,26vw,140px)}
+.deity svg{width:clamp(66px,17vw,84px);height:auto;margin:0 auto 4px;filter:drop-shadow(0 3px 6px rgba(120,70,10,.25))}
+.deity figcaption{font:600 clamp(.7rem,2.6vw,.82rem)/1.3 var(--serif);letter-spacing:.06em;color:#8E1F31;white-space:nowrap}
+.cordial{max-width:30em;margin-left:auto!important;margin-right:auto!important;font:500 clamp(.78rem,2.9vw,.92rem)/1.7 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--gold-text);margin:6px 0 4px}
+.person{margin:2px 0}
+.pname-big{font:italic 500 clamp(2.9rem,12vw,4.8rem)/1.05 var(--serif);margin:0;color:#A4741C}
+.pname-big #nm1,.pname-big #nm2{background:linear-gradient(180deg,#B8862A,#8A6418);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.nm-wrap{position:relative;display:inline-block}
+.nm-wrap .topi-on{position:absolute;left:-.58em;top:-.12em;width:.54em;z-index:2;line-height:0}
+.nm-wrap .nath-on{position:absolute;left:-.44em;top:.18em;width:.34em;z-index:2;line-height:0}
+.nm-wrap .feather{position:absolute;right:-.62em;top:-.32em;width:.24em;height:.9em;transform:rotate(24deg);z-index:0}
+.lineage p{margin:2px auto;max-width:44ch;color:var(--text-soft)}
+.lin1{font:500 clamp(.92rem,3.4vw,1.06rem)/1.45 var(--serif);color:#7A1F3A!important}
+.lin2{font:italic 400 clamp(.86rem,3.1vw,.98rem)/1.45 var(--serif)}
+.weds{font:400 clamp(2.4rem,9vw,3.4rem)/1 var(--script);color:#C9A54A;margin:8px 0 2px}
+.joy{font:italic 400 clamp(1rem,3.6vw,1.12rem)/1.3 var(--serif);color:var(--text-soft);margin:26px 0 2px;position:relative;z-index:1}
+.joy-fam{font:600 clamp(1.1rem,4vw,1.3rem)/1.3 var(--serif);letter-spacing:.06em;color:#7A1F3A;margin:0;position:relative;z-index:1}
+.card .corner-lotus{bottom:-6px!important;opacity:.85}
 .names-wrap h1{position:relative;z-index:1}
 .card h1{padding-top:.34em!important}
 .topi-on,.nath-on{position:absolute;z-index:2;line-height:0}
-.topi-on{transform:none}
+.topi-on{transform:rotate(-18deg)}
 .nath-on{transform:rotate(-8deg)}
 .topi-on svg,.nath-on svg{width:100%;height:auto;filter:drop-shadow(0 2px 3px rgba(60,20,10,.25))}
 .skyline{cursor:pointer}
@@ -438,7 +427,7 @@ section{position:relative;scroll-margin-top:0}
   box-shadow:0 30px 60px -20px rgba(90,20,40,.5)}
 .card .corner-lotus{position:absolute;bottom:6px;width:clamp(70px,16vw,130px);height:auto;pointer-events:none}
 .card .corner-lotus.l{left:4px}.card .corner-lotus.r{right:4px;transform:scaleX(-1)}
-.blessing{font:italic 400 clamp(1rem,3.6vw,1.2rem)/1.5 var(--serif);color:var(--text-soft);max-width:30ch;margin:0 auto}
+.blessing{font:italic 400 clamp(1rem,3.6vw,1.2rem)/1.5 var(--serif);color:var(--text-soft);max-width:36ch;margin:0 auto}
 .rule{display:flex;align-items:center;justify-content:center;gap:10px;margin:14px auto;color:var(--zari)}
 .rule::before,.rule::after{content:"";height:1px;width:clamp(50px,18vw,140px);background:linear-gradient(90deg,transparent,#C9A54A)}
 .rule::after{transform:scaleX(-1)}
@@ -493,6 +482,37 @@ section{position:relative;scroll-margin-top:0}
 .cd small{display:block;margin-top:5px;font:500 .62rem/1.2 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:#5E2A3D}
 .cd .today{font:italic 500 2rem/1.2 var(--serif);color:#FFF6E6}
 
+/* ================= THE TWO CELEBRATIONS ================= */
+.events{position:relative;overflow:hidden;color:#FFF3E6;text-align:center;
+  background:radial-gradient(ellipse at 50% 20%,#B5323F,transparent 70%),linear-gradient(180deg,#A8283A,#8A1F2E 50%,#6B1622)}
+.ev-head{padding:80px 16px 0}
+.events .eyebrow{color:#F3C98A}
+.events .title{font-family:var(--script);font-style:normal;font-weight:400;font-size:clamp(3rem,11vw,4.8rem);color:#FFF3E6}
+.ev-page{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:76px 16px 56px}
+@media (min-width:768px){.ev-page{min-height:min(88svh,820px)}}
+.ev-page.alt{background:linear-gradient(180deg,rgba(0,0,0,0),rgba(40,0,10,.22) 30%,rgba(40,0,10,.22) 70%,rgba(0,0,0,0))}
+.ev-toran{position:absolute;left:0;right:0;top:0;height:46px;pointer-events:none;
+  background:radial-gradient(circle at 12px 10px,#E8891A 6px,transparent 6.5px) 0 0/24px 20px repeat-x,
+    radial-gradient(circle at 12px 10px,#E2A91B 6px,transparent 6.5px) 12px 18px/24px 20px repeat-x,
+    linear-gradient(#5A8A4E,#5A8A4E) 0 0/100% 3px no-repeat}
+.ev-num{font:500 .8rem/1.4 var(--sans);letter-spacing:.32em;text-transform:uppercase;color:#F3C98A;margin:0 0 22px}
+.ev-scroll{width:min(520px,90vw);margin:0}
+.ev-scroll .scroll-body{min-height:0;padding:42px 30px 38px}
+.ev-scroll .ev-icon{width:64px;height:60px}
+.ev-scroll h3{font:400 clamp(2.4rem,9vw,3.3rem)/1.15 var(--script);color:#7A1F3A;margin:4px 0 10px}
+.ev-date{font:600 clamp(1.3rem,5vw,1.6rem)/1.2 var(--serif);letter-spacing:.08em;color:var(--madder);margin:0}
+.ev-time{font:italic 500 clamp(1.1rem,4vw,1.3rem)/1.3 var(--serif);color:var(--gold-text);margin:2px 0 0}
+.ev-rule{display:flex;align-items:center;justify-content:center;gap:10px;margin:16px auto}
+.ev-rule::before,.ev-rule::after{content:"";height:1px;width:70px;background:linear-gradient(90deg,transparent,#C9A54A)}
+.ev-rule::after{transform:scaleX(-1)}
+.ev-rule svg{width:20px;height:14px}
+.ev-venue{font:500 clamp(1.4rem,5.4vw,1.75rem)/1.2 var(--serif);color:var(--text);margin:0 0 6px}
+.ev-addr{font-size:1rem;line-height:1.55;color:var(--text-soft);max-width:34ch;margin:0 auto 12px}
+.ev-scroll .link-maps{font-size:1.2rem}
+.ev-diya{position:absolute;bottom:40px;width:56px;height:auto}
+.ev-diya.l{left:8%}.ev-diya.r{right:8%}
+@media (max-width:640px){.ev-diya{display:none}}
+.events .know-ele{margin:0 auto 50px}
 /* ================= CEREMONIES (night) ================= */
 .night{
   color:var(--ivory);padding:0 16px 90px;text-align:center;overflow:hidden;
@@ -569,6 +589,14 @@ section{position:relative;scroll-margin-top:0}
 .story .title{color:#6E1E3A}
 .story-copy p{font:400 clamp(1.04rem,3.7vw,1.18rem)/1.7 var(--serif);color:#3A2C34;margin:0 0 .7em}
 .hashtag{font:italic 500 1.3rem/1 var(--serif);color:#A4741C;margin-top:10px!important}
+.couple-photo{margin:18px auto 22px;width:clamp(200px,58vw,300px)}
+.cp-outer{display:block;aspect-ratio:3/4;padding:9px;background:linear-gradient(160deg,#FFF6E6,#E9C46A 60%,#B8862A);
+  -webkit-mask:var(--arch) center/100% 100% no-repeat;mask:var(--arch) center/100% 100% no-repeat;filter:drop-shadow(0 14px 22px rgba(90,30,20,.35))}
+.cp-inner{display:grid;place-items:center;width:100%;height:100%;overflow:hidden;background:radial-gradient(circle at 50% 35%,#F7D9CF,#D99BA4 70%,#B66780);
+  -webkit-mask:var(--arch) center/100% 100% no-repeat;mask:var(--arch) center/100% 100% no-repeat}
+.cp-inner img{width:100%;height:100%;object-fit:cover}
+.cp-ph{font:italic 400 1.1rem/1.3 var(--serif);color:#5E2A3D;padding-top:30%}
+.story{padding-bottom:90px!important}
 .couple{position:relative;z-index:2;display:flex;align-items:flex-end;justify-content:center;gap:clamp(4px,4vw,40px);margin-top:18px;width:100%;max-width:620px}
 .couple figure{margin:0;flex:0 1 auto;width:clamp(120px,34vw,190px);text-align:center}
 .couple .fig{width:100%;height:auto;display:block}
@@ -901,6 +929,50 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
       <path d="M7 3.6L8.5 7L7 10.4L5.5 7Z" fill="#E2A91B"/>
       <g fill="#0F6B5C"><circle r="1.3"/><circle cx="14" r="1.3"/><circle cy="14" r="1.3"/><circle cx="14" cy="14" r="1.3"/></g>
     </pattern>
+    <!-- Lord Ganesha: simple icon in gold, ivory and madder -->
+    <g id="ganesha" stroke="#8A6418" stroke-width="1.4" stroke-linejoin="round">
+      <circle cx="50" cy="50" r="47" fill="#FBF0D6" stroke="#C9A54A" stroke-width="2"/>
+      <circle cx="50" cy="50" r="42" fill="none" stroke="#E2A91B" stroke-width=".8" stroke-dasharray="2 3"/>
+      <path d="M24 92L28 66Q50 56 72 66L76 92Z" fill="#A8283A"/>
+      <path d="M28 70Q50 62 72 70" fill="none" stroke="#E9C46A" stroke-width="2.4"/>
+      <ellipse cx="50" cy="78" rx="13" ry="11" fill="#F3D2A0"/>
+      <path d="M33 30C14 24 10 52 30 56C32 48 32 38 33 30Z" fill="#F3D2A0"/>
+      <path d="M67 30C86 24 90 52 70 56C68 48 68 38 67 30Z" fill="#F3D2A0"/>
+      <path d="M29 36C21 36 20 48 28 50M71 36C79 36 80 48 72 50" fill="none" stroke="#E79A8E" stroke-width="2"/>
+      <ellipse cx="50" cy="40" rx="17" ry="16" fill="#F3D2A0"/>
+      <path d="M45 48C43 60 45 70 54 73C62 75 64 67 58 65C52 65 51 60 53 51Z" fill="#F3D2A0"/>
+      <path d="M43 50L39 57" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round"/>
+      <circle cx="44" cy="40" r="1.6" fill="#2A1A14" stroke="none"/><circle cx="56" cy="40" r="1.6" fill="#2A1A14" stroke="none"/>
+      <path d="M46 31Q50 36 54 31" fill="none" stroke="#C2272D" stroke-width="2"/>
+      <path d="M35 25L38 14L44 20L50 9L56 20L62 14L65 25Z" fill="#E2A91B"/>
+      <rect x="34" y="24" width="32" height="5" rx="2" fill="#C9A54A"/>
+      <circle cx="50" cy="17" r="2" fill="#C2272D" stroke="none"/>
+      <circle cx="30" cy="80" r="5" fill="#E2A91B"/>
+      <path d="M70 66L70 82M66 70L74 70" stroke="#E9C46A" stroke-width="1.6"/>
+      <path d="M30 94Q50 86 70 94" fill="none" stroke="#E79A8E" stroke-width="2"/>
+    </g>
+    <!-- Jhulelal: bearded saint with crown and peacock feather, holding a book, seated on the palla fish -->
+    <g id="jhulelal" stroke="#5E3A12" stroke-width="1.2" stroke-linejoin="round">
+      <circle cx="50" cy="50" r="47" fill="#FBF0D6" stroke="#C9A54A" stroke-width="2"/>
+      <circle cx="50" cy="30" r="20" fill="none" stroke="#E2A91B" stroke-width="2.4"/>
+      <circle cx="50" cy="30" r="16" fill="none" stroke="#C2272D" stroke-width="1" stroke-dasharray="3 2"/>
+      <path d="M50 4C46 8 46 12 50 14C54 12 54 8 50 4Z" fill="#1B7A62"/><circle cx="50" cy="9" r="1.6" fill="#2459A8" stroke="none"/>
+      <path d="M41 22L43 13L47 17L50 11L53 17L57 13L59 22Z" fill="#E2A91B"/>
+      <rect x="40" y="21" width="20" height="4" rx="1.5" fill="#C9A54A"/>
+      <ellipse cx="50" cy="31" rx="7.5" ry="8.5" fill="#FBEEDC"/>
+      <path d="M48 26.5H52M50 26.5V29" stroke="#C2272D" stroke-width="1.2"/>
+      <circle cx="47" cy="30" r="1" fill="#2A1A14" stroke="none"/><circle cx="53" cy="30" r="1" fill="#2A1A14" stroke="none"/>
+      <path d="M42.5 32Q43 47 50 51Q57 47 57.5 32Q55 38 50 38Q45 38 42.5 32Z" fill="#FFFFFF" stroke="#BDB3A2"/>
+      <path d="M45 35Q50 33 55 35" fill="none" stroke="#BDB3A2" stroke-width="1.6"/>
+      <path d="M30 70L34 48Q50 42 66 48L70 70Z" fill="#2F6FA8"/>
+      <path d="M36 48L40 70M64 48L60 70" stroke="#E8891A" stroke-width="5"/>
+      <path d="M38 56Q50 68 62 56L60 52Q50 63 40 52Z" fill="#FBF6EA"/>
+      <ellipse cx="50" cy="71" rx="21" ry="5.5" fill="#F3E6CC"/>
+      <path d="M30 74Q36 70 40 75Q45 70 50 75Q55 70 60 75Q64 70 70 74Q60 79 50 79Q40 79 30 74Z" fill="#F08DA6"/>
+      <path d="M14 86Q40 74 76 82Q86 78 90 72L89 92Q84 88 76 90Q40 98 14 86Z" fill="#2BB3A3"/>
+      <path d="M30 84Q32 88 30 92M40 82Q42 87 40 92M50 82Q52 87 50 92M60 82Q62 87 60 91" fill="none" stroke="#1B7A62" stroke-width="1"/>
+      <circle cx="20" cy="85" r="1.6" fill="#2A1A14" stroke="none"/>
+    </g>
     <!-- small icons -->
     <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 22s7-7.2 7-12.5A7 7 0 0 0 5 9.5C5 14.8 12 22 12 22z" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="9.5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
     <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M3 10h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.7" fill="none"/></symbol>
@@ -942,11 +1014,11 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
     <g id="bushes"></g>
     <g id="wall"></g>
     <use href="#chhatri" x="0" y="0" transform="translate(70 548) scale(.8)"/>
-    <use href="#chhatri" transform="translate(178 548) scale(1)"/>
-    <use href="#chhatri" transform="translate(1022 548) scale(1)"/>
+    <use href="#chhatri" transform="translate(150 548) scale(.9)"/>
+    <use href="#chhatri" transform="translate(1050 548) scale(.9)"/>
     <use href="#chhatri" transform="translate(1130 548) scale(.8)"/>
-    <use href="#diya" class="flame-lit" transform="translate(150 520) scale(.9)"/>
-    <use href="#diya" class="flame-lit" transform="translate(1050 520) scale(.9)"/>
+    <use href="#diya" class="flame-lit" transform="translate(70 520) scale(.9)"/>
+    <use href="#diya" class="flame-lit" transform="translate(1130 520) scale(.9)"/>
     <g id="perchL" class="slide-l"></g><g id="perchR" class="slide-r"></g>
     <rect x="-800" y="720" width="2800" height="400" fill="url(#ground)"/>
     <g stroke="#A88A5C" stroke-width="1.2" fill="none" opacity=".7">
@@ -956,73 +1028,55 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
     <g><ellipse cx="160" cy="790" rx="190" ry="40" fill="#A9C2B6" opacity=".8"/><ellipse cx="1040" cy="790" rx="190" ry="40" fill="#A9C2B6" opacity=".8"/></g>
     <use href="#lotus" transform="translate(110 782) scale(1.3)"/><use href="#lotus" transform="translate(220 800) scale(1)"/>
     <use href="#lotus" transform="translate(990 800) scale(1)"/><use href="#lotus" transform="translate(1100 782) scale(1.3)"/>
-    <g transform="translate(600 0) scale(1.3 1) translate(-600 0)">
-    <!-- view through the arch -->
-    <g clip-path="url(#openClip)">
-      <rect x="400" y="150" width="400" height="600" fill="url(#opening)"/>
-      <path d="M520 720V520Q520 470 560 450Q600 420 640 450Q680 470 680 520V720Z" fill="#F0C7C8" opacity=".35"/>
-      <use href="#chhatri" transform="translate(520 690) scale(.323 .42)" opacity=".55"/>
-      <use href="#chhatri" transform="translate(680 690) scale(.323 .42)" opacity=".55"/>
-      <rect x="440" y="690" width="320" height="10" fill="#E2C9A0" opacity=".6"/><rect x="460" y="700" width="280" height="10" fill="#E2C9A0" opacity=".5"/>
-      <use href="#lantern" class="lantern" transform="translate(600 186) scale(.446 .58)"/>
-      <use href="#diya" class="always" transform="translate(600 712) scale(.846 1.1)"/>
+    <!-- ===== the wedding mandap ===== -->
+    <g id="mandap">
+      <rect x="374" y="262" width="452" height="432" fill="url(#opening)"/>
+      <ellipse cx="600" cy="600" rx="220" ry="150" fill="url(#warmGlow)" opacity=".6"/>
+      <!-- back pillars and beam -->
+      <rect x="420" y="290" width="360" height="12" fill="#B8946A"/>
+      <g fill="#DCC49A" stroke="#A88A5C" stroke-width="1.2"><rect x="432" y="300" width="16" height="394"/><rect x="752" y="300" width="16" height="394"/></g>
+      <!-- platform and steps -->
+      <rect x="330" y="690" width="540" height="20" fill="#EAD9BC" stroke="#A88A5C" stroke-width="1.4"/>
+      <path d="M346 700H854" stroke="#C9A54A" stroke-width="1.4" stroke-dasharray="3 6"/>
+      <g fill="#EAD9BC" stroke="#A88A5C" stroke-width="1.4">
+        <rect x="350" y="710" width="500" height="11" rx="2"/><rect x="330" y="721" width="540" height="11" rx="2"/><rect x="310" y="732" width="580" height="11" rx="2"/>
+      </g>
+      <!-- front pillars -->
+      <g fill="#F5E9D2" stroke="#A88A5C" stroke-width="1.6">
+        <rect x="340" y="272" width="34" height="420"/><rect x="826" y="272" width="34" height="420"/>
+        <rect x="330" y="664" width="54" height="28" rx="2"/><rect x="816" y="664" width="54" height="28" rx="2"/>
+        <rect x="332" y="262" width="50" height="14" rx="2"/><rect x="818" y="262" width="50" height="14" rx="2"/>
+      </g>
+      <g id="pillarWraps"></g>
+      <!-- canopy -->
+      <path d="M314 240C356 156 476 100 600 94C724 100 844 156 886 240Z" fill="#A8283A" stroke="#6E1626" stroke-width="1.6"/>
+      <g id="canopyFolds"></g>
+      <rect x="312" y="236" width="576" height="30" fill="#C9A54A" stroke="#8A6418" stroke-width="1.4"/>
+      <rect x="312" y="245" width="576" height="10" fill="#A3175B"/>
+      <g id="canopyFringe"></g>
+      <!-- kalash on the peak -->
+      <g stroke="#8A6418" stroke-width="1.2">
+        <rect x="584" y="86" width="32" height="8" rx="2" fill="#E2C9A0"/>
+        <path d="M588 86C579 77 583 64 600 62C617 64 621 77 612 86Z" fill="#D4A63A"/>
+        <path d="M590 62Q584 54 578 56M610 62Q616 54 622 56M596 61Q594 50 588 48M604 61Q606 50 612 48" stroke="#4F7D52" stroke-width="3" stroke-linecap="round" fill="none"/>
+        <ellipse cx="600" cy="54" rx="7" ry="8" fill="#B8862A"/>
+      </g>
+      <!-- sheer swags between the front pillars -->
+      <path d="M374 266Q487 330 600 266Q713 330 826 266L826 278Q713 344 600 278Q487 344 374 278Z" fill="#FBF3E2" opacity=".88" stroke="#E9C46A"/>
+      <!-- tied-back drapes: ajrak on Kapil's side, Paithani on Rucha's -->
+      <path d="M300 262H380Q384 370 364 446Q346 470 330 446Q318 370 300 262Z" fill="url(#ajrak-cloth)" stroke="#141B3E" stroke-width="1"/>
+      <path d="M338 452Q330 540 344 640L358 636Q350 540 360 452Z" fill="url(#ajrak-cloth)" stroke="#141B3E" stroke-width="1"/>
+      <path d="M900 262H820Q816 370 836 446Q854 470 870 446Q882 370 900 262Z" fill="url(#paithani-cloth)" stroke="#6E0F3B" stroke-width="1"/>
+      <path d="M862 452Q870 540 856 640L842 636Q850 540 840 452Z" fill="url(#paithani-cloth)" stroke="#6E0F3B" stroke-width="1"/>
+      <g fill="#E9C46A" stroke="#8A6418"><circle cx="348" cy="448" r="7"/><circle cx="852" cy="448" r="7"/></g>
+      <g id="mandapStrings"></g>
+      <!-- diyas along the platform -->
+      <use href="#diya" class="flame-lit" transform="translate(410 692) scale(.62)"/>
+      <use href="#diya" class="flame-lit" transform="translate(480 692) scale(.62)"/>
+      <use href="#diya" class="always" transform="translate(600 696) scale(.9)"/>
+      <use href="#diya" class="flame-lit" transform="translate(720 692) scale(.62)"/>
+      <use href="#diya" class="flame-lit" transform="translate(790 692) scale(.62)"/>
     </g>
-    <!-- the great arch -->
-    <path d="M405 720V352L420 336C436 262 498 150 556 104L566 90H634L644 104C702 150 764 262 780 336L795 352V720Z
-             M468 720V370A26 26 0 0 1 474 330A26 26 0 0 1 489 293A26 26 0 0 1 512 262A26 26 0 0 1 540 236A26 26 0 0 1 570 212A26 26 0 0 1 600 190A26 26 0 0 1 630 212A26 26 0 0 1 660 236A26 26 0 0 1 688 262A26 26 0 0 1 711 293A26 26 0 0 1 726 330A26 26 0 0 1 732 370V720Z"
-          fill="url(#stoneFloral)" fill-rule="evenodd" stroke="#A88A5C" stroke-width="2"/>
-    <!-- shikhara carving: tier lines, central rib, side spires, cornice -->
-    <clipPath id="towerClip"><path clip-rule="evenodd" d="M420 336C436 262 498 150 556 104L566 90H634L644 104C702 150 764 262 780 336Z M468 720V370A26 26 0 0 1 474 330A26 26 0 0 1 489 293A26 26 0 0 1 512 262A26 26 0 0 1 540 236A26 26 0 0 1 570 212A26 26 0 0 1 600 190A26 26 0 0 1 630 212A26 26 0 0 1 660 236A26 26 0 0 1 688 262A26 26 0 0 1 711 293A26 26 0 0 1 726 330A26 26 0 0 1 732 370V720Z"/></clipPath>
-    <g clip-path="url(#towerClip)" fill="none" stroke="#C9A97A" stroke-width="2">
-      <path d="M380 318H820M380 296H820M380 272H820M380 246H820M380 218H820M380 188H820M380 158H820M380 128H820M380 104H820" opacity=".55"/>
-      <path d="M574 90C566 160 560 250 556 336M626 90C634 160 640 250 644 336" stroke="#B8946A" stroke-width="2.4"/>
-      <path d="M582 92C560 170 520 260 470 336M590 92C578 170 556 260 520 336M610 92C622 170 644 260 680 336M618 92C640 170 680 260 730 336" stroke="#B8946A" stroke-width="1.6" opacity=".8"/>
-      <path d="M600 92V336" stroke="#C9A54A" stroke-width="1.6" stroke-dasharray="6 6"/>
-    </g>
-    <g fill="#F5E9D2" stroke="#A88A5C" stroke-width="1.6">
-      <path d="M410 336C412 306 424 284 438 272C452 284 464 306 466 336Z"/>
-      <path d="M734 336C736 306 748 284 762 272C776 284 788 306 790 336Z"/>
-      <ellipse cx="438" cy="270" rx="9" ry="4"/><ellipse cx="762" cy="270" rx="9" ry="4"/>
-    </g>
-    <g stroke="#A88A5C" stroke-width="1.2"><path d="M420 304H456M416 320H460M744 304H780M740 320H784"/></g>
-    <rect x="395" y="334" width="76" height="18" fill="#E2C9A0" stroke="#A88A5C" stroke-width="1.6"/>
-    <rect x="729" y="334" width="76" height="18" fill="#E2C9A0" stroke="#A88A5C" stroke-width="1.6"/>
-    <g fill="#C9A54A"><circle cx="414" cy="343" r="2.4"/><circle cx="433" cy="343" r="2.4"/><circle cx="452" cy="343" r="2.4"/><circle cx="748" cy="343" r="2.4"/><circle cx="767" cy="343" r="2.4"/><circle cx="786" cy="343" r="2.4"/></g>
-    <use href="#innerArch" fill="none" stroke="#E2C9A0" stroke-width="12"/>
-    <use href="#innerArch" fill="none" stroke="#C9A54A" stroke-width="3"/>
-    <g fill="#F7EEDC" stroke="#BFA273">
-      <rect x="414" y="392" width="44" height="280" rx="3"/><rect x="742" y="392" width="44" height="280" rx="3"/>
-    </g>
-    <g fill="#E2C9A0" stroke="#A88A5C">
-      <rect x="398" y="356" width="76" height="14"/><rect x="726" y="356" width="76" height="14"/>
-      <rect x="398" y="680" width="76" height="40"/><rect x="726" y="680" width="76" height="40"/>
-    </g>
-    <g id="vines"></g>
-    <g>
-      <use href="#rosette" x="-9" y="-9" width="18" height="18" transform="translate(452 345)"/><use href="#rosette" x="-9" y="-9" width="18" height="18" transform="translate(462 298)"/>
-      <use href="#rosette" x="-9" y="-9" width="18" height="18" transform="translate(484 258)"/><use href="#rosette" x="-9" y="-9" width="18" height="18" transform="translate(514 224)"/>
-      <use href="#rosette" x="-9" y="-9" width="18" height="18" transform="translate(548 198)"/><use href="#rosette" x="-9" y="-9" width="18" height="18" transform="translate(748 345)"/>
-      <use href="#rosette" x="-9" y="-9" width="18" height="18" transform="translate(738 298)"/><use href="#rosette" x="-9" y="-9" width="18" height="18" transform="translate(716 258)"/>
-      <use href="#rosette" x="-9" y="-9" width="18" height="18" transform="translate(686 224)"/><use href="#rosette" x="-9" y="-9" width="18" height="18" transform="translate(652 198)"/>
-    </g>
-    </g>
-    <!-- amalaka (ribbed stone disc) and kalash crown the shikhara -->
-    <g>
-      <ellipse cx="600" cy="88" rx="44" ry="11" fill="#F5E9D2" stroke="#A88A5C" stroke-width="1.6"/>
-      <path d="M560 86V90M572 82V94M586 79V97M600 78V98M614 79V97M628 82V94M640 86V90" stroke="#A88A5C" stroke-width="1.4"/>
-      <rect x="586" y="72" width="28" height="6" rx="2" fill="#E2C9A0" stroke="#A88A5C"/>
-      <path d="M588 72C580 64 584 52 600 50C616 52 620 64 612 72Z" fill="#D4A63A" stroke="#8A6418" stroke-width="1.2"/>
-      <path d="M594 50L600 36L606 50Z" fill="#E9C46A" stroke="#8A6418"/>
-      <ellipse cx="600" cy="50" rx="9" ry="2.6" fill="#E9C46A" stroke="#8A6418"/>
-      <circle cx="600" cy="34" r="3" fill="#E9C46A"/>
-    </g>
-    <g fill="#EAD9BC" stroke="#A88A5C" stroke-width="1.4">
-      <rect x="372" y="722" width="456" height="10" rx="2"/>
-      <rect x="352" y="732" width="496" height="10" rx="2"/>
-      <rect x="332" y="742" width="536" height="10" rx="2"/>
-    </g>
-    <use href="#diya" class="flame-lit" transform="translate(387 676) scale(.8)"/>
-    <use href="#diya" class="flame-lit" transform="translate(813 676) scale(.8)"/>
   </svg>
   <div class="vignette"></div>
   <div class="petals" id="introPetals" aria-hidden="true"></div>
@@ -1035,8 +1089,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
     <p class="ic-names" id="icNames"></p>
     <div class="ic-band">
       <div class="ic-rule" aria-hidden="true"><svg viewBox="-12 -8 24 16"><use href="#rosette" x="-8" y="-8" width="16" height="16"/></svg></div>
-      <p class="ic-date" id="icDate"></p>
-      <p class="ic-tag" data-i18n="tagline">Two families. Two traditions. One celebration.</p>
+      <p class="ic-tag" data-i18n="tagline">Two traditions. One celebration.</p>
     </div>
     <button type="button" class="ic-lotus" id="openInvite">
       <svg viewBox="0 120 1280 1080" aria-hidden="true"><use href="#kr-logo-pat"/></svg>
@@ -1055,11 +1108,8 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
 <nav class="menu-panel" id="menuPanel" aria-label="Sections" hidden>
   <ul>
     <li><a href="#invite" data-i18n="nav_invite">Invitation</a></li>
-    <li><a href="#ceremonies" data-i18n="nav_ceremonies">Ceremonies</a></li>
+    <li><a href="#events">The Celebrations</a></li>
     <li><a href="#story" data-i18n="nav_story">Our Story</a></li>
-    <li><a href="#gallery" data-i18n="nav_gallery">Gallery</a></li>
-    <li><a href="#know" data-i18n="nav_know">Venues</a></li>
-    <li><a href="#closing">Contact</a></li>
   </ul>
 </nav>
 
@@ -1077,20 +1127,30 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
       </svg>
       <button type="button" class="hint-btn pearl-hit" data-hint="mundavalya"></button>
       <div class="card">
-        <svg class="logo card-logo" viewBox="0 120 1280 1080" role="img" aria-label="Kapil and Rucha monogram"><use href="#kr-logo"/></svg>
-        <p class="blessing" data-i18n="blessing">With the blessings of our elders and the love of our families</p>
+        <div class="divine">
+          <figure class="deity"><svg viewBox="0 0 100 100" role="img" aria-label="Lord Ganesha"><use href="#ganesha"/></svg><figcaption>|| Shree Ganeshay Namah ||</figcaption></figure>
+          <figure class="deity"><svg viewBox="0 0 100 100" role="img" aria-label="Jhulelal"><use href="#jhulelal"/></svg><figcaption>|| Jai Jhulelal ||</figcaption></figure>
+        </div>
+        <p class="blessing" data-i18n="blessing">With the divine blessings of Jaibaba, our elders and the love of our families</p>
         <div class="rule" aria-hidden="true"><svg viewBox="-12 -8 24 16"><use href="#rosette" x="-8" y="-8" width="16" height="16"/></svg></div>
-        <div class="names-wrap"><h1 id="inviteNames" tabindex="-1"></h1>
-          <button type="button" class="hint-btn topi-on" data-hint="ajrak"><svg viewBox="0 0 60 82" aria-hidden="true" id="topiSvg"></svg></button>
-          <button type="button" class="hint-btn nath-on" data-hint="nath"><svg viewBox="0 0 64 64" aria-hidden="true" id="nathSvg"></svg></button>
-          <button type="button" class="hint-btn feather" data-hint="feather"><svg viewBox="0 0 40 140" aria-hidden="true" id="featherSvg"></svg></button></div>
+        <p class="cordial">We cordially invite you for the wedding celebration of</p>
+        <h1 class="visually-hidden" id="inviteNames" tabindex="-1">Kapil &amp; Rucha</h1>
+        <div class="person">
+          <p class="pname-big" aria-hidden="true"><span class="nm-wrap"><span id="nm1"></span>
+            <button type="button" class="hint-btn topi-on" data-hint="topi"><svg viewBox="0 0 64 46" aria-hidden="true" id="topiSvg"></svg></button></span></p>
+          <div class="lineage" id="lineage1"></div>
+        </div>
+        <p class="weds" aria-hidden="true">&amp;</p>
+        <div class="person">
+          <p class="pname-big" aria-hidden="true"><span class="nm-wrap"><span id="nm2"></span>
+            <button type="button" class="hint-btn nath-on" data-hint="nath"><svg viewBox="0 0 64 64" aria-hidden="true" id="nathSvg"></svg></button>
+            <button type="button" class="hint-btn feather" data-hint="feather"><svg viewBox="0 0 40 140" aria-hidden="true" id="featherSvg"></svg></button></span></p>
+          <div class="lineage" id="lineage2"></div>
+        </div>
         <div class="rule" aria-hidden="true"><svg viewBox="-12 -8 24 16"><use href="#rosette" x="-8" y="-8" width="16" height="16"/></svg></div>
-        <div class="parents" id="parents"></div>
-        <p class="families" style="margin-top:4px" data-i18n="invite_line">invite you to celebrate their engagement and wedding ceremonies</p>
-        <p class="card-on" data-i18n="on_the">on the</p>
-        <p class="card-date" id="cardDate"></p>
-        <p class="card-venue" id="cardVenue"></p>
-        <a class="btn" href="#ceremonies" data-i18n="view_events">View ceremonies</a>
+        <a class="btn" href="#events" data-i18n="view_events">View the celebrations</a>
+        <p class="joy">Sharing the joy</p>
+        <p class="joy-fam" id="familyLine"></p>
         <svg class="corner-lotus l" viewBox="-40 -36 80 56" aria-hidden="true"><use href="#lotus"/></svg>
         <svg class="corner-lotus r" viewBox="-40 -36 80 56" aria-hidden="true"><use href="#lotus"/></svg>
       </div>
@@ -1106,15 +1166,14 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
     </div>
   </section>
 
-  <!-- ======================= 3. CEREMONIES ======================= -->
-  <section class="night" id="ceremonies" aria-labelledby="cerTitle">
-    <div class="stars" aria-hidden="true"></div>
-    <div class="hang-lantern" aria-hidden="true"><svg viewBox="-45 0 90 220"><use href="#lantern"/></svg></div>
-    <span class="eyebrow reveal" data-i18n="cer_eyebrow">Celebration journey</span>
-    <h2 class="title reveal" id="cerTitle" data-i18n="cer_title">Our Ceremonies</h2>
-    <svg class="flourish reveal" viewBox="0 0 150 24" aria-hidden="true"><path d="M2 12H56M94 12H148" stroke="#C9A54A" stroke-width=".8"/><use href="#lotus" x="0" y="0" transform="translate(75 14) scale(.36)"/></svg>
-    <div id="sideArt" aria-hidden="true"></div>
-    <div class="scrolls" id="scrolls"></div>
+  <!-- ======================= 3. THE TWO CELEBRATIONS ======================= -->
+  <section class="events" id="events" aria-labelledby="evTitle">
+    <div class="ev-head">
+      <span class="eyebrow reveal">Join us for</span>
+      <h2 class="title reveal" id="evTitle">The Celebrations</h2>
+    </div>
+    <div id="eventPages"></div>
+    <button type="button" class="hint-btn know-ele" data-hint="mirrorwork"><svg viewBox="0 0 200 150" aria-hidden="true" data-elephant></svg></button>
   </section>
 
   <!-- ======================= 5. STORY ======================= -->
@@ -1124,87 +1183,10 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
       <span class="eyebrow" data-i18n="story_eyebrow">A love story</span>
       <h2 class="title" id="storyTitle" data-i18n="story_title">Meet the Couple</h2>
       <div class="rule" aria-hidden="true"><svg viewBox="-12 -8 24 16"><use href="#rosette" x="-8" y="-8" width="16" height="16"/></svg></div>
+      <div class="couple-photo">
+        <span class="cp-outer"><span class="cp-inner" id="couplePhoto"></span></span>
+      </div>
       <div id="storyText"></div>
-    </div>
-    <div class="couple">
-      <figure class="who-l"><svg class="fig" viewBox="0 0 200 430" role="img" aria-label="Kapil: swept-up dark hair, full beard, black zip hoodie">
-  <ellipse cx="100" cy="420" rx="60" ry="7" fill="rgba(60,30,20,.2)"/>
-  <!-- jeans and sneakers -->
-  <path d="M78 300L76 404H96L100 320L104 404H124L122 300Z" fill="#2F3E5C"/>
-  <path d="M86 310L86 400M114 310L114 400" stroke="#26334D" stroke-width="1.4"/>
-  <path d="M70 404Q84 396 98 404V413H70Z M102 404Q116 396 130 404V413H102Z" fill="#1E1E22"/>
-  <path d="M70 410H98M102 410H130" stroke="#E9E4DA" stroke-width="2"/>
-  <!-- hoodie -->
-  <path d="M64 128Q100 116 136 128L142 306Q100 316 58 306Z" fill="#1F1F24"/>
-  <path d="M58 294Q100 304 142 294L142 308Q100 318 58 308Z" fill="#16161A"/>
-  <path d="M89 126H111L107 300H93Z" fill="#2B2B31"/>
-  <path d="M91 136L93 302M109 136L107 302" stroke="#77777F" stroke-width="1.1" stroke-dasharray="2 2"/>
-  <path d="M76 248Q100 256 124 248L120 282H80Z" fill="#19191E" stroke="#2E2E34"/>
-  <!-- sleeves and hands, red-orange thread on the wrist -->
-  <path d="M66 130Q50 140 50 212L54 272H70L73 176Z" fill="#1F1F24"/>
-  <path d="M134 130Q150 140 150 212L146 272H130L127 176Z" fill="#1F1F24"/>
-  <path d="M53 262H71V273H53ZM129 262H147V273H129Z" fill="#16161A"/>
-  <path d="M54 274H70" stroke="#E0652A" stroke-width="3"/>
-  <ellipse cx="62" cy="283" rx="8.5" ry="9.5" fill="#C48A5E"/><ellipse cx="138" cy="282" rx="8.5" ry="9.5" fill="#C48A5E"/>
-  <!-- hood bunched at the neck, drawstrings -->
-  <path d="M72 122Q100 144 128 122Q126 106 112 104H88Q74 106 72 122Z" fill="#27272C"/>
-  <path d="M93 128L91 170M107 128L109 170" stroke="#DCD5C8" stroke-width="1.7" stroke-linecap="round"/>
-  <!-- neck and head -->
-  <rect x="92" y="94" width="16" height="20" rx="6" fill="#B07A50"/>
-  <ellipse cx="77" cy="76" rx="4" ry="7" fill="#B07A50"/><ellipse cx="123" cy="76" rx="4" ry="7" fill="#B07A50"/>
-  <ellipse cx="100" cy="72" rx="23" ry="28" fill="#C48A5E"/>
-  <!-- full trimmed beard and moustache -->
-  <path d="M77 70Q77 104 100 110Q123 104 123 70Q120 88 112 92Q100 97 88 92Q80 88 77 70Z" fill="#241712"/>
-  <path d="M89 86Q100 81 111 86Q106 90 100 89Q94 90 89 86Z" fill="#241712"/>
-  <path d="M93 92Q100 97 107 92Q100 95 93 92Z" fill="#F4EEE6"/>
-  <!-- swept-up hair, short sides -->
-  <path d="M77 72Q73 46 96 38Q114 34 123 50Q127 60 123 72Q121 58 110 54Q98 51 88 55Q80 60 79 72Z" fill="#1C1310"/>
-  <path d="M84 48Q94 30 118 40Q108 37 99 42Q90 45 84 48Z" fill="#2A1D17"/>
-  <!-- face -->
-  <path d="M85 64Q91 60 97 63M103 63Q109 60 115 64" stroke="#1C1310" stroke-width="2.8" fill="none" stroke-linecap="round"/>
-  <ellipse cx="91" cy="71" rx="2.6" ry="3" fill="#2A1A14"/><ellipse cx="109" cy="71" rx="2.6" ry="3" fill="#2A1A14"/>
-  <circle cx="92" cy="70" r=".9" fill="#fff"/><circle cx="110" cy="70" r=".9" fill="#fff"/>
-  <path d="M100 72Q104 80 99 82" stroke="#A06A42" stroke-width="1.4" fill="none" stroke-linecap="round"/>
-</svg><figcaption>Kapil</figcaption></figure>
-      <span class="couple-knot" aria-hidden="true"></span>
-      <figure class="who-r"><svg class="fig" viewBox="0 0 200 430" role="img" aria-label="Rucha: long wavy brown hair in a half-up ponytail, hoop earrings, olive-green tee">
-  <ellipse cx="100" cy="420" rx="56" ry="7" fill="rgba(60,30,20,.2)"/>
-  <!-- long hair behind the shoulders, and the ponytail -->
-  <path d="M74 62Q60 110 64 168Q60 202 74 214Q84 198 82 162L86 96Z" fill="#6A4126"/>
-  <path d="M126 62Q140 110 136 168Q140 202 126 214Q116 198 118 162L114 96Z" fill="#6A4126"/>
-  <path d="M112 42Q142 40 140 78Q138 104 126 118Q130 82 116 58Z" fill="#6A4126"/>
-  <!-- light jeans and white sneakers -->
-  <path d="M68 226Q100 234 132 226L134 304L120 404H104L100 322L96 404H80L66 304Z" fill="#8FA8C8"/>
-  <path d="M88 310L88 400M112 310L112 400" stroke="#7690B2" stroke-width="1.4"/>
-  <path d="M68 228Q100 236 132 228" stroke="#6F86A6" stroke-width="2.4" fill="none"/>
-  <path d="M74 404Q88 397 98 404V412H74Z M102 404Q112 397 126 404V412H102Z" fill="#F4F1EA" stroke="#CFC8BA"/>
-  <!-- olive-green tee, tucked in -->
-  <path d="M70 130Q100 120 130 130L134 230Q100 238 66 230Z" fill="#3E5A3A"/>
-  <path d="M70 130Q55 136 53 166L70 170Z M130 130Q145 136 147 166L130 170Z" fill="#3E5A3A"/>
-  <path d="M90 124Q100 132 110 124" stroke="#2F4A2C" stroke-width="2" fill="none"/>
-  <!-- arms and hands -->
-  <path d="M55 165L54 250H67L69 170Z M145 165L146 250H133L131 170Z" fill="#D7A27A"/>
-  <ellipse cx="60" cy="257" rx="7.5" ry="8.5" fill="#D7A27A"/><ellipse cx="140" cy="257" rx="7.5" ry="8.5" fill="#D7A27A"/>
-  <!-- neck and face -->
-  <rect x="93" y="96" width="14" height="22" rx="6" fill="#C8916A"/>
-  <ellipse cx="100" cy="76" rx="22" ry="26" fill="#D7A27A"/>
-  <!-- front hair: middle part, waves falling over the shoulders -->
-  <path d="M77 82Q73 48 100 44Q127 48 123 82Q118 60 104 57Q100 56 98 57Q84 60 79 74Z" fill="#7A4E2D"/>
-  <path d="M78 76Q68 112 75 148Q79 168 72 192Q88 182 87 150Q84 112 84 84Z" fill="#7A4E2D"/>
-  <path d="M122 76Q132 112 125 148Q121 168 128 192Q112 182 113 150Q116 112 116 84Z" fill="#7A4E2D"/>
-  <path d="M77 120Q82 130 77 142Q73 152 78 164M123 120Q118 130 123 142Q127 152 122 164M88 52Q96 48 104 50" stroke="#A8773F" stroke-width="1.6" fill="none" stroke-linecap="round"/>
-  <!-- hoops -->
-  <circle cx="78" cy="94" r="5.5" fill="none" stroke="#C9CCD1" stroke-width="1.6"/>
-  <circle cx="122" cy="94" r="5.5" fill="none" stroke="#C9CCD1" stroke-width="1.6"/>
-  <!-- face -->
-  <path d="M86 69Q91 65 96 68M104 68Q109 65 114 69" stroke="#4A2E1C" stroke-width="2" fill="none" stroke-linecap="round"/>
-  <ellipse cx="91" cy="76" rx="3" ry="3.6" fill="#3A2416"/><ellipse cx="109" cy="76" rx="3" ry="3.6" fill="#3A2416"/>
-  <circle cx="92" cy="75" r="1" fill="#fff"/><circle cx="110" cy="75" r="1" fill="#fff"/>
-  <path d="M87 73L85 71M113 73L115 71" stroke="#3A2416" stroke-width="1.2" stroke-linecap="round"/>
-  <ellipse cx="86" cy="86" rx="5" ry="3" fill="#E8957E" opacity=".45"/><ellipse cx="114" cy="86" rx="5" ry="3" fill="#E8957E" opacity=".45"/>
-  <path d="M100 78Q103 84 99 86" stroke="#B57E58" stroke-width="1.3" fill="none" stroke-linecap="round"/>
-  <path d="M93 92Q100 98 107 92Q100 95 93 92Z" fill="#F4EEE6" stroke="#B8566A" stroke-width="1.2" stroke-linejoin="round"/>
-</svg><figcaption>Rucha</figcaption></figure>
     </div>
     <!-- the curtain: ajrak on Kapil's side, Paithani on Rucha's -->
     <div class="stage-curtain l" aria-hidden="true"><svg><rect width="100%" height="100%" fill="url(#ajrak-cloth-lg)"/></svg></div>
@@ -1212,50 +1194,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
     <div class="stage-valance" aria-hidden="true"></div>
   </section>
 
-  <!-- ======================= 6. GALLERY ======================= -->
-  <section class="gallery" id="gallery" aria-labelledby="galTitle">
-    <svg class="arch-bg" viewBox="0 0 1100 520" aria-hidden="true">
-      <path d="M40 520V230C40 150 120 120 200 96C300 66 420 50 480 18Q550 -14 620 18C680 50 800 66 900 96C980 120 1060 150 1060 230V520" fill="none" stroke="#F6D7C8" stroke-width="22" opacity=".55"/>
-      <path d="M40 520V230C40 150 120 120 200 96C300 66 420 50 480 18Q550 -14 620 18C680 50 800 66 900 96C980 120 1060 150 1060 230V520" fill="none" stroke="#E9C46A" stroke-width="2" stroke-dasharray="2 10" stroke-linecap="round"/>
-    </svg>
-    <span class="eyebrow reveal" data-i18n="gallery_eyebrow">Memories</span>
-    <h2 class="title reveal" id="galTitle" data-i18n="gallery_title">Gallery Wall</h2>
-    <div class="frames" id="frames"></div>
-  </section>
-
-  <!-- ======================= 7. THINGS TO KNOW ======================= -->
-  <section class="know" id="know" aria-labelledby="knowTitle">
-    <span class="eyebrow reveal" data-i18n="know_eyebrow">Where to find us</span>
-    <h2 class="title reveal" id="knowTitle" data-i18n="know_title">Venues</h2>
-    <div class="know-grid" id="knowGrid"></div>
-    <button type="button" class="hint-btn know-ele" data-hint="mirrorwork"><svg viewBox="0 0 200 150" aria-hidden="true" data-elephant></svg></button>
-  </section>
-
-  <!-- ======================= 9. CLOSING ======================= -->
-  <section class="closing" id="closing" aria-labelledby="closingNames">
-    <canvas id="fireworks" aria-hidden="true"></canvas>
-    <div class="frame-corners reveal">
-      <svg class="logo closing-logo" viewBox="0 120 1280 1080" aria-hidden="true"><use href="#kr-logo"/></svg>
-      <span class="eyebrow" data-i18n="closing_eyebrow">With all our love</span>
-      <h2 id="closingNames"></h2>
-      <p class="line" data-i18n="closing">We can't wait to celebrate with you.</p>
-      <p class="date" id="closingDate"></p>
-    </div>
-    <div class="skyline" aria-hidden="true" data-hint="mangh"><svg viewBox="0 0 1200 300" preserveAspectRatio="xMidYMax slice" id="skyline"></svg></div>
-    <div class="closing-ground">
-    <h3 class="contact-title" data-i18n="contact_title">Questions? Call us</h3>
-    <div class="contacts" id="contacts"></div>
-    <p class="foot" id="foot"></p>
-    </div>
-  </section>
 </main>
-
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
-  <button class="lb-btn lb-close" id="lbClose" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
-  <button class="lb-btn lb-prev" id="lbPrev" aria-label="Previous photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 6l-6 6 6 6"/></svg></button>
-  <div class="stage" id="lbStage"></div>
-  <button class="lb-btn lb-next" id="lbNext" aria-label="Next photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 6l6 6-6 6"/></svg></button>
-</div>
 
 <script>
 (function () {
@@ -1285,6 +1224,25 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
   /* ---------------- art generators (original SVG) ---------------- */
   function el(tag, attrs, parent) { var n = doc.createElementNS(NS, tag); for (var a in attrs) n.setAttribute(a, attrs[a]); if (parent) parent.appendChild(n); return n; }
 
+  function buildMandap() {
+    var w = $("pillarWraps"), cols = ["#E8891A", "#E2A91B", "#F2B13A"];
+    [357, 843].forEach(function (cx) {
+      for (var y = 284, k = 0; y < 660; y += 7, k++) {
+        var ph = y / 15, x = cx + 15 * Math.sin(ph);
+        if (Math.cos(ph) < -0.15) continue;           // the part of the garland behind the pillar
+        el("circle", { cx: x.toFixed(1), cy: y, r: 4.6, fill: cols[k % 3], stroke: "#B8640F", "stroke-width": ".5" }, w);
+      }
+    });
+    var f = $("canopyFolds");
+    for (var x = 330; x <= 870; x += 30) el("path", { d: "M600 98L" + x + " 238", stroke: "rgba(40,0,10,.22)", "stroke-width": "1.4" }, f);
+    var fr = $("canopyFringe");
+    for (var fx = 320; fx < 884; fx += 16) el("path", { d: "M" + fx + " 266a8 8 0 0 0 16 0z", fill: "#E9C46A", stroke: "#8A6418", "stroke-width": ".6" }, fr);
+    var st = $("mandapStrings");
+    [[392, 96], [410, 70], [428, 108], [772, 108], [790, 70], [808, 96]].forEach(function (d, i) {
+      for (var y = 284; y < 284 + d[1]; y += 8) el("circle", { cx: d[0], cy: y, r: 3.6, fill: cols[(i + y / 8) % 3 | 0] }, st);
+      el("path", { d: "M" + (d[0] - 3) + " " + (284 + d[1]) + "h6l-1 10h-4z", fill: "#C2416B" }, st);
+    });
+  }
   function buildScene() {
     var stars = $("stars");
     for (var i = 0; i < 150; i++) {
@@ -1305,7 +1263,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
       el("use", { href: "#sprig", transform: "translate(" + (p + 64) + " 690) scale(2.4)" }, w);
     }
     var v = $("vines");
-    [436, 764].forEach(function (cx) {
+    [].forEach(function (cx) {
       el("path", { d: "M" + cx + " 666C" + (cx - 9) + " 636 " + (cx + 9) + " 610 " + cx + " 580C" + (cx - 9) + " 550 " + (cx + 9) + " 524 " + cx + " 494C" + (cx - 9) + " 464 " + (cx + 9) + " 440 " + cx + " 404", fill: "none", stroke: "#6E8B5A", "stroke-width": "2" }, v);
       for (var yy = 420; yy < 660; yy += 30) {
         el("ellipse", { cx: cx + (yy % 60 ? 8 : -8), cy: yy, rx: 7, ry: 3, fill: "#86A26E", transform: "rotate(" + (yy % 60 ? 30 : -30) + " " + (cx + (yy % 60 ? 8 : -8)) + " " + yy + ")" }, v);
@@ -1448,8 +1406,8 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
     [[11, -88], [15.5, -89], [20, -87]].forEach(function (d) { el("circle", { cx: d[0], cy: d[1], r: 1.5, fill: "#2A68BE" }, g); });
   }
   function buildMotifs() {
-    drape($("perchL"), 262, "ajrak"); drape($("perchR"), 868, "paithani");
-    perchedPeacock($("perchL"), 302, false); perchedPeacock($("perchR"), 898, true);
+    drape($("perchL"), 214, "ajrak"); drape($("perchR"), 916, "paithani");
+    perchedPeacock($("perchL"), 254, false); perchedPeacock($("perchR"), 946, true);
     // peacock feather beside the names
     var f = '<path d="M21 8C37 28 36 66 22 104C8 66 6 28 21 8Z" fill="#2E8B6E" opacity=".3"/>';
     for (var y = 12; y < 104; y += 3.5) {
@@ -1476,21 +1434,21 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
   }
 
   // Kapil's Sindhi topi: arched front opening, embroidery and little mirrors
-  // Kapil's Sindhi ajrak shawl, wrapped once around the stem of the K with the ends hanging down
+  // Kapil's Sindhi topi: arched front opening, embroidery and little mirrors
   function buildTopi() {
-    $("topiSvg").innerHTML =
-      // back of the wrap (seen between the turns)
-      '<path d="M6 24L52 14L54 24L8 34Z" fill="#141B3E"/>' +
-      // tails hanging from the knot
-      '<path d="M34 34L44 33L40 74L28 72Z" fill="url(#ajrak-fig)" stroke="#6E1626" stroke-width=".8"/>' +
-      '<path d="M42 33L52 34L56 70L44 72Z" fill="url(#ajrak-fig)" stroke="#6E1626" stroke-width=".8"/>' +
-      '<path d="M28 68L40 70M44 68L56 66" stroke="#A8283A" stroke-width="3"/>' +
-      '<g stroke="#A8283A" stroke-width="1.1" stroke-linecap="round"><path d="M29 72V79M33 72.6V80M37 73.2V79M45 72V79M49 71.4V78M53 70.8V77"/></g>' +
-      // front turn of the wrap crossing the stem
-      '<path d="M4 36L54 22L56 34L6 48Z" fill="url(#ajrak-fig)" stroke="#6E1626" stroke-width=".8"/>' +
-      '<path d="M5 39L55 25M6 45L56 31" stroke="#A8283A" stroke-width="1.2"/>' +
-      // knot
-      '<ellipse cx="44" cy="32" rx="7" ry="5.5" fill="url(#ajrak-fig)" stroke="#6E1626" stroke-width=".8"/>';
+    var t = '<path d="M5 40V17Q5 8 32 6Q59 8 59 17V40Q32 45 5 40Z" fill="#A8283A" stroke="#6E1626" stroke-width="1"/>' +
+      '<path d="M5 17Q32 25 59 17Q59 8 32 6Q5 8 5 17Z" fill="#C2416B" stroke="#6E1626" stroke-width="1"/>' +
+      '<ellipse cx="32" cy="14" rx="18" ry="4.2" fill="none" stroke="#E9C46A" stroke-width="1"/>' +
+      '<ellipse cx="32" cy="14" rx="9" ry="2.2" fill="#0F6B5C" stroke="#E9C46A" stroke-width=".8"/>' +
+      '<path d="M5 25L9 21L13 25L17 21L21 25L25 21L29 25L33 21L37 25L41 21L45 25L49 21L53 25L57 21L59 23" fill="none" stroke="#E9C46A" stroke-width="1.1"/>' +
+      '<path d="M5 33L59 33" stroke="#1F2A5C" stroke-width="2.2"/>' +
+      '<path d="M23 43V33Q32 21 41 33V43.6Q32 45 23 43Z" fill="#FBF3E2" stroke="#E9C46A" stroke-width="1.2"/>';
+    [[11, 30], [17, 37], [47, 37], [53, 30], [32, 18.5]].forEach(function (m, i) {
+      t += '<circle cx="' + m[0] + '" cy="' + m[1] + '" r="2.4" fill="url(#mirrorGrad)" stroke="#E9C46A" stroke-width=".6"/>' +
+        '<use href="#spark" class="spark" fill="#fff" transform="translate(' + (m[0] + 1) + " " + (m[1] - 1) + ') scale(.45)" style="animation-delay:' + (i * 1.3).toFixed(1) + 's"/>';
+    });
+    [[13, 37], [51, 37], [9, 21.5], [55, 21.5]].forEach(function (d) { t += '<circle cx="' + d[0] + '" cy="' + d[1] + '" r="1.1" fill="#E2A91B"/>'; });
+    $("topiSvg").innerHTML = t;
   }
   // Rucha's Marathi nath: a paisley ring edged with pearls, a ruby and a pearl chain
   function buildNath() {
@@ -1506,18 +1464,6 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
     svg.insertAdjacentHTML("beforeend", out);
   }
   // sit the topi on the first letter of Kapil and the nath on the first letter of Rucha
-  function placeOrnaments() {
-    var h1 = $("inviteNames"), a = $("nm1"), b = $("nm2"), fs = parseFloat(getComputedStyle(h1).fontSize);
-    var topi = doc.querySelector(".topi-on"), nath = doc.querySelector(".nath-on");
-    if (!a || !b || !topi) return;
-    topi.style.width = (fs * .6).toFixed(0) + "px";
-    topi.style.left = (h1.offsetLeft + a.offsetLeft - fs * .1).toFixed(0) + "px";
-    topi.style.top = (h1.offsetTop + a.offsetTop + fs * .36).toFixed(0) + "px";
-    nath.style.width = (fs * .64).toFixed(0) + "px";
-    nath.style.left = (h1.offsetLeft + b.offsetLeft - fs * .3).toFixed(0) + "px";
-    nath.style.top = (h1.offsetTop + b.offsetTop - fs * .08).toFixed(0) + "px";
-  }
-
   /* ---------------- tap a motif: one-line meaning ---------------- */
   var tip = doc.createElement("div");
   tip.className = "hint-tip"; tip.setAttribute("role", "status"); tip.setAttribute("aria-live", "polite");
@@ -1539,17 +1485,13 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
 
   /* ---------------- static renders ---------------- */
   var amp = '<span class="amp">&amp;</span>';
-  $("icNames").innerHTML = "<span>" + esc(N.partner1) + " " + amp + "</span><span>" + esc(N.partner2) + "</span>";
-  $("icDate").innerHTML = C.HERO_DATE_TEXT.replace(/^(.*?)\s+(\S+\s+\S+)$/, '<span>$1</span> <span>$2</span>');   // "4TH & 6TH" / "DECEMBER 2026" never split mid-phrase
-  $("inviteNames").innerHTML = '<span class="nm" id="nm1">' + esc(N.partner1) + '</span> &amp; <span class="nm" id="nm2">' + esc(N.partner2) + "</span>";
-  $("cardDate").textContent = C.DATE_TEXT;
-  $("cardVenue").textContent = C.CARD_VENUE;
-  $("parents").innerHTML = C.PARENTS.map(function (pp) {
-    return '<div class="pcol"><p class="prel">' + esc(pp.relation) + "</p>" + pp.names.map(function (n) { return '<p class="pname">' + esc(n) + "</p>"; }).join("") + "</div>";
-  }).join('<span class="pdot" aria-hidden="true"></span>');
-  $("closingNames").innerHTML = "<span>" + esc(N.partner1) + "</span><span>&amp;</span><span>" + esc(N.partner2) + "</span>";
-  $("closingDate").textContent = C.CLOSING_DATE_TEXT;
-  $("foot").innerHTML = "<span>" + esc(N.partner1) + " &amp; " + esc(N.partner2) + "</span> · <span>" + esc(C.DATE_TEXT) + "</span>";
+  $("icNames").innerHTML = esc(N.partner1) + '<span class="amp">&amp;</span>' + esc(N.partner2);
+  $("inviteNames").textContent = N.partner1 + " & " + N.partner2;
+  $("nm1").textContent = N.partner1; $("nm2").textContent = N.partner2;
+  ["1", "2"].forEach(function (k) {
+    $("lineage" + k).innerHTML = (C.LINEAGE["partner" + k] || []).map(function (l, i) { return '<p class="' + (i ? "lin2" : "lin1") + '">' + esc(l) + "</p>"; }).join("");
+  });
+  $("familyLine").textContent = C.FAMILY_LINE;
   var cr = $("crownRosettes");
   [[110, 70], [198, 24], [340, 0], [420, 0], [562, 24], [650, 70]].forEach(function (p) { el("use", { href: "#rosette", x: p[0] - 9, y: p[1] + 8, width: 18, height: 18 }, cr); });
   $("sprays").innerHTML = ['style="left:-30px;top:-20px"', 'style="right:-30px;top:-20px;transform:scaleX(-1)"', 'style="left:-20px;bottom:-30px;transform:scaleY(-1)"', 'style="right:-20px;bottom:-30px;transform:scale(-1)"']
@@ -1559,90 +1501,43 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
   $("gardenBg").innerHTML = '<svg viewBox="0 0 1200 400" preserveAspectRatio="xMidYMax slice"><g fill="#E9D3BC">' +
     '<rect x="300" y="200" width="600" height="120"/><path d="M380 200c0-60 40-80 60-90 20 10 60 30 60 90z M700 200c0-60 40-80 60-90 20 10 60 30 60 90z M540 200c0-80 50-110 60-120 10 10 60 40 60 120z"/></g>' +
     '<rect x="0" y="320" width="1200" height="80" fill="#E8D9CC"/><g opacity=".7"><use href="#lotus" transform="translate(260 360) scale(1.2)"/><use href="#lotus" transform="translate(940 370) scale(1.1)"/></g></svg>';
-  $("sideArt").innerHTML =
-    '<svg class="side-art floaty" style="left:2%;top:520px;width:170px" viewBox="0 0 200 260"></svg>' +
-    '<svg class="side-art floaty" style="right:1%;top:780px;width:230px;animation-delay:-3s" viewBox="0 0 200 150" data-elephant></svg>' +
-    '<svg class="side-art" style="left:6%;top:1400px;width:60px" viewBox="-30 -46 60 60"><use href="#diya"/></svg>' +
-    '<svg class="side-art" style="right:7%;top:300px;width:54px" viewBox="-30 -46 60 60"><use href="#diya"/></svg>' +
-    '<svg class="side-art floaty" style="right:5%;top:1500px;width:90px" viewBox="-40 -36 80 56"><use href="#lotus"/></svg>';
-  peacockSVG($("sideArt").querySelector("svg"), false);
-  $("sideArt").querySelectorAll("[data-elephant]").forEach(elephantSVG);
-  skylineSVG($("skyline"));
   buildScene();
+  buildMandap();
   buildMotifs();
-  buildTopi(); buildNath(); placeOrnaments();
-  addEventListener("resize", placeOrnaments);
-  if (doc.fonts && doc.fonts.ready) doc.fonts.ready.then(placeOrnaments);
+  buildTopi(); buildNath();
 
   /* ---------------- dynamic, translatable renders ---------------- */
   var mapsLink = function (link, label) {
     var live = !isPh(link);
-    return '<a class="link-maps" ' + (live ? 'href="' + esc(link) + '" target="_blank" rel="noopener"' : 'href="#know"') + ' aria-label="' + esc(txt("open_maps") + ": " + label) + '"><svg aria-hidden="true"><use href="#i-pin"/></svg>' + T("open_maps") + "</a>";
+    return '<a class="link-maps" ' + (live ? 'href="' + esc(link) + '" target="_blank" rel="noopener"' : 'href="#events"') + ' aria-label="' + esc(txt("open_maps") + ": " + label) + '"><svg aria-hidden="true"><use href="#i-pin"/></svg>' + T("open_maps") + "</a>";
   };
 
-  function renderEvents() {
-    $("scrolls").innerHTML = C.EVENTS.map(function (e) {
-      var seen = {}, others = [];
-      ["mr", SD].forEach(function (k) { var v = e.name[k]; if (v && !seen[v]) { seen[v] = 1; others.push(span({ text: v, k: k })); } });
-      var tag = e.tag || "both";
-      return '<article class="scroll reveal"><div class="scroll-body">' +
+  function renderEventPages() {
+    var words = ["The first celebration", "The second celebration", "The third celebration"];
+    $("eventPages").innerHTML = C.VENUES.map(function (v, i) {
+      return '<article class="ev-page' + (i % 2 ? " alt" : "") + '"><div class="ev-toran" aria-hidden="true"></div>' +
+        '<p class="ev-num reveal">' + (words[i] || "") + "</p>" +
+        '<div class="scroll ev-scroll reveal"><div class="scroll-body">' +
         '<span class="vine l" aria-hidden="true">' + vineSVG + '</span><span class="vine r" aria-hidden="true">' + vineSVG + "</span>" +
-        '<svg class="ev-icon" viewBox="0 0 60 56" aria-hidden="true">' + (ICONS[e.icon] || ICONS.lantern) + "</svg>" +
-        '<span class="chip ' + tag + '">' + T("tag_" + tag) + "</span>" +
-        "<h3>" + esc(e.name.en) + "</h3>" +
-        (others.length ? '<p class="alt">' + others.join("") + "</p>" : "") +
-        '<p class="when">' + esc(e.date) + " · " + esc(e.time) + "</p>" +
-        '<p class="where">' + esc(e.venue) + "</p>" +
-        '<p class="expect">' + span(loc(e.expect)) + "</p>" +
-        '<p class="dress"><b>' + T("dress_label") + ":</b> " + span(loc(e.dress)) + "</p>" +
-        mapsLink(e.mapsLink, e.name.en) + "</div></article>";
+        '<svg class="ev-icon" viewBox="0 0 60 56" aria-hidden="true">' + (ICONS[v.icon] || ICONS.lantern) + "</svg>" +
+        "<h3>" + esc(v.title) + "</h3>" +
+        '<p class="ev-date">' + esc(v.date) + "</p>" +
+        '<p class="ev-time">' + esc(v.time) + "</p>" +
+        '<div class="ev-rule" aria-hidden="true"><svg viewBox="-12 -8 24 16"><use href="#rosette" x="-8" y="-8" width="16" height="16"/></svg></div>' +
+        '<p class="ev-venue">' + esc(v.name) + "</p>" +
+        '<p class="ev-addr">' + esc(v.address) + "</p>" +
+        mapsLink(v.mapsLink, v.name) + "</div></div>" +
+        '<svg class="ev-diya l" viewBox="-30 -46 60 60" aria-hidden="true"><use href="#diya"/></svg>' +
+        '<svg class="ev-diya r" viewBox="-30 -46 60 60" aria-hidden="true"><use href="#diya"/></svg></article>';
     }).join("");
-    observe($("scrolls").querySelectorAll(".reveal"));
+    observe($("eventPages").querySelectorAll(".reveal"));
   }
 
   function renderStory() {
+    var ph = C.COUPLE_PHOTO || {};
+    $("couplePhoto").innerHTML = ph.src ? '<img src="' + esc(ph.src) + '" alt="' + esc(ph.alt) + '" loading="lazy">' : '<span class="cp-ph">Photo coming soon</span>';
     $("storyText").innerHTML = C.STORY.map(function (p) { return "<p>" + span(loc(p)) + "</p>"; }).join("") +
       (C.HASHTAG ? '<p class="hashtag">' + esc(C.HASHTAG) + "</p>" : "");
-  }
-
-  function renderGallery() {
-    $("frames").innerHTML = C.GALLERY.map(function (g, i) {
-      return '<button type="button" class="frame reveal" data-i="' + i + '" aria-label="' + esc(g.alt) + '">' +
-        '<span class="bead a"></span><span class="bead b"></span><span class="outer"><span class="inner">' +
-        (g.src ? '<img src="' + esc(g.src) + '" alt="" loading="lazy">' : '<span class="ph">' + T("photo_soon") + "</span>") +
-        "</span></span></button>";
-    }).join("");
-    observe($("frames").querySelectorAll(".reveal"));
-  }
-
-  function renderKnow() {
-    var pin = '<svg class="kicon" viewBox="0 0 60 56" aria-hidden="true"><path d="M30 52s16-16 16-28a16 16 0 0 0-32 0c0 12 16 28 16 28z" fill="#F2C4D0" stroke="#A8283A" stroke-width="2"/><circle cx="30" cy="24" r="6" fill="#A8283A"/></svg>';
-    $("knowGrid").innerHTML = C.VENUES.map(function (v, i) {
-      return '<article class="kcard venue-card reveal" style="transition-delay:' + (i * .12) + 's">' + pin +
-        '<p class="v-when">' + span(loc(v.title)) + "</p><h3>" + esc(v.name) + "</h3>" +
-        (v.date ? '<p class="v-dt"><span><svg aria-hidden="true"><use href="#i-cal"/></svg>' + esc(v.date) + "</span>" +
-          (v.time ? '<span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="1.7"/></svg>' + esc(v.time) + "</span>" : "") + "</p>" : "") +
-        '<p class="v-addr">' + esc(v.address) + "</p>" +
-        mapsLink(v.mapsLink, v.name) + "</article>";
-    }).join("");
-    observe($("knowGrid").querySelectorAll(".reveal"));
-  }
-
-  var CAPS = {
-    pagdi: '<path d="M4 27C4 17 12 11 22 11C30 11 35 13 39 17L46 8C48 15 46 23 42 27Z" fill="#A8283A" stroke="#E9C46A"/><path d="M10 17C16 15 26 15 34 19M7 22C15 20 28 20 39 23" stroke="#E9C46A" stroke-width=".9" fill="none"/><path d="M4 27H42" stroke="#E9C46A" stroke-width="2"/>',
-    topi: '<path d="M6 28V14C6 10 14 8 24 8S42 10 42 14V28Z" fill="#A8283A" stroke="#E9C46A"/><path d="M18 28V21Q24 14 30 21V28Z" fill="#1F2A5C"/><path d="M6 14L10 11L14 14L18 11L22 14L26 11L30 14L34 11L38 14L42 11" stroke="#E9C46A" stroke-width=".8" fill="none"/><g fill="#F3F6F8"><circle cx="12" cy="20" r="1.5"/><circle cx="36" cy="20" r="1.5"/><circle cx="12" cy="25" r="1.5"/><circle cx="36" cy="25" r="1.5"/></g>'
-  };
-  function renderContacts() {
-    $("contacts").innerHTML = C.CONTACTS.map(function (c) {
-      var ic = CAPS[c.icon] ? '<button type="button" class="hint-btn" data-hint="' + c.icon + '"><svg class="ctype" viewBox="0 0 48 32" aria-hidden="true">' + CAPS[c.icon] + "</svg></button>" : "";
-      var rows = (c.people || []).map(function (pp) {
-        var tel = String(pp.phone).replace(/[^\d+]/g, "");
-        var num = isPh(pp.phone) || !tel ? '<span class="tel">' + esc(pp.phone) + "</span>"
-          : '<a class="tel" href="tel:' + esc(tel) + '" aria-label="Call ' + esc(pp.name) + '"><svg aria-hidden="true"><use href="#i-phone"/></svg>' + esc(pp.phone) + "</a>";
-        return '<li><span class="who">' + esc(pp.name) + (pp.role ? ' <span class="role">· ' + esc(pp.role) + "</span>" : "") + "</span>" + num + "</li>";
-      }).join("");
-      return '<div class="contact">' + ic + "<h3>" + esc(c.label) + '</h3><ul class="people">' + rows + "</ul></div>";
-    }).join("");
   }
 
   /* ---------------- countdown ---------------- */
@@ -1744,29 +1639,13 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
     root.lang = TAG[k]; root.dir = rtl(k) ? "rtl" : "ltr";
     doc.querySelectorAll("[data-i18n]").forEach(function (n) { setEl(n, tr(n.dataset.i18n)); });
     doc.querySelectorAll("[data-i18n-aria]").forEach(function (n) { n.setAttribute("aria-label", txt(n.dataset.i18nAria)); });
-    renderLangs(); renderCountdown(); renderEvents(); renderStory(); renderGallery(); renderKnow(); renderContacts();
+    renderLangs(); renderCountdown(); renderEventPages(); renderStory();
     labelHints();
   }
   doc.addEventListener("click", function (e) {
     var b = e.target.closest("[data-langs] button[data-lang]"); if (!b) return;
     lang = b.dataset.lang; try { localStorage.setItem("kr-lang", lang); } catch (err) {}
     applyLanguage();
-  });
-
-  /* ---------------- gallery lightbox ---------------- */
-  var lb = $("lightbox"), cur = 0, lastFocus;
-  var show = function (i) {
-    var G = C.GALLERY; cur = (i + G.length) % G.length; var g = G[cur];
-    $("lbStage").innerHTML = (g.src ? '<img src="' + esc(g.src) + '" alt="' + esc(g.alt) + '">' : '<div class="ph-big">' + esc(g.alt) + "</div>") + '<p style="margin-top:10px">' + (cur + 1) + " / " + G.length + "</p>";
-  };
-  var closeLb = function () { lb.classList.remove("open"); doc.body.style.overflow = ""; if (lastFocus) lastFocus.focus(); };
-  $("frames").addEventListener("click", function (e) { var b = e.target.closest(".frame"); if (!b) return; lastFocus = b; show(+b.dataset.i); lb.classList.add("open"); doc.body.style.overflow = "hidden"; $("lbClose").focus(); });
-  $("lbClose").onclick = closeLb; $("lbPrev").onclick = function () { show(cur - 1); }; $("lbNext").onclick = function () { show(cur + 1); };
-  lb.addEventListener("click", function (e) { if (e.target === lb) closeLb(); });
-  doc.addEventListener("keydown", function (e) {
-    if (!lb.classList.contains("open")) return;
-    if (e.key === "Escape") closeLb(); else if (e.key === "ArrowLeft") show(cur - 1); else if (e.key === "ArrowRight") show(cur + 1);
-    else if (e.key === "Tab") { var f = lb.querySelectorAll("button"); if (e.shiftKey && doc.activeElement === f[0]) { e.preventDefault(); f[f.length - 1].focus(); } else if (!e.shiftKey && doc.activeElement === f[f.length - 1]) { e.preventDefault(); f[0].focus(); } }
   });
 
   /* ---------------- floating menu & music ---------------- */
@@ -1863,27 +1742,6 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
   }
   addEventListener("scroll", onScroll, { passive: true }); onScroll();
 
-  /* ---------------- fireworks over the palace ---------------- */
-  (function () {
-    var cv = $("fireworks"), ctx = cv.getContext("2d"), parts = [], on = false, last = 0, raf;
-    if (reduce || !ctx) return;
-    var size = function () { cv.width = cv.offsetWidth; cv.height = cv.offsetHeight; };
-    size(); addEventListener("resize", size);
-    var burst = function () {
-      var x = rnd(.12, .88) * cv.width, y = rnd(.1, .45) * cv.height, col = ["#F3DDA0", "#F59AB8", "#E9C46A", "#FFD6E0"][Math.floor(rnd(0, 4))];
-      for (var i = 0; i < 46; i++) { var a = i / 46 * Math.PI * 2, s = rnd(.6, 2.2); parts.push({ x: x, y: y, vx: Math.cos(a) * s, vy: Math.sin(a) * s, life: 1, col: col }); }
-    };
-    var loop = function (t) {
-      if (!on) return;
-      if (t - last > 1300) { burst(); last = t; }
-      ctx.clearRect(0, 0, cv.width, cv.height);
-      parts = parts.filter(function (p) { return p.life > 0; });
-      parts.forEach(function (p) { p.x += p.vx; p.y += p.vy; p.vy += .012; p.vx *= .99; p.life -= .011; ctx.globalAlpha = Math.max(p.life, 0); ctx.fillStyle = p.col; ctx.fillRect(p.x, p.y, 2, 2); });
-      raf = requestAnimationFrame(loop);
-    };
-    new IntersectionObserver(function (en) { on = en[0].isIntersecting; if (on) raf = requestAnimationFrame(loop); else cancelAnimationFrame(raf); }).observe($("closing"));
-  })();
-
   /* ---------------- akshata shower: rice grains and marigold petals ---------------- */
   function shower(box, count) {
     if (reduce || !box) return;
@@ -1908,7 +1766,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
   if (root.classList.contains("intro-on")) {
     outside.forEach(function (n) { n.inert = true; n.setAttribute("aria-hidden", "true"); });
     var fit = function () {
-      var W = innerWidth, H = innerHeight, a = W / H, reqW = 660, reqH = 770, vw, vh;
+      var W = innerWidth, H = innerHeight, a = W / H, reqW = 640, reqH = 740, vw, vh;
       if (!W || !H) return;   // hidden or zero-size tab: wait for a real size
       if (a > reqW / reqH) { vh = reqH; vw = vh * a; } else { vw = reqW; vh = vw / a; }
       scene.setAttribute("viewBox", (600 - vw / 2).toFixed(1) + " " + (400 - vh / 2).toFixed(1) + " " + vw.toFixed(1) + " " + vh.toFixed(1));
@@ -1918,7 +1776,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
       // keep the whole block (names, date, logo, "Tap to open") on screen on short windows
       var copy = $("introCopy"), over = copy.offsetTop + copy.offsetHeight + 18 - H;
       if (over > 0) intro.style.setProperty("--copy-top", Math.max(56, top0 - over) + "px");
-      intro.style.setProperty("--arch-in", (pt(769, 0).x - pt(431, 0).x).toFixed(0) + "px");
+      intro.style.setProperty("--arch-in", (pt(820, 0).x - pt(380, 0).x).toFixed(0) + "px");
       var o = pt(600, 470); scene.style.transformOrigin = o.x + "px " + o.y + "px";
     };
     fit(); addEventListener("resize", fit);
