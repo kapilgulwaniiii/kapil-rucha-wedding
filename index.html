@@ -1273,7 +1273,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
       <svg class="logo finale-logo" viewBox="0 120 1280 1080" aria-hidden="true"><use href="#kr-logo-pat"/></svg>
       <p class="finale-from">With best compliments from</p>
       <div class="finale-rule" aria-hidden="true"><svg viewBox="-12 -8 24 16"><use href="#rosette" x="-8" y="-8" width="16" height="16"/></svg></div>
-      <p class="finale-fam">Gulwani Family<span>and Friends</span></p>
+      <p class="finale-fam">Gulwani Family<span>and Relatives</span></p>
     </div>
     <div class="skyline" aria-hidden="true" data-hint="wada"><svg viewBox="0 0 1200 300" preserveAspectRatio="xMidYMax slice" id="skyline"></svg></div>
   </section>
@@ -1809,20 +1809,30 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
   panel.addEventListener("click", function (e) { if (e.target.closest("a")) setMenu(false); });
   doc.addEventListener("keydown", function (e) { if (e.key === "Escape" && !panel.hidden) { setMenu(false); menuBtn.focus(); } });
   doc.addEventListener("click", function (e) { if (!panel.hidden && !panel.contains(e.target) && !menuBtn.contains(e.target)) setMenu(false); });
-  /* ---------------- background music: gapless loop via Web Audio ---------------- */
+  /* ---------------- background music: on by default, gapless loop via Web Audio ----------------
+     Browsers refuse to play sound until the visitor has interacted with the page, so the
+     track is loaded and started straight away (silently held by the browser), and the very
+     first tap, click, key press or scroll-tap anywhere lets the sound through. */
   (function () {
     if (!C.MUSIC_URL) return;
     var mb = $("musicBtn"), AC = window.AudioContext || window.webkitAudioContext;
-    var want = true, playing = false, ctx = null, buf = null, srcNode = null, gain = null, el = null, bytes = null;
+    var vol = C.MUSIC_VOLUME == null ? .6 : C.MUSIC_VOLUME;
+    var want = true, ctx = null, gain = null, src = null, el = null;
+    // iPhone: let the music play even when the ring/silent switch is on silent
+    try { if (navigator.audioSession) navigator.audioSession.type = "playback"; } catch (e) {}
     mb.hidden = false;
     var show = function () {
-      mb.setAttribute("aria-pressed", String(playing));
-      setEl(mb.querySelector(".visually-hidden"), tr(playing ? "music_pause" : "music_play"));
+      mb.setAttribute("aria-pressed", String(want));
+      setEl(mb.querySelector(".visually-hidden"), tr(want ? "music_pause" : "music_play"));
     };
     show();
-    // fetch early so the first tap starts sound straight away
-    var loading = fetch(C.MUSIC_URL).then(function (r) { return r.arrayBuffer(); }).then(function (b) { bytes = b; }).catch(function () {});
-    var vol = C.MUSIC_VOLUME == null ? .6 : C.MUSIC_VOLUME;
+    var fadeTo = function (v, t) {
+      if (!gain) return;
+      var now = ctx.currentTime;
+      gain.gain.cancelScheduledValues(now);
+      gain.gain.setValueAtTime(gain.gain.value, now);
+      gain.gain.linearRampToValueAtTime(v, now + t);
+    };
     // trim any silence the encoder adds so the loop seam has no gap
     var loopPoints = function (b) {
       var d = b.getChannelData(0), n = d.length, a = 0, z = n - 1;
@@ -1830,65 +1840,44 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
       while (z > a && Math.abs(d[z]) < .003) z--;
       return [a / b.sampleRate, (z + 1) / b.sampleRate];
     };
-    var startWeb = function () {
-      return (buf ? Promise.resolve(buf) : loading.then(function () {
-        return new Promise(function (ok, no) { ctx.decodeAudioData(bytes.slice(0), ok, no); });
-      }).then(function (b) { buf = b; return b; })).then(function (b) {
-        if (!playing) return;
-        var lp = loopPoints(b);
-        srcNode = ctx.createBufferSource(); srcNode.buffer = b; srcNode.loop = true;
-        srcNode.loopStart = lp[0]; srcNode.loopEnd = lp[1];
-        srcNode.connect(gain);
-        gain.gain.cancelScheduledValues(ctx.currentTime);
-        gain.gain.setValueAtTime(0, ctx.currentTime);
-        gain.gain.linearRampToValueAtTime(vol, ctx.currentTime + 1.2);
-        srcNode.start(0, lp[0]);
-      });
-    };
-    var start = function () {
-      if (playing) return; playing = true; show();
-      if (AC) {
-        if (!ctx) { ctx = new AC(); gain = ctx.createGain(); gain.connect(ctx.destination); }
-        ctx.resume();
-        startWeb().catch(function () { playing = false; show(); });
-      } else {
-        if (!el) { el = new Audio(C.MUSIC_URL); el.loop = true; el.volume = vol; }
-        el.play().catch(function () { playing = false; show(); });
-      }
-    };
-    var stop = function () {
-      if (!playing) return; playing = false; show();
-      if (srcNode) {
-        var n = srcNode; srcNode = null;
-        gain.gain.cancelScheduledValues(ctx.currentTime);
-        gain.gain.setValueAtTime(gain.gain.value, ctx.currentTime);
-        gain.gain.linearRampToValueAtTime(0, ctx.currentTime + .35);
-        setTimeout(function () { try { n.stop(); } catch (e) {} }, 400);
-      }
-      if (el) el.pause();
-    };
-    mb.addEventListener("click", function () {
-      if (playing) { stop(); want = false; } else { want = true; start(); }
-    });
-    // browsers only allow sound after a tap, so start on the guest's first interaction
-    var firstTouch = function (e) {
-      if (mb.contains(e.target)) return;
-      ["pointerdown", "click", "touchend", "keydown"].forEach(function (t) { doc.removeEventListener(t, firstTouch, true); });
-      if (want && !playing) start();
-    };
-    ["pointerdown", "click", "touchend", "keydown"].forEach(function (t) { doc.addEventListener(t, firstTouch, true); });
-    // try to start straight away; browsers that allow it will play, others wait for the first tap
     if (AC) {
-      try {
-        var probe = new AC();
-        if (probe.state === "running") { probe.close(); start(); } else probe.close();
-      } catch (e) {}
+      ctx = new AC(); gain = ctx.createGain(); gain.gain.value = 0; gain.connect(ctx.destination);
+      fetch(C.MUSIC_URL).then(function (r) { return r.arrayBuffer(); }).then(function (bytes) {
+        return new Promise(function (ok, no) { ctx.decodeAudioData(bytes, ok, no); });
+      }).then(function (b) {
+        var lp = loopPoints(b);
+        src = ctx.createBufferSource(); src.buffer = b; src.loop = true;
+        src.loopStart = lp[0]; src.loopEnd = lp[1];
+        src.connect(gain); src.start(0, lp[0]);
+        if (want) { fadeTo(vol, 1.5); ctx.resume().catch(function () {}); }
+      }).catch(function () {});
+      ctx.onstatechange = function () { if (ctx.state === "running" && want) { fadeTo(vol, 1.2); unbind(); } };
+    } else {
+      el = new Audio(C.MUSIC_URL); el.loop = true; el.volume = vol; el.preload = "auto";
+      el.play().then(unbind).catch(function () {});
     }
+    var unlock = function () {
+      if (!want) return;
+      if (ctx) { if (ctx.state !== "running") ctx.resume().catch(function () {}); else unbind(); }
+      else if (el && el.paused) el.play().then(unbind).catch(function () {});
+    };
+    var EVENTS = ["pointerup", "pointerdown", "mousedown", "touchend", "click", "keydown"];
+    var bound = true;
+    function unbind() { if (!bound) return; bound = false; EVENTS.forEach(function (t) { doc.removeEventListener(t, unlock, true); }); }
+    EVENTS.forEach(function (t) { doc.addEventListener(t, unlock, true); });
+    mb.addEventListener("click", function () {
+      want = !want; show();
+      if (ctx) {
+        if (want) { ctx.resume().catch(function () {}); fadeTo(vol, .8); }
+        else fadeTo(0, .35);
+      } else if (el) {
+        if (want) el.play().catch(function () {}); else el.pause();
+      }
+    });
     // pause while the tab is in the background, carry on when it returns
-    var wasPlaying = false;
     doc.addEventListener("visibilitychange", function () {
-      if (doc.hidden) { wasPlaying = playing; if (ctx) ctx.suspend(); if (el) el.pause(); }
-      else if (wasPlaying) { if (ctx) ctx.resume(); if (el) el.play().catch(function () {}); }
+      if (doc.hidden) { if (ctx) ctx.suspend(); if (el) el.pause(); }
+      else if (want) { if (ctx) ctx.resume().catch(function () {}); if (el) el.play().catch(function () {}); }
     });
   })();
 
