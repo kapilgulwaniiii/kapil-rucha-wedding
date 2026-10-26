@@ -65,7 +65,7 @@ window.CONFIG = {
   /* ---- The two celebrations: each gets its own scroll page ----
      icon: music | mandap | rings | lantern | knot */
   VENUES: [
-    { title: "Sangeet and Engagement", icon: "rings", name: "Royal Connaught Boat Club",
+    { title: "Sangeet and Engagement", icon: "rings", name: "Royal Connaught Boat Club", hall: "Pocha Hall",
       date: "4th December 2026", time: "6:30 pm onwards",
       address: "Boat Club Rd, Bund Garden, Sangamvadi, Pune, Maharashtra 411001",
       mapsLink: "https://maps.app.goo.gl/tXy83PxkSVo9GkqY9" },
@@ -532,6 +532,7 @@ section{position:relative;scroll-margin-top:0}
 .ev-rule::after{transform:scaleX(-1)}
 .ev-rule svg{width:20px;height:14px}
 .ev-venue{font:500 clamp(1.4rem,5.4vw,1.75rem)/1.2 var(--serif);color:var(--text);margin:0 0 6px}
+.ev-hall{font:italic 500 clamp(1.1rem,4.2vw,1.3rem)/1.2 var(--serif);color:var(--madder);margin:-2px 0 8px}
 .ev-addr{font-size:1rem;line-height:1.55;color:var(--text-soft);max-width:34ch;margin:0 auto 12px}
 .ev-scroll .link-maps{font-size:1.2rem}
 .ev-diya{position:absolute;bottom:40px;width:56px;height:auto}
@@ -1152,7 +1153,6 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
   <div class="petals" id="introPetals" aria-hidden="true"></div>
 
   <div class="intro-top">
-    <a href="#invite" class="skip-intro" id="skipIntro" data-i18n="skip_intro">Skip intro</a>
   </div>
 
   <div class="intro-copy" id="introCopy">
@@ -1678,6 +1678,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
         '<p class="ev-time">' + esc(v.time) + "</p>" +
         '<div class="ev-rule" aria-hidden="true"><svg viewBox="-12 -8 24 16"><use href="#rosette" x="-8" y="-8" width="16" height="16"/></svg></div>' +
         '<p class="ev-venue">' + esc(v.name) + "</p>" +
+        (v.hall ? '<p class="ev-hall">' + esc(v.hall) + "</p>" : "") +
         '<p class="ev-addr">' + esc(v.address) + "</p>" +
         mapsLink(v.mapsLink, v.name) + "</div></div>" +
         '<svg class="ev-diya l" viewBox="-30 -46 60 60" aria-hidden="true"><use href="#diya"/></svg>' +
@@ -1813,7 +1814,6 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
     if (!C.MUSIC_URL) return;
     var mb = $("musicBtn"), AC = window.AudioContext || window.webkitAudioContext;
     var want = true, playing = false, ctx = null, buf = null, srcNode = null, gain = null, el = null, bytes = null;
-    try { want = localStorage.getItem("kr-music") !== "off"; } catch (e) {}
     mb.hidden = false;
     var show = function () {
       mb.setAttribute("aria-pressed", String(playing));
@@ -1869,15 +1869,21 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
     };
     mb.addEventListener("click", function () {
       if (playing) { stop(); want = false; } else { want = true; start(); }
-      try { localStorage.setItem("kr-music", want ? "on" : "off"); } catch (e) {}
     });
     // browsers only allow sound after a tap, so start on the guest's first interaction
     var firstTouch = function (e) {
       if (mb.contains(e.target)) return;
-      ["click", "touchend", "keydown"].forEach(function (t) { doc.removeEventListener(t, firstTouch, true); });
-      if (want) start();
+      ["pointerdown", "click", "touchend", "keydown"].forEach(function (t) { doc.removeEventListener(t, firstTouch, true); });
+      if (want && !playing) start();
     };
-    ["click", "touchend", "keydown"].forEach(function (t) { doc.addEventListener(t, firstTouch, true); });
+    ["pointerdown", "click", "touchend", "keydown"].forEach(function (t) { doc.addEventListener(t, firstTouch, true); });
+    // try to start straight away; browsers that allow it will play, others wait for the first tap
+    if (AC) {
+      try {
+        var probe = new AC();
+        if (probe.state === "running") { probe.close(); start(); } else probe.close();
+      } catch (e) {}
+    }
     // pause while the tab is in the background, carry on when it returns
     var wasPlaying = false;
     doc.addEventListener("visibilitychange", function () {
@@ -1991,7 +1997,6 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold-sof
     doc.addEventListener("keydown", function (e) { if (!intro.hidden && (e.key === "ArrowDown" || e.key === "PageDown")) zoomBy(.34); });
     // the scene lights itself: dusk fades to lamplight and the peacocks open their tails
     setTimeout(light, 450);
-    $("skipIntro").addEventListener("click", function (e) { e.preventDefault(); lit = true; finish(); });
   } else {
     intro.hidden = true; intro.setAttribute("aria-hidden", "true");
   }
